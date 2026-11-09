@@ -2,12 +2,16 @@
   "_comment": "被动技能配置路径：data/<namespace>/kingdom_come_combat/passive_skills/*.json。每个技能可配置 name/display_name/title、description/desc/text、icon/texture、source(book、advancement、experience)、advancement/achievement、experience_cost/xp_cost/cost。source=book 需要在 data/<namespace>/kingdom_come_combat/skill_books/<id>.json 创建 passive_id 对应的技能书；source=advancement 会在玩家完成对应 advancement 后自动学习；source=experience 会出现在技能界面的可学习 tab，长按后消耗 experience_cost 经验点数学习，不是等级。icon 可写完整资源路径，也可只写文件名，对应 textures/gui/passive_skills/<icon>.png。",
   "skills": {
     "master_counter": {
-      "name": "大师之击",
-      "description": "大师之击包含了剑术大师记录的4种化被动为主动的攻击，交击，怒击，顶击，曲击。当敌人进攻时以相同方向的攻击触发，命中敌人。",
+      "name": "Master Strike",
+      "description": "Master Strike turns defense into an immediate attack through four counters recorded by swordmasters. Match the direction of an incoming attack to strike the enemy during their assault.",
       "translations": {
         "en_us": {
           "name": "Master Strike",
           "description": "Master Strike turns defense into an immediate attack through four counters recorded by swordmasters. Match the direction of an incoming attack to strike the enemy during their assault."
+        },
+        "zh_cn": {
+          "name": "大师之击",
+          "description": "大师之击包含了剑术大师记录的4种化被动为主动的攻击，交击，怒击，顶击，曲击。当敌人进攻时以相同方向的攻击触发，命中敌人。"
         }
       },
       "icon": "",
@@ -15,12 +19,16 @@
       "experience_cost": 2500
     },
     "steady_guard": {
-      "name": "稳固防守",
-      "description": "1次致命的打击比100次无用的打击更有效，所以静观其变。5秒不进攻会令体力恢复速度加快20%，持续到下次进攻开始",
+      "name": "Steady Guard",
+      "description": "One decisive blow is worth more than a hundred wasted strikes. Watch and wait. After 5 seconds without attacking, stamina regeneration increases by 20% until your next attack.",
       "translations": {
         "en_us": {
           "name": "Steady Guard",
           "description": "One decisive blow is worth more than a hundred wasted strikes. Watch and wait. After 5 seconds without attacking, stamina regeneration increases by 20% until your next attack."
+        },
+        "zh_cn": {
+          "name": "稳固防守",
+          "description": "1次致命的打击比100次无用的打击更有效，所以静观其变。5秒不进攻会令体力恢复速度加快20%，持续到下次进攻开始"
         }
       },
       "icon": "",
@@ -30,12 +38,16 @@
       }
     },
     "hunter": {
-      "name": "怪物猎人",
-      "description": "沉着冷静地应对敌人。击杀敌人会令你恢复15点体力。",
+      "name": "Monster Hunter",
+      "description": "Face your foes with calm resolve. Killing an enemy restores 15 stamina.",
       "translations": {
         "en_us": {
           "name": "Monster Hunter",
           "description": "Face your foes with calm resolve. Killing an enemy restores 15 stamina."
+        },
+        "zh_cn": {
+          "name": "怪物猎人",
+          "description": "沉着冷静地应对敌人。击杀敌人会令你恢复15点体力。"
         }
       },
       "icon": "",
@@ -46,12 +58,16 @@
       }
     },
     "fighter": {
-      "name": "角斗士",
-      "description": "从古罗马起放弃盾牌的打法，代表着纯粹的血腥。如果只使用了一只手，造成额外的10%伤害",
+      "name": "Gladiator",
+      "description": "A shieldless style from ancient arenas, pure and bloody. If your offhand is empty, deal 10% more damage.",
       "translations": {
         "en_us": {
           "name": "Gladiator",
           "description": "A shieldless style from ancient arenas, pure and bloody. If your offhand is empty, deal 10% more damage."
+        },
+        "zh_cn": {
+          "name": "角斗士",
+          "description": "从古罗马起放弃盾牌的打法，代表着纯粹的血腥。如果只使用了一只手，造成额外的10%伤害"
         }
       },
       "icon": "",
@@ -63,12 +79,16 @@
       }
     },
     "strong_arm": {
-      "name": "贝奥武夫之臂",
-      "description": "力大无穷，你可以单手举起长剑，把它当成短剑使用。仅在副手持有物品时触发。以这种方式使用长剑时，伤害和攻击速度降低20%，攻击体力消耗增加20%。",
+      "name": "Beowulf's Arm",
+      "description": "Your immense strength lets you wield a longsword like a short sword while your offhand is occupied. Doing so reduces its damage and attack speed by 20% and increases attack stamina cost by 20%.",
       "translations": {
         "en_us": {
           "name": "Beowulf's Arm",
           "description": "Your immense strength lets you wield a longsword like a short sword while your offhand is occupied. Doing so reduces its damage and attack speed by 20% and increases attack stamina cost by 20%."
+        },
+        "zh_cn": {
+          "name": "贝奥武夫之臂",
+          "description": "力大无穷，你可以单手举起长剑，把它当成短剑使用。仅在副手持有物品时触发。以这种方式使用长剑时，伤害和攻击速度降低20%，攻击体力消耗增加20%。"
         }
       },
       "icon": "",
@@ -83,12 +103,16 @@
       }
     },
     "combo_attack": {
-      "name": "势不可挡",
-      "description": "你的攻击速度极快，敌人难以反应，直到一击毙命。使用短剑快速连续攻击时，每次命中都会令后续攻击额外造成5%伤害；只要攻击间隔没有中断，增幅就会持续叠加。",
+      "name": "Unstoppable",
+      "description": "Your attacks come too quickly for the enemy to react. Each rapid successive hit with a short sword adds 5% damage to subsequent attacks, stacking until the attack rhythm is broken.",
       "translations": {
         "en_us": {
           "name": "Unstoppable",
           "description": "Your attacks come too quickly for the enemy to react. Each rapid successive hit with a short sword adds 5% damage to subsequent attacks, stacking until the attack rhythm is broken."
+        },
+        "zh_cn": {
+          "name": "势不可挡",
+          "description": "你的攻击速度极快，敌人难以反应，直到一击毙命。使用短剑快速连续攻击时，每次命中都会令后续攻击额外造成5%伤害；只要攻击间隔没有中断，增幅就会持续叠加。"
         }
       },
       "icon": "",
@@ -101,12 +125,16 @@
       }
     },
     "sword_master": {
-      "name": "剑术大师",
-      "description": "长剑作为最经典的武器有着最多的招式，千变万化，大师们研究了无数种架势和招式。当你使用长剑成功释放连招时，回复20点体力",
+      "name": "Swordmaster",
+      "description": "Longswords offer a vast repertoire of guards and techniques. Successfully landing a longsword combo restores 20 stamina.",
       "translations": {
         "en_us": {
           "name": "Swordmaster",
           "description": "Longswords offer a vast repertoire of guards and techniques. Successfully landing a longsword combo restores 20 stamina."
+        },
+        "zh_cn": {
+          "name": "剑术大师",
+          "description": "长剑作为最经典的武器有着最多的招式，千变万化，大师们研究了无数种架势和招式。当你使用长剑成功释放连招时，回复20点体力"
         }
       },
       "icon": "",
@@ -119,12 +147,16 @@
       }
     },
     "brutal_strike": {
-      "name": "致残打击",
-      "description": "残暴的劈砍带来的巨大伤口会深深的陷入所有人，当你使用斧头释放连招时，额外造成2层部位击伤",
+      "name": "Crippling Strike",
+      "description": "Brutal axe blows leave grievous wounds. Landing an axe combo inflicts 2 additional levels of injury on the struck body part.",
       "translations": {
         "en_us": {
           "name": "Crippling Strike",
           "description": "Brutal axe blows leave grievous wounds. Landing an axe combo inflicts 2 additional levels of injury on the struck body part."
+        },
+        "zh_cn": {
+          "name": "致残打击",
+          "description": "残暴的劈砍带来的巨大伤口会深深的陷入所有人，当你使用斧头释放连招时，额外造成2层部位击伤"
         }
       },
       "icon": "",
@@ -137,12 +169,16 @@
       }
     },
     "knight": {
-      "name": "骑士精神",
-      "description": "代表着骑士精神的阶级早已消亡，但是战马，纹章与骑枪依旧存在。骑士从不畏惧强敌。你在马匹上额外造成10%的伤害，额外减少15%的体力消耗",
+      "name": "Chivalry",
+      "description": "The knightly order may be gone, but warhorses, heraldry, and lances remain. While mounted, deal 10% additional damage and spend 15% less stamina.",
       "translations": {
         "en_us": {
           "name": "Chivalry",
           "description": "The knightly order may be gone, but warhorses, heraldry, and lances remain. While mounted, deal 10% additional damage and spend 15% less stamina."
+        },
+        "zh_cn": {
+          "name": "骑士精神",
+          "description": "代表着骑士精神的阶级早已消亡，但是战马，纹章与骑枪依旧存在。骑士从不畏惧强敌。你在马匹上额外造成10%的伤害，额外减少15%的体力消耗"
         }
       },
       "icon": "",
@@ -155,12 +191,16 @@
       }
     },
     "darksoul": {
-      "name": "黑暗之魂",
-      "description": "如果你体力足够好，就可以穿着板甲却还灵动自如，你甚至觉得自己能在地上打个滚。降低盔甲的负面效果20%",
+      "name": "Dark Soul",
+      "description": "With sufficient endurance, even plate armor cannot stop you from moving freely. Armor penalties are reduced by 20%.",
       "translations": {
         "en_us": {
           "name": "Dark Soul",
           "description": "With sufficient endurance, even plate armor cannot stop you from moving freely. Armor penalties are reduced by 20%."
+        },
+        "zh_cn": {
+          "name": "黑暗之魂",
+          "description": "如果你体力足够好，就可以穿着板甲却还灵动自如，你甚至觉得自己能在地上打个滚。降低盔甲的负面效果20%"
         }
       },
       "icon": "",
@@ -171,12 +211,16 @@
       }
     },
     "headshot": {
-      "name": "箭矢穿颅",
-      "description": "你轻而易举的就射中了敌人的头部，享受着箭矢穿透的声音。如果你的箭矢命中了头部，造成额外20%的伤害。",
+      "name": "Skullpiercer",
+      "description": "You place arrows through the enemy's head with ease. Projectiles that strike the head deal 20% additional damage.",
       "translations": {
         "en_us": {
           "name": "Skullpiercer",
           "description": "You place arrows through the enemy's head with ease. Projectiles that strike the head deal 20% additional damage."
+        },
+        "zh_cn": {
+          "name": "箭矢穿颅",
+          "description": "你轻而易举的就射中了敌人的头部，享受着箭矢穿透的声音。如果你的箭矢命中了头部，造成额外20%的伤害。"
         }
       },
       "icon": "",
@@ -188,12 +232,16 @@
       }
     },
     "crossbow": {
-      "name": "稳固射击",
-      "description": "屏息然后握紧弩机，不要手抖，冷静瞄准。你射出的弩箭扩散减少50%，速度+10%。",
+      "name": "Steady Shot",
+      "description": "Hold your breath, steady the stock, and take careful aim. Crossbow projectile spread is reduced by 50% and projectile speed is increased by 10%.",
       "translations": {
         "en_us": {
           "name": "Steady Shot",
           "description": "Hold your breath, steady the stock, and take careful aim. Crossbow projectile spread is reduced by 50% and projectile speed is increased by 10%."
+        },
+        "zh_cn": {
+          "name": "稳固射击",
+          "description": "屏息然后握紧弩机，不要手抖，冷静瞄准。你射出的弩箭扩散减少50%，速度+10%。"
         }
       },
       "icon": "",
@@ -206,12 +254,16 @@
       }
     },
     "duel": {
-      "name": "决斗者",
-      "description": "决斗不是一项高雅的运动，做好了拼死一搏的准备时，人会爆发出惊人的力量。如果你不穿着重甲（护甲值低于8点），额外获得20%的体力恢复速度，减少15%的闪避体力消耗，造成15%的额外伤害，释放大师之击时回复25体力。",
+      "name": "Duelist",
+      "description": "When your armor value is below 8, gain 20% stamina regeneration, spend 15% less stamina when dodging, deal 15% additional damage, and restore 25 stamina after a Master Strike.",
       "translations": {
         "en_us": {
           "name": "Duelist",
           "description": "When your armor value is below 8, gain 20% stamina regeneration, spend 15% less stamina when dodging, deal 15% additional damage, and restore 25 stamina after a Master Strike."
+        },
+        "zh_cn": {
+          "name": "决斗者",
+          "description": "决斗不是一项高雅的运动，做好了拼死一搏的准备时，人会爆发出惊人的力量。如果你不穿着重甲（护甲值低于8点），额外获得20%的体力恢复速度，减少15%的闪避体力消耗，造成15%的额外伤害，释放大师之击时回复25体力。"
         }
       },
       "icon": "",
@@ -226,12 +278,16 @@
       }
     },
     "death": {
-      "name": "亡者之怒",
-      "description": "你的气息或许已经紊乱，奄奄一息，难以招架。可此时复仇的亡魂仍在燃烧。如果血量低于25%，造成额外的35%伤害，获得3层止痛效果，持续到血量高于25%",
+      "name": "Wrath of the Dead",
+      "description": "While below 25% health, deal 35% additional damage and gain 3 levels of Analgesia until your health rises above 25%.",
       "translations": {
         "en_us": {
           "name": "Wrath of the Dead",
           "description": "While below 25% health, deal 35% additional damage and gain 3 levels of Analgesia until your health rises above 25%."
+        },
+        "zh_cn": {
+          "name": "亡者之怒",
+          "description": "你的气息或许已经紊乱，奄奄一息，难以招架。可此时复仇的亡魂仍在燃烧。如果血量低于25%，造成额外的35%伤害，获得3层止痛效果，持续到血量高于25%"
         }
       },
       "icon": "",
@@ -244,12 +300,16 @@
       }
     },
     "dodge_buff": {
-      "name": "灵巧步伐",
-      "description": "战斗就像一支令人沉醉的舞蹈，轻巧的步伐让你能轻松的闪避敌人的攻击，你闪避消耗的体力降低40%",
+      "name": "Nimble Footwork",
+      "description": "Combat becomes a graceful dance beneath your practiced steps. Dodging costs 40% less stamina.",
       "translations": {
         "en_us": {
           "name": "Nimble Footwork",
           "description": "Combat becomes a graceful dance beneath your practiced steps. Dodging costs 40% less stamina."
+        },
+        "zh_cn": {
+          "name": "灵巧步伐",
+          "description": "战斗就像一支令人沉醉的舞蹈，轻巧的步伐让你能轻松的闪避敌人的攻击，你闪避消耗的体力降低40%"
         }
       },
       "icon": "",
@@ -260,12 +320,16 @@
       }
     },
     "slash": {
-      "name": "切割者",
-      "description": "剑不要求一击毙命，但是你可以通过切割肌肉来消减敌人，你的连招会令敌人的体力恢复速度降低10%，持续2分钟，最多叠加3层",
+      "name": "Sinew Cutter",
+      "description": "Your combos cut muscle and reduce the target's stamina regeneration by 10% for 2 minutes. This effect stacks up to 3 times.",
       "translations": {
         "en_us": {
           "name": "Sinew Cutter",
           "description": "Your combos cut muscle and reduce the target's stamina regeneration by 10% for 2 minutes. This effect stacks up to 3 times."
+        },
+        "zh_cn": {
+          "name": "切割者",
+          "description": "剑不要求一击毙命，但是你可以通过切割肌肉来消减敌人，你的连招会令敌人的体力恢复速度降低10%，持续2分钟，最多叠加3层"
         }
       },
       "icon": "",
@@ -279,12 +343,16 @@
       }
     },
     "stable": {
-      "name": "久经沙场",
-      "description": "你的战斗技能已经炉火纯青，自然也能更快的从力竭中恢复过来，增加你的耐力恢复速度10%",
+      "name": "Battle-Hardened",
+      "description": "Long experience has taught you to recover quickly from exhaustion. Stamina regeneration is increased by 10%.",
       "translations": {
         "en_us": {
           "name": "Battle-Hardened",
           "description": "Long experience has taught you to recover quickly from exhaustion. Stamina regeneration is increased by 10%."
+        },
+        "zh_cn": {
+          "name": "久经沙场",
+          "description": "你的战斗技能已经炉火纯青，自然也能更快的从力竭中恢复过来，增加你的耐力恢复速度10%"
         }
       },
       "icon": "",
@@ -295,12 +363,16 @@
       }
     },
     "bloody": {
-      "name": "热血沸腾",
-      "description": "当你击倒敌人时，你感觉到了前所未有的力量，当你击杀敌人时，在接下来的30s内获得体力恢复速度+20%",
+      "name": "Blood Rush",
+      "description": "Killing an enemy fills you with newfound strength, increasing stamina regeneration by 20% for 30 seconds.",
       "translations": {
         "en_us": {
           "name": "Blood Rush",
           "description": "Killing an enemy fills you with newfound strength, increasing stamina regeneration by 20% for 30 seconds."
+        },
+        "zh_cn": {
+          "name": "热血沸腾",
+          "description": "当你击倒敌人时，你感觉到了前所未有的力量，当你击杀敌人时，在接下来的30s内获得体力恢复速度+20%"
         }
       },
       "icon": "",
@@ -312,12 +384,16 @@
       }
     },
     "blood_stop": {
-      "name": "浓稠之血",
-      "description": "你的血液浓稠，让你得以更好的生存，流血dot的伤害间隔翻倍",
+      "name": "Thick Blood",
+      "description": "Your unusually thick blood helps keep you alive. The interval between bleeding damage ticks is doubled.",
       "translations": {
         "en_us": {
           "name": "Thick Blood",
           "description": "Your unusually thick blood helps keep you alive. The interval between bleeding damage ticks is doubled."
+        },
+        "zh_cn": {
+          "name": "浓稠之血",
+          "description": "你的血液浓稠，让你得以更好的生存，流血dot的伤害间隔翻倍"
         }
       },
       "icon": "",
@@ -328,12 +404,16 @@
       }
     },
     "fighting_skill": {
-      "name": "沙场老兵",
-      "description": "当你战斗时，你感觉自己甚至忘记了伤痛，攻击命中敌人时为自己提供持续30s的止痛2效果",
+      "name": "Veteran Warrior",
+      "description": "In battle, you can forget even the deepest pain. Hitting an enemy grants 2 levels of Analgesia for 30 seconds.",
       "translations": {
         "en_us": {
           "name": "Veteran Warrior",
           "description": "In battle, you can forget even the deepest pain. Hitting an enemy grants 2 levels of Analgesia for 30 seconds."
+        },
+        "zh_cn": {
+          "name": "沙场老兵",
+          "description": "当你战斗时，你感觉自己甚至忘记了伤痛，攻击命中敌人时为自己提供持续30s的止痛2效果"
         }
       },
       "icon": "",
@@ -345,12 +425,16 @@
       }
     },
     "fortress": {
-      "name": "固若金汤",
-      "description": "穿戴重甲时，累计承受15点伤害会获得5秒固守；固守期间若护甲完全抵挡伤害，则免疫该次冲击效果。",
+      "name": "Fortress",
+      "description": "While wearing heavy armor, taking a total of 15 damage grants Fortified for 5 seconds. While Fortified, if your armor completely blocks the damage, you are immune to that hit's impact effect.",
       "translations": {
         "en_us": {
           "name": "Fortress",
           "description": "While wearing heavy armor, taking a total of 15 damage grants Fortified for 5 seconds. While Fortified, if your armor completely blocks the damage, you are immune to that hit's impact effect."
+        },
+        "zh_cn": {
+          "name": "固若金汤",
+          "description": "穿戴重甲时，累计承受15点伤害会获得5秒固守；固守期间若护甲完全抵挡伤害，则免疫该次冲击效果。"
         }
       },
       "source": "experience",
@@ -363,12 +447,16 @@
       }
     },
     "grand_finale": {
-      "name": "好戏开演",
-      "description": "连招体力消耗增加10%，但造成15%的额外伤害。",
+      "name": "Grand Finale",
+      "description": "Combos cost 10% more stamina, but deal 15% additional damage.",
       "translations": {
         "en_us": {
           "name": "Grand Finale",
           "description": "Combos cost 10% more stamina, but deal 15% additional damage."
+        },
+        "zh_cn": {
+          "name": "好戏开演",
+          "description": "连招体力消耗增加10%，但造成15%的额外伤害。"
         }
       },
       "source": "experience",
@@ -381,12 +469,16 @@
       }
     },
     "focused": {
-      "name": "全神贯注",
-      "description": "生命值高于90%时，体力上限增加40点。",
+      "name": "Focused",
+      "description": "While your health is above 90%, your maximum stamina is increased by 40.",
       "translations": {
         "en_us": {
           "name": "Focused",
           "description": "While your health is above 90%, your maximum stamina is increased by 40."
+        },
+        "zh_cn": {
+          "name": "全神贯注",
+          "description": "生命值高于90%时，体力上限增加40点。"
         }
       },
       "source": "experience",
@@ -398,12 +490,16 @@
       }
     },
     "relentless_edge": {
-      "name": "锋不可当",
-      "description": "敌人非完美格挡你的攻击后，完美格挡概率降低5%，持续5秒，不可叠加。",
+      "name": "Relentless Edge",
+      "description": "After an enemy blocks your attack without performing a perfect block, their perfect block chance is reduced by 5% for 5 seconds. This effect does not stack.",
       "translations": {
         "en_us": {
           "name": "Relentless Edge",
           "description": "After an enemy blocks your attack without performing a perfect block, their perfect block chance is reduced by 5% for 5 seconds. This effect does not stack."
+        },
+        "zh_cn": {
+          "name": "锋不可当",
+          "description": "敌人非完美格挡你的攻击后，完美格挡概率降低5%，持续5秒，不可叠加。"
         }
       },
       "source": "experience",
@@ -415,12 +511,16 @@
       }
     },
     "opening_strike": {
-      "name": "破绽打击",
-      "description": "攻击处于攻击动画中的敌人时，额外造成20%的冲击力。",
+      "name": "Opening Strike",
+      "description": "Attacking an enemy during their attack animation deals 20% more impact.",
       "translations": {
         "en_us": {
           "name": "Opening Strike",
           "description": "Attacking an enemy during their attack animation deals 20% more impact."
+        },
+        "zh_cn": {
+          "name": "破绽打击",
+          "description": "攻击处于攻击动画中的敌人时，额外造成20%的冲击力。"
         }
       },
       "source": "experience",
@@ -431,12 +531,16 @@
       }
     },
     "flywheel": {
-      "name": "飞轮效应",
-      "description": "发动连招后，20秒内体力消耗降低25%。",
+      "name": "Flywheel Effect",
+      "description": "After performing a combo, stamina costs are reduced by 25% for 20 seconds.",
       "translations": {
         "en_us": {
           "name": "Flywheel Effect",
           "description": "After performing a combo, stamina costs are reduced by 25% for 20 seconds."
+        },
+        "zh_cn": {
+          "name": "飞轮效应",
+          "description": "发动连招后，20秒内体力消耗降低25%。"
         }
       },
       "source": "experience",
@@ -449,12 +553,16 @@
       }
     },
     "second_intention": {
-      "name": "第二意图",
-      "description": "当大师之击反制对方的完美防御反击时，恢复35点体力。",
+      "name": "Second Intention",
+      "description": "When your master strike counters an opponent's perfect defensive counter, restore 35 stamina.",
       "translations": {
         "en_us": {
           "name": "Second Intention",
           "description": "When your master strike counters an opponent's perfect defensive counter, restore 35 stamina."
+        },
+        "zh_cn": {
+          "name": "第二意图",
+          "description": "当大师之击反制对方的完美防御反击时，恢复35点体力。"
         }
       },
       "source": "experience",
@@ -466,12 +574,16 @@
       }
     },
     "terrifying_warrior": {
-      "name": "骇人战士",
-      "description": "你的战吼令人胆寒。施放战吼时，使10米内敌人的体力恢复速度降低20%，持续20秒；该效果有30秒冷却。",
+      "name": "Terrifying Warrior",
+      "description": "Your war cry strikes fear into nearby foes, reducing the stamina regeneration of enemies within 10 meters by 20% for 20 seconds. This effect has a 30-second cooldown.",
       "translations": {
         "en_us": {
           "name": "Terrifying Warrior",
           "description": "Your war cry strikes fear into nearby foes, reducing the stamina regeneration of enemies within 10 meters by 20% for 20 seconds. This effect has a 30-second cooldown."
+        },
+        "zh_cn": {
+          "name": "骇人战士",
+          "description": "你的战吼令人胆寒。施放战吼时，使10米内敌人的体力恢复速度降低20%，持续20秒；该效果有30秒冷却。"
         }
       },
       "icon": "",
@@ -484,12 +596,16 @@
       }
     },
     "rout_breaker": {
-      "name": "溃逃破军",
-      "description": "处决敌人会震慑其同伴，使附近敌人造成的伤害降低10%，持续30秒；该效果有60秒冷却。",
+      "name": "Rout Breaker",
+      "description": "Executing an enemy shatters the resolve of nearby foes, reducing their damage by 10% for 30 seconds. This effect has a 60-second cooldown.",
       "translations": {
         "en_us": {
           "name": "Rout Breaker",
           "description": "Executing an enemy shatters the resolve of nearby foes, reducing their damage by 10% for 30 seconds. This effect has a 60-second cooldown."
+        },
+        "zh_cn": {
+          "name": "溃逃破军",
+          "description": "处决敌人会震慑其同伴，使附近敌人造成的伤害降低10%，持续30秒；该效果有60秒冷却。"
         }
       },
       "icon": "",
@@ -503,12 +619,16 @@
       }
     },
     "hunter_plus": {
-      "name": "资深猎人",
-      "description": "你已经猎杀了无数生物，你对他们了如指掌，再也不会畏惧，击杀敌人会令你回复15点体力值，可以和怪物猎人叠加",
+      "name": "Veteran Hunter",
+      "description": "You have hunted every kind of monster and no longer fear them. Killing an enemy restores 15 stamina, stacking with Monster Hunter.",
       "translations": {
         "en_us": {
           "name": "Veteran Hunter",
           "description": "You have hunted every kind of monster and no longer fear them. Killing an enemy restores 15 stamina, stacking with Monster Hunter."
+        },
+        "zh_cn": {
+          "name": "资深猎人",
+          "description": "你已经猎杀了无数生物，你对他们了如指掌，再也不会畏惧，击杀敌人会令你回复15点体力值，可以和怪物猎人叠加"
         }
       },
       "icon": "",

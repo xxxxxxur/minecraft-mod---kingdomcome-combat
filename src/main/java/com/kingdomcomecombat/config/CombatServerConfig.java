@@ -40,6 +40,7 @@ public final class CombatServerConfig {
     private static boolean clientProjectileHurtboxEnabled = false;
     private static boolean reachAttributeHitboxScalingEnabled = true;
     private static boolean blockingMovementSlowdownEnabled = true;
+    private static boolean customUnarmedAttacksDisabled = false;
     private static boolean changedBandageUseEnabled = false;
     private static boolean attacksDoNotConsumeStamina = false;
     private static boolean automaticHumanoidAiCompatibilityEnabled = true;
@@ -107,6 +108,9 @@ public final class CombatServerConfig {
             }
             if (root.has("enable_blocking_movement_slowdown")) {
                 blockingMovementSlowdownEnabled = root.get("enable_blocking_movement_slowdown").getAsBoolean();
+            }
+            if (root.has("disable_custom_unarmed_attacks")) {
+                customUnarmedAttacksDisabled = root.get("disable_custom_unarmed_attacks").getAsBoolean();
             }
             if (root.has("enable_changed_bandage_use")) {
                 changedBandageUseEnabled = root.get("enable_changed_bandage_use").getAsBoolean();
@@ -179,6 +183,7 @@ public final class CombatServerConfig {
         root.addProperty("enable_client_projectile_hurtbox", clientProjectileHurtboxEnabled);
         root.addProperty("enable_reach_attribute_hitbox_scaling", reachAttributeHitboxScalingEnabled);
         root.addProperty("enable_blocking_movement_slowdown", blockingMovementSlowdownEnabled);
+        root.addProperty("disable_custom_unarmed_attacks", customUnarmedAttacksDisabled);
         root.addProperty("enable_changed_bandage_use", changedBandageUseEnabled);
         root.addProperty("attacks_do_not_consume_stamina", attacksDoNotConsumeStamina);
         root.addProperty(
@@ -341,6 +346,7 @@ public final class CombatServerConfig {
 
     public static boolean reachAttributeHitboxScalingEnabled() { return reachAttributeHitboxScalingEnabled; }
     public static boolean blockingMovementSlowdownEnabled() { return blockingMovementSlowdownEnabled; }
+    public static boolean customUnarmedAttacksDisabled() { return customUnarmedAttacksDisabled; }
     public static boolean changedBandageUseEnabled() { return changedBandageUseEnabled; }
     public static void setChangedBandageUseEnabled(boolean enabled) { changedBandageUseEnabled = enabled; }
     public static boolean attacksDoNotConsumeStamina() { return attacksDoNotConsumeStamina; }
@@ -355,6 +361,9 @@ public final class CombatServerConfig {
     public static void setMountedKccCombatEnabled(boolean enabled) { mountedKccCombatEnabled = enabled; }
     public static void setBlockingMovementSlowdownEnabled(boolean enabled) {
         blockingMovementSlowdownEnabled = enabled;
+    }
+    public static void setCustomUnarmedAttacksDisabled(boolean disabled) {
+        customUnarmedAttacksDisabled = disabled;
     }
     public static void setReachAttributeHitboxScalingEnabled(boolean enabled) {
         reachAttributeHitboxScalingEnabled = enabled;

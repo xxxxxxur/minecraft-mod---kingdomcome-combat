@@ -24,7 +24,7 @@ ordering="NONE"
 side="BOTH"
 
 [[dependencies.kingdom_come_combat]]
-modId="fabric_api"
+modId="forgified_fabric_api"
 type="required"
 versionRange="[0.116.7,)"
 ordering="NONE"

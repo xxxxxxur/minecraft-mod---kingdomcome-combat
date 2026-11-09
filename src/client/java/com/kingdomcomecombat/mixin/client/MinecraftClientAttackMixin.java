@@ -71,6 +71,12 @@ public class MinecraftClientAttackMixin {
             return;
         }
 
+        if (LockOnState.locked && hit.getType() == HitResult.Type.BLOCK) {
+            cir.setReturnValue(false);
+            cir.cancel();
+            return;
+        }
+
         if (hit instanceof EntityHitResult entityHit) {
             if (entityHit.getEntity() instanceof ArmorStandEntity) {
                 if (!LockOnState.locked) {

@@ -2,6 +2,7 @@ package com.kingdomcomecombat.equipment;
 
 import com.kingdomcomecombat.combat.CombatItemUtil;
 import com.kingdomcomecombat.combat.CombatControlConfig;
+import com.kingdomcomecombat.compat.StoneyCoreCombatCompat;
 import com.kingdomcomecombat.passive.PassiveSkillPerks;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 public class EquipmentCombatAttributesRegistry {
     public static final Identifier BRACERS_ENCHANTMENT_ID =
@@ -411,12 +413,25 @@ public class EquipmentCombatAttributesRegistry {
     ) {
         Map<String, ArmorCombatAttributes.PartProtection> parts = armor.protectedParts();
         ArmorCombatAttributes.PartProtection shoulder = parts.get("shoulder");
-        if (shoulder == null || enchantmentLevel(stack, BRACERS_ENCHANTMENT_ID) <= 0) {
+        ArmorCombatAttributes.PartProtection torso = parts.get("chest");
+        ArmorCombatAttributes.PartProtection reference = shoulder == null ? torso : shoulder;
+        Set<String> attachmentParts = StoneyCoreCombatCompat.armorAttachmentProtectedParts(stack);
+        boolean bracersProtectArms = shoulder != null
+                && enchantmentLevel(stack, BRACERS_ENCHANTMENT_ID) > 0;
+        if (reference == null || (!bracersProtectArms && attachmentParts.isEmpty())) {
             return parts;
         }
 
         Map<String, ArmorCombatAttributes.PartProtection> effective = new LinkedHashMap<>(parts);
-        effective.put("arm", shoulder);
+        if (bracersProtectArms || attachmentParts.contains("arm")) {
+            effective.put("arm", reference);
+        }
+        if (attachmentParts.contains("hand")) {
+            effective.put("hand", reference);
+        }
+        if (attachmentParts.contains("shoulder")) {
+            effective.put("shoulder", reference);
+        }
         return Map.copyOf(effective);
     }
 

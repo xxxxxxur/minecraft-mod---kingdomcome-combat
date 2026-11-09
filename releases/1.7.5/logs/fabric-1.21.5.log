@@ -1,0 +1,883 @@
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :generateVersionCompatSources
+> Task :compileJava
+> Task :processResources
+> Task :classes
+
+> Task :compileClientJava
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/HandCannonBulletRenderer.java:13: 错误: 类重复: com.kingdomcomecombat.client.render.HandCannonBulletRenderer
+public class HandCannonBulletRenderer extends EntityRenderer<HandCannonBulletEntity> {
+       ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityRendererArmorMixin.java:18: 错误: 类型变量数目错误; 需要3
+        extends MobEntityRenderer<T, IllagerEntityModel<T>> {
+                                 ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemFeatureRendererItemBoneMixin.java:8: 错误: 找不到符号
+import net.minecraft.client.render.model.json.ModelTransformationMode;
+                                             ^
+  符号:   类 ModelTransformationMode
+  位置: 程序包 net.minecraft.client.render.model.json
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemFeatureRendererItemBoneMixin.java:27: 错误: 找不到符号
+            ModelTransformationMode mode,
+            ^
+  符号:   类 ModelTransformationMode
+  位置: 类 LegacyHeldItemFeatureRendererItemBoneMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemFeatureRendererItemBoneMixin.java:45: 错误: 找不到符号
+            LivingEntity entity, ItemStack stack, ModelTransformationMode mode, Arm arm,
+                                                  ^
+  符号:   类 ModelTransformationMode
+  位置: 类 LegacyHeldItemFeatureRendererItemBoneMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemRendererHitboxMixin.java:6: 错误: 找不到符号
+import net.minecraft.client.render.model.BakedModel;
+                                        ^
+  符号:   类 BakedModel
+  位置: 程序包 net.minecraft.client.render.model
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemRendererHitboxMixin.java:7: 错误: 找不到符号
+import net.minecraft.client.render.model.json.ModelTransformationMode;
+                                             ^
+  符号:   类 ModelTransformationMode
+  位置: 程序包 net.minecraft.client.render.model.json
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemRendererHitboxMixin.java:24: 错误: 找不到符号
+            ItemStack stack, ModelTransformationMode mode, boolean leftHanded,
+                             ^
+  符号:   类 ModelTransformationMode
+  位置: 类 LegacyHeldItemRendererHitboxMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemRendererHitboxMixin.java:26: 错误: 找不到符号
+            BakedModel model, CallbackInfo ci) {
+            ^
+  符号:   类 BakedModel
+  位置: 类 LegacyHeldItemRendererHitboxMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyAnimalModelFirstPersonHeadEquipmentMixin.java:6: 错误: 找不到符号
+import net.minecraft.client.render.entity.model.AnimalModel;
+                                               ^
+  符号:   类 AnimalModel
+  位置: 程序包 net.minecraft.client.render.entity.model
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:5: 错误: 程序包net.minecraft.client.color.item不存在
+import net.minecraft.client.color.item.ItemColors;
+                                      ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:10: 错误: 找不到符号
+import net.minecraft.client.render.model.BakedModel;
+                                        ^
+  符号:   类 BakedModel
+  位置: 程序包 net.minecraft.client.render.model
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:31: 错误: 找不到符号
+    @Shadow @Final private ItemColors colors;
+                           ^
+  符号:   类 ItemColors
+  位置: 类 LegacyItemRendererBloodiedTextureMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:42: 错误: 找不到符号
+            net.minecraft.client.render.model.json.ModelTransformationMode mode,
+                                                  ^
+  符号:   类 ModelTransformationMode
+  位置: 程序包 net.minecraft.client.render.model.json
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:48: 错误: 找不到符号
+            BakedModel model,
+            ^
+  符号:   类 BakedModel
+  位置: 类 LegacyItemRendererBloodiedTextureMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:60: 错误: 找不到符号
+            net.minecraft.client.render.model.json.ModelTransformationMode mode,
+                                                  ^
+  符号:   类 ModelTransformationMode
+  位置: 程序包 net.minecraft.client.render.model.json
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:66: 错误: 找不到符号
+            BakedModel model,
+            ^
+  符号:   类 BakedModel
+  位置: 类 LegacyItemRendererBloodiedTextureMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:78: 错误: 找不到符号
+            BakedModel model,
+            ^
+  符号:   类 BakedModel
+  位置: 类 LegacyItemRendererBloodiedTextureMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:18: 错误: 找不到符号
+import net.minecraft.item.ArmorItem;
+                         ^
+  符号:   类 ArmorItem
+  位置: 程序包 net.minecraft.item
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:19: 错误: 找不到符号
+import net.minecraft.item.ArmorMaterial;
+                         ^
+  符号:   类 ArmorMaterial
+  位置: 程序包 net.minecraft.item
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyAnimalModelFirstPersonHeadEquipmentMixin.java:17: 错误: 找不到符号
+@Mixin(value = AnimalModel.class, priority = 1100)
+               ^
+  符号: 类 AnimalModel
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyPlayerEntityRendererBodyYawMixin.java:128: 错误: 找不到符号
+                tickDelta, client.player.prevBodyYaw, client.player.bodyYaw);
+                                        ^
+  符号:   变量 prevBodyYaw
+  位置: 类型为ClientPlayerEntity的变量 player
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyLivingEntityRendererFirstPersonMixin.java:53: 错误: 类型PlayerEntityModel不带有参数
+        if (!kingdomcomecombat$firstPersonBody || !(model instanceof PlayerEntityModel<?> playerModel)) {
+                                                                                      ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyLivingEntityRendererFirstPersonMixin.java:98: 错误: 类型PlayerEntityModel不带有参数
+        if (kingdomcomecombat$firstPersonBody && model instanceof PlayerEntityModel<?> playerModel) {
+                                                                                   ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityRendererArmorMixin.java:21: 错误: 类型参数T不在类型变量S的范围内
+            IllagerEntityModel<T> model,
+                               ^
+  其中, T,S是类型变量:
+    T扩展已在类 LegacyIllagerEntityRendererArmorMixin中声明的IllagerEntity
+    S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityRendererArmorMixin.java:30: 错误: 类型参数T不在类型变量S的范围内
+            IllagerEntityModel<T> model,
+                               ^
+  其中, T,S是类型变量:
+    T扩展已在类 LegacyIllagerEntityRendererArmorMixin中声明的IllagerEntity
+    S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityRendererArmorMixin.java:35: 错误: 类型变量数目错误; 需要2
+                (IllagerEntityRenderer<T>) (Object) this,
+                                      ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyLivingEntityRendererGenericFeedbackMixin.java:22: 错误: 类型参数T#1不在类型变量T#2的范围内
+    @Shadow protected EntityModel<T> model;
+                                  ^
+  其中, T#1,T#2是类型变量:
+    T#1扩展已在类 LegacyLivingEntityRendererGenericFeedbackMixin中声明的LivingEntity
+    T#2扩展已在类 EntityModel中声明的EntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityModelAnimationMixin.java:37: 错误: 无法将类 Model中的方法 getPart应用到给定类型;
+        ModelPart root = ((IllagerEntityModel<?>) (Object) this).getPart();
+                                                                ^
+  需要: String
+  找到:    没有参数
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityModelAnimationMixin.java:58: 错误: 无法将类 Model中的方法 getPart应用到给定类型;
+        ModelPart root = ((IllagerEntityModel<?>) (Object) this).getPart();
+                                                                ^
+  需要: String
+  找到:    没有参数
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:117: 错误: 找不到符号
+            Sprite sprite = quad.getSprite();
+                                ^
+  符号:   方法 getSprite()
+  位置: 类型为BakedQuad的变量 quad
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:125: 错误: 找不到符号
+            int color = quad.hasColor() ? colors.getColor(stack, quad.getColorIndex()) : 0xFFFFFF;
+                            ^
+  符号:   方法 hasColor()
+  位置: 类型为BakedQuad的变量 quad
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:125: 错误: 找不到符号
+            int color = quad.hasColor() ? colors.getColor(stack, quad.getColorIndex()) : 0xFFFFFF;
+                                                                     ^
+  符号:   方法 getColorIndex()
+  位置: 类型为BakedQuad的变量 quad
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:27: 错误: 类型参数T不在类型变量S的范围内
+        extends FeatureRenderer<T, IllagerEntityModel<T>> {
+                                ^
+  其中, T,S是类型变量:
+    T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    S扩展已在类 FeatureRenderer中声明的EntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:27: 错误: 类型参数T不在类型变量S的范围内
+        extends FeatureRenderer<T, IllagerEntityModel<T>> {
+                                                      ^
+  其中, T,S是类型变量:
+    T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:26: 错误: LegacyIllagerArmorFeatureRenderer不是抽象的, 并且未覆盖FeatureRenderer中的抽象方法render(MatrixStack,VertexConsumerProvider,int,T,float,float)
+public final class LegacyIllagerArmorFeatureRenderer<T extends IllagerEntity>
+             ^
+  其中, T是类型变量:
+    T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:30: 错误: 类型参数T#1不在类型变量T#2的范围内
+    private final BipedEntityModel<T> innerModel;
+                                   ^
+  其中, T#1,T#2是类型变量:
+    T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:31: 错误: 类型参数T#1不在类型变量T#2的范围内
+    private final BipedEntityModel<T> outerModel;
+                                   ^
+  其中, T#1,T#2是类型变量:
+    T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:34: 错误: 类型参数T不在类型变量S的范围内
+            FeatureRendererContext<T, IllagerEntityModel<T>> context,
+                                   ^
+  其中, T,S是类型变量:
+    T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    S扩展已在接口 FeatureRendererContext中声明的EntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:34: 错误: 类型参数T不在类型变量S的范围内
+            FeatureRendererContext<T, IllagerEntityModel<T>> context,
+                                                         ^
+  其中, T,S是类型变量:
+    T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:35: 错误: 类型参数T#1不在类型变量T#2的范围内
+            BipedEntityModel<T> innerModel,
+                             ^
+  其中, T#1,T#2是类型变量:
+    T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:36: 错误: 类型参数T#1不在类型变量T#2的范围内
+            BipedEntityModel<T> outerModel
+                             ^
+  其中, T#1,T#2是类型变量:
+    T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:43: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:60: 错误: 无法将类 Model中的方法 getPart应用到给定类型;
+        getContextModel().getPart().rotate(matrices);
+                         ^
+  需要: String
+  找到:    没有参数
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:74: 错误: 找不到符号
+        if (!(stack.getItem() instanceof ArmorItem armor) || armor.getSlotType() != slot) {
+                                         ^
+  符号:   类 ArmorItem
+  位置: 类 LegacyIllagerArmorFeatureRenderer<T>
+  其中, T是类型变量:
+    T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:79: 错误: 类型参数T#1不在类型变量T#2的范围内
+        BipedEntityModel<T> model = inner ? innerModel : outerModel;
+                         ^
+  其中, T#1,T#2是类型变量:
+    T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:81: 错误: 找不到符号
+        ArmorMaterial material = armor.getMaterial().value();
+        ^
+  符号:   类 ArmorMaterial
+  位置: 类 LegacyIllagerArmorFeatureRenderer<T>
+  其中, T是类型变量:
+    T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:83: 错误: 找不到符号
+                ? ColorHelper.Argb.fullAlpha(DyedColorComponent.getColor(stack, 0xA06540))
+                             ^
+  符号:   变量 Argb
+  位置: 类 ColorHelper
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:85: 错误: 程序包ArmorMaterial不存在
+        for (ArmorMaterial.Layer layer : material.layers()) {
+                          ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:105: 错误: 类型参数T#1不在类型变量T#2的范围内
+            BipedEntityModel<T> armorModel,
+                             ^
+  其中, T#1,T#2是类型变量:
+    T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:112: 错误: 类型参数T不在类型变量S的范围内
+        IllagerEntityModel<T> illagerModel = getContextModel();
+                           ^
+  其中, T,S是类型变量:
+    T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+    S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:113: 错误: 无法将类 Model中的方法 getPart应用到给定类型;
+        ModelPart root = illagerModel.getPart();
+                                     ^
+  需要: String
+  找到:    没有参数
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:144: 错误: 对于rotate(MatrixStack), 找不到合适的方法
+            illagerPart.rotate(matrices);
+                       ^
+    方法 ModelPart.rotate(Quaternionf)不适用
+      (参数不匹配; MatrixStack无法转换为Quaternionf)
+    方法 ModelPart.rotate(Vector3f)不适用
+      (参数不匹配; MatrixStack无法转换为Vector3f)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyMobStanceHeadTargeting.java:52: 错误: 找不到符号
+                    float tickDelta = client.getRenderTickCounter().getTickDelta(false);
+                                                                   ^
+  符号:   方法 getTickDelta(boolean)
+  位置: 接口 RenderTickCounter
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyMobStanceHeadTargeting.java:54: 错误: 找不到符号
+                            tickDelta, source.prevBodyYaw, source.bodyYaw);
+                                             ^
+  符号:   变量 prevBodyYaw
+  位置: 类型为LivingEntity的变量 source
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyMobPalBodyTransformApplier.java:67: 错误: 找不到符号
+                .getRenderTickCounter().getTickDelta(false);
+                                       ^
+  符号:   方法 getTickDelta(boolean)
+  位置: 接口 RenderTickCounter
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:20: 错误: 类型参数? extends LivingEntity不在类型变量T的范围内
+    public static void apply(BipedEntityModel<? extends LivingEntity> model, LivingEntity entity) {
+                                              ^
+  其中, T是类型变量:
+    T扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:42: 错误: 类型参数? extends LivingEntity不在类型变量T的范围内
+            BipedEntityModel<? extends LivingEntity> model,
+                             ^
+  其中, T是类型变量:
+    T扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:83: 错误: 找不到符号
+                defaults.pivotX - bodyDefault.pivotX,
+                        ^
+  符号:   变量 pivotX
+  位置: 类型为ModelTransform的变量 defaults
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:83: 错误: 找不到符号
+                defaults.pivotX - bodyDefault.pivotX,
+                                             ^
+  符号:   变量 pivotX
+  位置: 类型为ModelTransform的变量 bodyDefault
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:84: 错误: 找不到符号
+                defaults.pivotY - bodyDefault.pivotY,
+                        ^
+  符号:   变量 pivotY
+  位置: 类型为ModelTransform的变量 defaults
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:84: 错误: 找不到符号
+                defaults.pivotY - bodyDefault.pivotY,
+                                             ^
+  符号:   变量 pivotY
+  位置: 类型为ModelTransform的变量 bodyDefault
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:85: 错误: 找不到符号
+                defaults.pivotZ - bodyDefault.pivotZ);
+                        ^
+  符号:   变量 pivotZ
+  位置: 类型为ModelTransform的变量 defaults
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:85: 错误: 找不到符号
+                defaults.pivotZ - bodyDefault.pivotZ);
+                                             ^
+  符号:   变量 pivotZ
+  位置: 类型为ModelTransform的变量 bodyDefault
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:87: 错误: 找不到符号
+        child.pivotX += rotated.x - bind.x + translateX;
+             ^
+  符号:   变量 pivotX
+  位置: 类型为ModelPart的变量 child
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:88: 错误: 找不到符号
+        child.pivotY += rotated.y - bind.y + translateY;
+             ^
+  符号:   变量 pivotY
+  位置: 类型为ModelPart的变量 child
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:89: 错误: 找不到符号
+        child.pivotZ += rotated.z - bind.z + translateZ;
+             ^
+  符号:   变量 pivotZ
+  位置: 类型为ModelPart的变量 child
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:170: 错误: pitch 在 ModelTransform 中是 private 访问控制
+            part.pitch = lerp(part.pitch, defaults.pitch + pose.x() * DEG_TO_RAD, weight);
+                                                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:171: 错误: yaw 在 ModelTransform 中是 private 访问控制
+            part.yaw = lerp(part.yaw, defaults.yaw + pose.y() * DEG_TO_RAD, weight);
+                                              ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:172: 错误: roll 在 ModelTransform 中是 private 访问控制
+            part.roll = lerp(part.roll, defaults.roll + pose.z() * DEG_TO_RAD, weight);
+                                                ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:175: 错误: 找不到符号
+            part.pivotX = lerp(part.pivotX, defaults.pivotX + pose.x(), weight);
+                ^
+  符号:   变量 pivotX
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:175: 错误: 找不到符号
+            part.pivotX = lerp(part.pivotX, defaults.pivotX + pose.x(), weight);
+                                   ^
+  符号:   变量 pivotX
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:175: 错误: 找不到符号
+            part.pivotX = lerp(part.pivotX, defaults.pivotX + pose.x(), weight);
+                                                    ^
+  符号:   变量 pivotX
+  位置: 类型为ModelTransform的变量 defaults
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:176: 错误: 找不到符号
+            part.pivotY = lerp(part.pivotY, defaults.pivotY - pose.y(), weight);
+                ^
+  符号:   变量 pivotY
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:176: 错误: 找不到符号
+            part.pivotY = lerp(part.pivotY, defaults.pivotY - pose.y(), weight);
+                                   ^
+  符号:   变量 pivotY
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:176: 错误: 找不到符号
+            part.pivotY = lerp(part.pivotY, defaults.pivotY - pose.y(), weight);
+                                                    ^
+  符号:   变量 pivotY
+  位置: 类型为ModelTransform的变量 defaults
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:177: 错误: 找不到符号
+            part.pivotZ = lerp(part.pivotZ, defaults.pivotZ + pose.z(), weight);
+                ^
+  符号:   变量 pivotZ
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:177: 错误: 找不到符号
+            part.pivotZ = lerp(part.pivotZ, defaults.pivotZ + pose.z(), weight);
+                                   ^
+  符号:   变量 pivotZ
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:177: 错误: 找不到符号
+            part.pivotZ = lerp(part.pivotZ, defaults.pivotZ + pose.z(), weight);
+                                                    ^
+  符号:   变量 pivotZ
+  位置: 类型为ModelTransform的变量 defaults
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyCombatFeedbackApplier.java:49: 错误: 找不到符号
+        part.pivotX += delta.positionX();
+            ^
+  符号:   变量 pivotX
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyCombatFeedbackApplier.java:50: 错误: 找不到符号
+        part.pivotY += delta.positionY();
+            ^
+  符号:   变量 pivotY
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyCombatFeedbackApplier.java:51: 错误: 找不到符号
+        part.pivotZ += delta.positionZ();
+            ^
+  符号:   变量 pivotZ
+  位置: 类型为ModelPart的变量 part
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/collision/ClientGenericModelTracker.java:126: 错误: 找不到符号
+                entity.getLerpedPos(client.getRenderTickCounter().getTickDelta(true)),
+                                                                 ^
+  符号:   方法 getTickDelta(boolean)
+  位置: 接口 RenderTickCounter
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/collision/ClientGenericModelTracker.java:136: 错误: 对于rotate(MatrixStack), 找不到合适的方法
+        part.rotate(matrices);
+            ^
+    方法 ModelPart.rotate(Quaternionf)不适用
+      (参数不匹配; MatrixStack无法转换为Quaternionf)
+    方法 ModelPart.rotate(Vector3f)不适用
+      (参数不匹配; MatrixStack无法转换为Vector3f)
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+84 个错误
+
+> Task :compileClientJava FAILED
+
+[Incubating] Problems report is available at: file:///Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava'.
+> Compilation failed; see the compiler output below.
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyLivingEntityRendererFirstPersonMixin.java:53: 错误: 类型PlayerEntityModel不带有参数
+          if (!kingdomcomecombat$firstPersonBody || !(model instanceof PlayerEntityModel<?> playerModel)) {
+                                                                                        ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyLivingEntityRendererFirstPersonMixin.java:98: 错误: 类型PlayerEntityModel不带有参数
+          if (kingdomcomecombat$firstPersonBody && model instanceof PlayerEntityModel<?> playerModel) {
+                                                                                     ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityModelAnimationMixin.java:37: 错误: 无法将类 Model中的方法 getPart应用到给定类型;
+          ModelPart root = ((IllagerEntityModel<?>) (Object) this).getPart();
+                                                                  ^
+    需要: String
+    找到:    没有参数
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityModelAnimationMixin.java:58: 错误: 无法将类 Model中的方法 getPart应用到给定类型;
+          ModelPart root = ((IllagerEntityModel<?>) (Object) this).getPart();
+                                                                  ^
+    需要: String
+    找到:    没有参数
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:60: 错误: 无法将类 Model中的方法 getPart应用到给定类型;
+          getContextModel().getPart().rotate(matrices);
+                           ^
+    需要: String
+    找到:    没有参数
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:113: 错误: 无法将类 Model中的方法 getPart应用到给定类型;
+          ModelPart root = illagerModel.getPart();
+                                       ^
+    需要: String
+    找到:    没有参数
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:144: 错误: 对于rotate(MatrixStack), 找不到合适的方法
+              illagerPart.rotate(matrices);
+                         ^
+      方法 ModelPart.rotate(Quaternionf)不适用
+        (参数不匹配; MatrixStack无法转换为Quaternionf)
+      方法 ModelPart.rotate(Vector3f)不适用
+        (参数不匹配; MatrixStack无法转换为Vector3f)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/collision/ClientGenericModelTracker.java:136: 错误: 对于rotate(MatrixStack), 找不到合适的方法
+          part.rotate(matrices);
+              ^
+      方法 ModelPart.rotate(Quaternionf)不适用
+        (参数不匹配; MatrixStack无法转换为Quaternionf)
+      方法 ModelPart.rotate(Vector3f)不适用
+        (参数不匹配; MatrixStack无法转换为Vector3f)
+  注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityRendererArmorMixin.java:18: 错误: 类型变量数目错误; 需要3
+          extends MobEntityRenderer<T, IllagerEntityModel<T>> {
+                                   ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityRendererArmorMixin.java:35: 错误: 类型变量数目错误; 需要2
+                  (IllagerEntityRenderer<T>) (Object) this,
+                                        ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemFeatureRendererItemBoneMixin.java:8: 错误: 找不到符号
+  import net.minecraft.client.render.model.json.ModelTransformationMode;
+                                               ^
+    符号:   类 ModelTransformationMode
+    位置: 程序包 net.minecraft.client.render.model.json
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemFeatureRendererItemBoneMixin.java:27: 错误: 找不到符号
+              ModelTransformationMode mode,
+              ^
+    符号:   类 ModelTransformationMode
+    位置: 类 LegacyHeldItemFeatureRendererItemBoneMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemFeatureRendererItemBoneMixin.java:45: 错误: 找不到符号
+              LivingEntity entity, ItemStack stack, ModelTransformationMode mode, Arm arm,
+                                                    ^
+    符号:   类 ModelTransformationMode
+    位置: 类 LegacyHeldItemFeatureRendererItemBoneMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemRendererHitboxMixin.java:6: 错误: 找不到符号
+  import net.minecraft.client.render.model.BakedModel;
+                                          ^
+    符号:   类 BakedModel
+    位置: 程序包 net.minecraft.client.render.model
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemRendererHitboxMixin.java:7: 错误: 找不到符号
+  import net.minecraft.client.render.model.json.ModelTransformationMode;
+                                               ^
+    符号:   类 ModelTransformationMode
+    位置: 程序包 net.minecraft.client.render.model.json
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemRendererHitboxMixin.java:24: 错误: 找不到符号
+              ItemStack stack, ModelTransformationMode mode, boolean leftHanded,
+                               ^
+    符号:   类 ModelTransformationMode
+    位置: 类 LegacyHeldItemRendererHitboxMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyHeldItemRendererHitboxMixin.java:26: 错误: 找不到符号
+              BakedModel model, CallbackInfo ci) {
+              ^
+    符号:   类 BakedModel
+    位置: 类 LegacyHeldItemRendererHitboxMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyAnimalModelFirstPersonHeadEquipmentMixin.java:6: 错误: 找不到符号
+  import net.minecraft.client.render.entity.model.AnimalModel;
+                                                 ^
+    符号:   类 AnimalModel
+    位置: 程序包 net.minecraft.client.render.entity.model
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:10: 错误: 找不到符号
+  import net.minecraft.client.render.model.BakedModel;
+                                          ^
+    符号:   类 BakedModel
+    位置: 程序包 net.minecraft.client.render.model
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:31: 错误: 找不到符号
+      @Shadow @Final private ItemColors colors;
+                             ^
+    符号:   类 ItemColors
+    位置: 类 LegacyItemRendererBloodiedTextureMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:42: 错误: 找不到符号
+              net.minecraft.client.render.model.json.ModelTransformationMode mode,
+                                                    ^
+    符号:   类 ModelTransformationMode
+    位置: 程序包 net.minecraft.client.render.model.json
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:48: 错误: 找不到符号
+              BakedModel model,
+              ^
+    符号:   类 BakedModel
+    位置: 类 LegacyItemRendererBloodiedTextureMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:60: 错误: 找不到符号
+              net.minecraft.client.render.model.json.ModelTransformationMode mode,
+                                                    ^
+    符号:   类 ModelTransformationMode
+    位置: 程序包 net.minecraft.client.render.model.json
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:66: 错误: 找不到符号
+              BakedModel model,
+              ^
+    符号:   类 BakedModel
+    位置: 类 LegacyItemRendererBloodiedTextureMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:78: 错误: 找不到符号
+              BakedModel model,
+              ^
+    符号:   类 BakedModel
+    位置: 类 LegacyItemRendererBloodiedTextureMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:18: 错误: 找不到符号
+  import net.minecraft.item.ArmorItem;
+                           ^
+    符号:   类 ArmorItem
+    位置: 程序包 net.minecraft.item
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:19: 错误: 找不到符号
+  import net.minecraft.item.ArmorMaterial;
+                           ^
+    符号:   类 ArmorMaterial
+    位置: 程序包 net.minecraft.item
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyPlayerEntityRendererBodyYawMixin.java:128: 错误: 找不到符号
+                  tickDelta, client.player.prevBodyYaw, client.player.bodyYaw);
+                                          ^
+    符号:   变量 prevBodyYaw
+    位置: 类型为ClientPlayerEntity的变量 player
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:74: 错误: 找不到符号
+          if (!(stack.getItem() instanceof ArmorItem armor) || armor.getSlotType() != slot) {
+                                           ^
+    符号:   类 ArmorItem
+    位置: 类 LegacyIllagerArmorFeatureRenderer<T>
+    其中, T是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:81: 错误: 找不到符号
+          ArmorMaterial material = armor.getMaterial().value();
+          ^
+    符号:   类 ArmorMaterial
+    位置: 类 LegacyIllagerArmorFeatureRenderer<T>
+    其中, T是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:83: 错误: 找不到符号
+                  ? ColorHelper.Argb.fullAlpha(DyedColorComponent.getColor(stack, 0xA06540))
+                               ^
+    符号:   变量 Argb
+    位置: 类 ColorHelper
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyMobStanceHeadTargeting.java:54: 错误: 找不到符号
+                              tickDelta, source.prevBodyYaw, source.bodyYaw);
+                                               ^
+    符号:   变量 prevBodyYaw
+    位置: 类型为LivingEntity的变量 source
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:83: 错误: 找不到符号
+                  defaults.pivotX - bodyDefault.pivotX,
+                          ^
+    符号:   变量 pivotX
+    位置: 类型为ModelTransform的变量 defaults
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:83: 错误: 找不到符号
+                  defaults.pivotX - bodyDefault.pivotX,
+                                               ^
+    符号:   变量 pivotX
+    位置: 类型为ModelTransform的变量 bodyDefault
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:84: 错误: 找不到符号
+                  defaults.pivotY - bodyDefault.pivotY,
+                          ^
+    符号:   变量 pivotY
+    位置: 类型为ModelTransform的变量 defaults
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:84: 错误: 找不到符号
+                  defaults.pivotY - bodyDefault.pivotY,
+                                               ^
+    符号:   变量 pivotY
+    位置: 类型为ModelTransform的变量 bodyDefault
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:85: 错误: 找不到符号
+                  defaults.pivotZ - bodyDefault.pivotZ);
+                          ^
+    符号:   变量 pivotZ
+    位置: 类型为ModelTransform的变量 defaults
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:85: 错误: 找不到符号
+                  defaults.pivotZ - bodyDefault.pivotZ);
+                                               ^
+    符号:   变量 pivotZ
+    位置: 类型为ModelTransform的变量 bodyDefault
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:87: 错误: 找不到符号
+          child.pivotX += rotated.x - bind.x + translateX;
+               ^
+    符号:   变量 pivotX
+    位置: 类型为ModelPart的变量 child
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:88: 错误: 找不到符号
+          child.pivotY += rotated.y - bind.y + translateY;
+               ^
+    符号:   变量 pivotY
+    位置: 类型为ModelPart的变量 child
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:89: 错误: 找不到符号
+          child.pivotZ += rotated.z - bind.z + translateZ;
+               ^
+    符号:   变量 pivotZ
+    位置: 类型为ModelPart的变量 child
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:175: 错误: 找不到符号
+              part.pivotX = lerp(part.pivotX, defaults.pivotX + pose.x(), weight);
+                  ^
+    符号:   变量 pivotX
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:175: 错误: 找不到符号
+              part.pivotX = lerp(part.pivotX, defaults.pivotX + pose.x(), weight);
+                                     ^
+    符号:   变量 pivotX
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:175: 错误: 找不到符号
+              part.pivotX = lerp(part.pivotX, defaults.pivotX + pose.x(), weight);
+                                                      ^
+    符号:   变量 pivotX
+    位置: 类型为ModelTransform的变量 defaults
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:176: 错误: 找不到符号
+              part.pivotY = lerp(part.pivotY, defaults.pivotY - pose.y(), weight);
+                  ^
+    符号:   变量 pivotY
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:176: 错误: 找不到符号
+              part.pivotY = lerp(part.pivotY, defaults.pivotY - pose.y(), weight);
+                                     ^
+    符号:   变量 pivotY
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:176: 错误: 找不到符号
+              part.pivotY = lerp(part.pivotY, defaults.pivotY - pose.y(), weight);
+                                                      ^
+    符号:   变量 pivotY
+    位置: 类型为ModelTransform的变量 defaults
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:177: 错误: 找不到符号
+              part.pivotZ = lerp(part.pivotZ, defaults.pivotZ + pose.z(), weight);
+                  ^
+    符号:   变量 pivotZ
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:177: 错误: 找不到符号
+              part.pivotZ = lerp(part.pivotZ, defaults.pivotZ + pose.z(), weight);
+                                     ^
+    符号:   变量 pivotZ
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:177: 错误: 找不到符号
+              part.pivotZ = lerp(part.pivotZ, defaults.pivotZ + pose.z(), weight);
+                                                      ^
+    符号:   变量 pivotZ
+    位置: 类型为ModelTransform的变量 defaults
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyCombatFeedbackApplier.java:49: 错误: 找不到符号
+          part.pivotX += delta.positionX();
+              ^
+    符号:   变量 pivotX
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyCombatFeedbackApplier.java:50: 错误: 找不到符号
+          part.pivotY += delta.positionY();
+              ^
+    符号:   变量 pivotY
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyCombatFeedbackApplier.java:51: 错误: 找不到符号
+          part.pivotZ += delta.positionZ();
+              ^
+    符号:   变量 pivotZ
+    位置: 类型为ModelPart的变量 part
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:170: 错误: pitch 在 ModelTransform 中是 private 访问控制
+              part.pitch = lerp(part.pitch, defaults.pitch + pose.x() * DEG_TO_RAD, weight);
+                                                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:171: 错误: yaw 在 ModelTransform 中是 private 访问控制
+              part.yaw = lerp(part.yaw, defaults.yaw + pose.y() * DEG_TO_RAD, weight);
+                                                ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:172: 错误: roll 在 ModelTransform 中是 private 访问控制
+              part.roll = lerp(part.roll, defaults.roll + pose.z() * DEG_TO_RAD, weight);
+                                                  ^
+  注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+  注: 某些输入文件使用或覆盖了已过时的 API。
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:43: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityRendererArmorMixin.java:21: 错误: 类型参数T不在类型变量S的范围内
+              IllagerEntityModel<T> model,
+                                 ^
+    其中, T,S是类型变量:
+      T扩展已在类 LegacyIllagerEntityRendererArmorMixin中声明的IllagerEntity
+      S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyIllagerEntityRendererArmorMixin.java:30: 错误: 类型参数T不在类型变量S的范围内
+              IllagerEntityModel<T> model,
+                                 ^
+    其中, T,S是类型变量:
+      T扩展已在类 LegacyIllagerEntityRendererArmorMixin中声明的IllagerEntity
+      S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyLivingEntityRendererGenericFeedbackMixin.java:22: 错误: 类型参数T#1不在类型变量T#2的范围内
+      @Shadow protected EntityModel<T> model;
+                                    ^
+    其中, T#1,T#2是类型变量:
+      T#1扩展已在类 LegacyLivingEntityRendererGenericFeedbackMixin中声明的LivingEntity
+      T#2扩展已在类 EntityModel中声明的EntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:27: 错误: 类型参数T不在类型变量S的范围内
+          extends FeatureRenderer<T, IllagerEntityModel<T>> {
+                                  ^
+    其中, T,S是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      S扩展已在类 FeatureRenderer中声明的EntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:27: 错误: 类型参数T不在类型变量S的范围内
+          extends FeatureRenderer<T, IllagerEntityModel<T>> {
+                                                        ^
+    其中, T,S是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:30: 错误: 类型参数T#1不在类型变量T#2的范围内
+      private final BipedEntityModel<T> innerModel;
+                                     ^
+    其中, T#1,T#2是类型变量:
+      T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:31: 错误: 类型参数T#1不在类型变量T#2的范围内
+      private final BipedEntityModel<T> outerModel;
+                                     ^
+    其中, T#1,T#2是类型变量:
+      T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:34: 错误: 类型参数T不在类型变量S的范围内
+              FeatureRendererContext<T, IllagerEntityModel<T>> context,
+                                     ^
+    其中, T,S是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      S扩展已在接口 FeatureRendererContext中声明的EntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:34: 错误: 类型参数T不在类型变量S的范围内
+              FeatureRendererContext<T, IllagerEntityModel<T>> context,
+                                                           ^
+    其中, T,S是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:35: 错误: 类型参数T#1不在类型变量T#2的范围内
+              BipedEntityModel<T> innerModel,
+                               ^
+    其中, T#1,T#2是类型变量:
+      T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:36: 错误: 类型参数T#1不在类型变量T#2的范围内
+              BipedEntityModel<T> outerModel
+                               ^
+    其中, T#1,T#2是类型变量:
+      T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:79: 错误: 类型参数T#1不在类型变量T#2的范围内
+          BipedEntityModel<T> model = inner ? innerModel : outerModel;
+                           ^
+    其中, T#1,T#2是类型变量:
+      T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:105: 错误: 类型参数T#1不在类型变量T#2的范围内
+              BipedEntityModel<T> armorModel,
+                               ^
+    其中, T#1,T#2是类型变量:
+      T#1扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      T#2扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:112: 错误: 类型参数T不在类型变量S的范围内
+          IllagerEntityModel<T> illagerModel = getContextModel();
+                             ^
+    其中, T,S是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+      S扩展已在类 IllagerEntityModel中声明的IllagerEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:20: 错误: 类型参数? extends LivingEntity不在类型变量T的范围内
+      public static void apply(BipedEntityModel<? extends LivingEntity> model, LivingEntity entity) {
+                                                ^
+    其中, T是类型变量:
+      T扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyBipedAnimationApplier.java:42: 错误: 类型参数? extends LivingEntity不在类型变量T的范围内
+              BipedEntityModel<? extends LivingEntity> model,
+                               ^
+    其中, T是类型变量:
+      T扩展已在类 BipedEntityModel中声明的BipedEntityRenderState
+  注: 某些输入文件使用了未经检查或不安全的操作。
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:117: 错误: 找不到符号
+              Sprite sprite = quad.getSprite();
+                                  ^
+    符号:   方法 getSprite()
+    位置: 类型为BakedQuad的变量 quad
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:125: 错误: 找不到符号
+              int color = quad.hasColor() ? colors.getColor(stack, quad.getColorIndex()) : 0xFFFFFF;
+                              ^
+    符号:   方法 hasColor()
+    位置: 类型为BakedQuad的变量 quad
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:125: 错误: 找不到符号
+              int color = quad.hasColor() ? colors.getColor(stack, quad.getColorIndex()) : 0xFFFFFF;
+                                                                       ^
+    符号:   方法 getColorIndex()
+    位置: 类型为BakedQuad的变量 quad
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyMobStanceHeadTargeting.java:52: 错误: 找不到符号
+                      float tickDelta = client.getRenderTickCounter().getTickDelta(false);
+                                                                     ^
+    符号:   方法 getTickDelta(boolean)
+    位置: 接口 RenderTickCounter
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/animation/LegacyMobPalBodyTransformApplier.java:67: 错误: 找不到符号
+                  .getRenderTickCounter().getTickDelta(false);
+                                         ^
+    符号:   方法 getTickDelta(boolean)
+    位置: 接口 RenderTickCounter
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/collision/ClientGenericModelTracker.java:126: 错误: 找不到符号
+                  entity.getLerpedPos(client.getRenderTickCounter().getTickDelta(true)),
+                                                                   ^
+    符号:   方法 getTickDelta(boolean)
+    位置: 接口 RenderTickCounter
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/HandCannonBulletRenderer.java:13: 错误: 类重复: com.kingdomcomecombat.client.render.HandCannonBulletRenderer
+  public class HandCannonBulletRenderer extends EntityRenderer<HandCannonBulletEntity> {
+         ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:26: 错误: LegacyIllagerArmorFeatureRenderer不是抽象的, 并且未覆盖FeatureRenderer中的抽象方法render(MatrixStack,VertexConsumerProvider,int,T,float,float)
+  public final class LegacyIllagerArmorFeatureRenderer<T extends IllagerEntity>
+               ^
+    其中, T是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyAnimalModelFirstPersonHeadEquipmentMixin.java:17: 错误: 找不到符号
+  @Mixin(value = AnimalModel.class, priority = 1100)
+                 ^
+    符号: 类 AnimalModel
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:5: 错误: 程序包net.minecraft.client.color.item不存在
+  import net.minecraft.client.color.item.ItemColors;
+                                        ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:85: 错误: 程序包ArmorMaterial不存在
+          for (ArmorMaterial.Layer layer : material.layers()) {
+                            ^
+  84 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 36s
+4 actionable tasks: 4 executed

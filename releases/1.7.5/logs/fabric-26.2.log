@@ -1,0 +1,963 @@
+Starting a Gradle Daemon, 1 incompatible Daemon could not be reused, use --status for details
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :compileJava
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:5: 错误: 程序包net.minecraft.entity不存在
+import net.minecraft.entity.Entity;
+                           ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:6: 错误: 程序包net.minecraft.entity不存在
+import net.minecraft.entity.LivingEntity;
+                           ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:7: 错误: 程序包net.minecraft.entity.mob不存在
+import net.minecraft.entity.mob.MobEntity;
+                               ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:8: 错误: 程序包net.minecraft.registry不存在
+import net.minecraft.registry.Registries;
+                             ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:40: 错误: 找不到符号
+    public static boolean isNpc(Entity entity) {
+                                ^
+  符号:   类 Entity
+  位置: 类 HundredYearsWarCompat
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:45: 错误: 找不到符号
+    public static boolean usesKcdCombat(Entity entity) {
+                                        ^
+  符号:   类 Entity
+  位置: 类 HundredYearsWarCompat
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:52: 错误: 找不到符号
+    public static HumanoidCombatAiProfile getAiProfile(LivingEntity entity) {
+                                                       ^
+  符号:   类 LivingEntity
+  位置: 类 HundredYearsWarCompat
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/FirstAidCompat.java:5: 错误: 程序包net.minecraft.entity不存在
+import net.minecraft.entity.LivingEntity;
+                           ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/FirstAidCompat.java:6: 错误: 程序包net.minecraft.entity.player不存在
+import net.minecraft.entity.player.PlayerEntity;
+                                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/FirstAidCompat.java:19: 错误: 找不到符号
+    public static Scope target(LivingEntity entity, HumanoidHurtboxLibrary.Part part, String detailedPart) {
+                               ^
+  符号:   类 LivingEntity
+  位置: 类 FirstAidCompat
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:6: 错误: 程序包net.minecraft.entity不存在
+import net.minecraft.entity.EntityType;
+                           ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:7: 错误: 程序包net.minecraft.entity不存在
+import net.minecraft.entity.EntityPose;
+                           ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:8: 错误: 程序包net.minecraft.entity不存在
+import net.minecraft.entity.LivingEntity;
+                           ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:9: 错误: 程序包net.minecraft.entity.player不存在
+import net.minecraft.entity.player.PlayerEntity;
+                                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:10: 错误: 程序包net.minecraft.entity.mob不存在
+import net.minecraft.entity.mob.AbstractSkeletonEntity;
+                               ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:11: 错误: 程序包net.minecraft.entity.mob不存在
+import net.minecraft.entity.mob.ZombieEntity;
+                               ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:12: 错误: 程序包net.minecraft.util.math不存在
+import net.minecraft.util.math.Vec3d;
+                              ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:23: 错误: 程序包net.minecraft.registry不存在
+import net.minecraft.registry.Registries;
+                             ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/FirstAidCompat.java:24: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 FirstAidCompat
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:29: 错误: 找不到符号
+    private static final Set<net.minecraft.util.Identifier> SYNCED_HUMANOID_AI_TYPES = new HashSet<>();
+                                               ^
+  符号:   类 Identifier
+  位置: 程序包 net.minecraft.util
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:30: 错误: 找不到符号
+    private static final Set<net.minecraft.util.Identifier> SYNCED_AI_TYPES = new HashSet<>();
+                                               ^
+  符号:   类 Identifier
+  位置: 程序包 net.minecraft.util
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:35: 错误: 找不到符号
+    public static List<PartBox> getHurtboxes(LivingEntity entity) {
+                                             ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:10: 错误: 程序包net.minecraft.entity不存在
+import net.minecraft.entity.LivingEntity;
+                           ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:11: 错误: 程序包net.minecraft.util.math不存在
+import net.minecraft.util.math.Box;
+                              ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:12: 错误: 程序包net.minecraft.util.math不存在
+import net.minecraft.util.math.Vec3d;
+                              ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:358: 错误: 找不到符号
+            Vec3d center,
+            ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:359: 错误: 找不到符号
+            Vec3d halfExtents,
+            ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:360: 错误: 找不到符号
+            Vec3d axisX,
+            ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:361: 错误: 找不到符号
+            Vec3d axisY,
+            ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:362: 错误: 找不到符号
+            Vec3d axisZ
+            ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:59: 错误: 找不到符号
+    private static boolean usesPoseCollisionBox(EntityPose pose) {
+                                                ^
+  符号:   类 EntityPose
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:66: 错误: 找不到符号
+    private static List<PartBox> getHorizontalPlayerHurtboxes(LivingEntity entity) {
+                                                              ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:119: 错误: 找不到符号
+            Vec3d center,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:120: 错误: 找不到符号
+            Vec3d side,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:121: 错误: 找不到符号
+            Vec3d lengthAxis,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:122: 错误: 找不到符号
+            Vec3d thicknessAxis,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:138: 错误: 找不到符号
+            LivingEntity entity
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1101: 错误: 找不到符号
+            Vec3d position,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HitResult
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:145: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:168: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:182: 错误: 找不到符号
+            LivingEntity entity
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:187: 错误: 找不到符号
+    public static HitResult reportedHitResult(LivingEntity entity, Part part) {
+                                              ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:191: 错误: 找不到符号
+    public static HitResult reportedHitResult(LivingEntity entity, Part part, Vec3d reportedPosition) {
+                                              ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:191: 错误: 找不到符号
+    public static HitResult reportedHitResult(LivingEntity entity, Part part, Vec3d reportedPosition) {
+                                                                              ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:222: 错误: 找不到符号
+            LivingEntity entity
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:229: 错误: 找不到符号
+            LivingEntity entity
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:234: 错误: 找不到符号
+    public static boolean isHumanoidTarget(LivingEntity entity) {
+                                           ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:250: 错误: 找不到符号
+    public static boolean isBuiltInHumanoidTarget(LivingEntity entity) {
+                                                  ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:258: 错误: 找不到符号
+    private static boolean isBuiltInHumanoidType(EntityType<?> type) {
+                                                 ^
+  符号:   类 EntityType
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:303: 错误: 找不到符号
+    public static boolean hasSyncedAiConfiguration(LivingEntity entity) {
+                                                   ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:307: 错误: 找不到符号
+    public static List<PartBox> getGenericHurtboxes(LivingEntity entity) {
+                                                    ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:348: 错误: 找不到符号
+    private static GenericHeadSpec genericHeadSpec(EntityType<?> type) {
+                                                   ^
+  符号:   类 EntityType
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:394: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:568: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:571: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:581: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:584: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:594: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:597: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:643: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:676: 错误: 找不到符号
+            Vec3d point
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:674: 错误: 找不到符号
+    private static Vec3d closestPointOnBox(
+                   ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:704: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:739: 错误: 找不到符号
+    private static double modelHeightScale(LivingEntity entity) {
+                                           ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:756: 错误: 找不到符号
+    private static String fallbackDetailedPart(LivingEntity entity, Part part) {
+                                               ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:765: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:768: 错误: 找不到符号
+            Vec3d position
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:790: 错误: 找不到符号
+    private static double normalizedAxisAmount(Vec3d local, Vec3d axis, double halfExtent) {
+                                               ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:790: 错误: 找不到符号
+    private static double normalizedAxisAmount(Vec3d local, Vec3d axis, double halfExtent) {
+                                                            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:799: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:802: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:830: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:833: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:861: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:864: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:865: 错误: 找不到符号
+            Vec3d pivotModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:896: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:899: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:900: 错误: 找不到符号
+            Vec3d pivotModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:937: 错误: 找不到符号
+            Vec3d pivotModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:936: 错误: 找不到符号
+    private static Vec3d applyParentToPivot(
+                   ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:948: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:951: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:988: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:991: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1002: 错误: 找不到符号
+            LivingEntity entity,
+            ^
+  符号:   类 LivingEntity
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1005: 错误: 找不到符号
+            Vec3d centerModelUnits,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1049: 错误: 找不到符号
+            Vec3d vector,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1048: 错误: 找不到符号
+    private static Vec3d rotateLocal(
+                   ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1056: 错误: 找不到符号
+            Vec3d vector,
+            ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1055: 错误: 找不到符号
+    private static Vec3d rotateLocal(
+                   ^
+  符号:   类 Vec3d
+  位置: 类 HumanoidHurtboxLibrary
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:364: 错误: 找不到符号
+        public Box candidateBox() {
+               ^
+  符号:   类 Box
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:385: 错误: 找不到符号
+        public boolean intersects(Box box) {
+                                  ^
+  符号:   类 Box
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:488: 错误: 找不到符号
+                Vec3d delta,
+                ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:489: 错误: 找不到符号
+                Vec3d axis,
+                ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:490: 错误: 找不到符号
+                Vec3d[] obbAxes,
+                ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:492: 错误: 找不到符号
+                Vec3d[] aabbAxes,
+                ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:503: 错误: 找不到符号
+                Vec3d axis,
+                ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:504: 错误: 找不到符号
+                Vec3d[] boxAxes,
+                ^
+  符号:   类 Vec3d
+  位置: 类 OrientedBox
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:29: 错误: 找不到符号
+    private static Vec3d realHitboxSizeUnits = new Vec3d(1.0, 1.0, 14.0);
+                   ^
+  符号:   类 Vec3d
+  位置: 类 AnimatedAttackHitboxLibrary
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+100 个错误
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/versions/26.2/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:40: 错误: 找不到符号
+      public static boolean isNpc(Entity entity) {
+                                  ^
+    符号:   类 Entity
+    位置: 类 HundredYearsWarCompat
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:45: 错误: 找不到符号
+      public static boolean usesKcdCombat(Entity entity) {
+                                          ^
+    符号:   类 Entity
+    位置: 类 HundredYearsWarCompat
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:52: 错误: 找不到符号
+      public static HumanoidCombatAiProfile getAiProfile(LivingEntity entity) {
+                                                         ^
+    符号:   类 LivingEntity
+    位置: 类 HundredYearsWarCompat
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/FirstAidCompat.java:19: 错误: 找不到符号
+      public static Scope target(LivingEntity entity, HumanoidHurtboxLibrary.Part part, String detailedPart) {
+                                 ^
+    符号:   类 LivingEntity
+    位置: 类 FirstAidCompat
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/FirstAidCompat.java:24: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 FirstAidCompat
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:29: 错误: 找不到符号
+      private static final Set<net.minecraft.util.Identifier> SYNCED_HUMANOID_AI_TYPES = new HashSet<>();
+                                                 ^
+    符号:   类 Identifier
+    位置: 程序包 net.minecraft.util
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:30: 错误: 找不到符号
+      private static final Set<net.minecraft.util.Identifier> SYNCED_AI_TYPES = new HashSet<>();
+                                                 ^
+    符号:   类 Identifier
+    位置: 程序包 net.minecraft.util
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:35: 错误: 找不到符号
+      public static List<PartBox> getHurtboxes(LivingEntity entity) {
+                                               ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:358: 错误: 找不到符号
+              Vec3d center,
+              ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:359: 错误: 找不到符号
+              Vec3d halfExtents,
+              ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:360: 错误: 找不到符号
+              Vec3d axisX,
+              ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:361: 错误: 找不到符号
+              Vec3d axisY,
+              ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:362: 错误: 找不到符号
+              Vec3d axisZ
+              ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:59: 错误: 找不到符号
+      private static boolean usesPoseCollisionBox(EntityPose pose) {
+                                                  ^
+    符号:   类 EntityPose
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:66: 错误: 找不到符号
+      private static List<PartBox> getHorizontalPlayerHurtboxes(LivingEntity entity) {
+                                                                ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:119: 错误: 找不到符号
+              Vec3d center,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:120: 错误: 找不到符号
+              Vec3d side,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:121: 错误: 找不到符号
+              Vec3d lengthAxis,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:122: 错误: 找不到符号
+              Vec3d thicknessAxis,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:138: 错误: 找不到符号
+              LivingEntity entity
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1101: 错误: 找不到符号
+              Vec3d position,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HitResult
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:145: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:168: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:182: 错误: 找不到符号
+              LivingEntity entity
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:187: 错误: 找不到符号
+      public static HitResult reportedHitResult(LivingEntity entity, Part part) {
+                                                ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:191: 错误: 找不到符号
+      public static HitResult reportedHitResult(LivingEntity entity, Part part, Vec3d reportedPosition) {
+                                                ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:191: 错误: 找不到符号
+      public static HitResult reportedHitResult(LivingEntity entity, Part part, Vec3d reportedPosition) {
+                                                                                ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:222: 错误: 找不到符号
+              LivingEntity entity
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:229: 错误: 找不到符号
+              LivingEntity entity
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:234: 错误: 找不到符号
+      public static boolean isHumanoidTarget(LivingEntity entity) {
+                                             ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:250: 错误: 找不到符号
+      public static boolean isBuiltInHumanoidTarget(LivingEntity entity) {
+                                                    ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:258: 错误: 找不到符号
+      private static boolean isBuiltInHumanoidType(EntityType<?> type) {
+                                                   ^
+    符号:   类 EntityType
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:303: 错误: 找不到符号
+      public static boolean hasSyncedAiConfiguration(LivingEntity entity) {
+                                                     ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:307: 错误: 找不到符号
+      public static List<PartBox> getGenericHurtboxes(LivingEntity entity) {
+                                                      ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:348: 错误: 找不到符号
+      private static GenericHeadSpec genericHeadSpec(EntityType<?> type) {
+                                                     ^
+    符号:   类 EntityType
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:394: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:568: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:571: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:581: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:584: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:594: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:597: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:643: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:676: 错误: 找不到符号
+              Vec3d point
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:674: 错误: 找不到符号
+      private static Vec3d closestPointOnBox(
+                     ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:704: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:739: 错误: 找不到符号
+      private static double modelHeightScale(LivingEntity entity) {
+                                             ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:756: 错误: 找不到符号
+      private static String fallbackDetailedPart(LivingEntity entity, Part part) {
+                                                 ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:765: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:768: 错误: 找不到符号
+              Vec3d position
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:790: 错误: 找不到符号
+      private static double normalizedAxisAmount(Vec3d local, Vec3d axis, double halfExtent) {
+                                                 ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:790: 错误: 找不到符号
+      private static double normalizedAxisAmount(Vec3d local, Vec3d axis, double halfExtent) {
+                                                              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:799: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:802: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:830: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:833: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:861: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:864: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:865: 错误: 找不到符号
+              Vec3d pivotModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:896: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:899: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:900: 错误: 找不到符号
+              Vec3d pivotModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:937: 错误: 找不到符号
+              Vec3d pivotModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:936: 错误: 找不到符号
+      private static Vec3d applyParentToPivot(
+                     ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:948: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:951: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:988: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:991: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1002: 错误: 找不到符号
+              LivingEntity entity,
+              ^
+    符号:   类 LivingEntity
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1005: 错误: 找不到符号
+              Vec3d centerModelUnits,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1049: 错误: 找不到符号
+              Vec3d vector,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1048: 错误: 找不到符号
+      private static Vec3d rotateLocal(
+                     ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1056: 错误: 找不到符号
+              Vec3d vector,
+              ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:1055: 错误: 找不到符号
+      private static Vec3d rotateLocal(
+                     ^
+    符号:   类 Vec3d
+    位置: 类 HumanoidHurtboxLibrary
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:364: 错误: 找不到符号
+          public Box candidateBox() {
+                 ^
+    符号:   类 Box
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:385: 错误: 找不到符号
+          public boolean intersects(Box box) {
+                                    ^
+    符号:   类 Box
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:488: 错误: 找不到符号
+                  Vec3d delta,
+                  ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:489: 错误: 找不到符号
+                  Vec3d axis,
+                  ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:490: 错误: 找不到符号
+                  Vec3d[] obbAxes,
+                  ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:492: 错误: 找不到符号
+                  Vec3d[] aabbAxes,
+                  ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:503: 错误: 找不到符号
+                  Vec3d axis,
+                  ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:504: 错误: 找不到符号
+                  Vec3d[] boxAxes,
+                  ^
+    符号:   类 Vec3d
+    位置: 类 OrientedBox
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:29: 错误: 找不到符号
+      private static Vec3d realHitboxSizeUnits = new Vec3d(1.0, 1.0, 14.0);
+                     ^
+    符号:   类 Vec3d
+    位置: 类 AnimatedAttackHitboxLibrary
+  注: 某些输入文件使用或覆盖了已过时的 API。
+  注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:5: 错误: 程序包net.minecraft.entity不存在
+  import net.minecraft.entity.Entity;
+                             ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:6: 错误: 程序包net.minecraft.entity不存在
+  import net.minecraft.entity.LivingEntity;
+                             ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:7: 错误: 程序包net.minecraft.entity.mob不存在
+  import net.minecraft.entity.mob.MobEntity;
+                                 ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/HundredYearsWarCompat.java:8: 错误: 程序包net.minecraft.registry不存在
+  import net.minecraft.registry.Registries;
+                               ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/FirstAidCompat.java:5: 错误: 程序包net.minecraft.entity不存在
+  import net.minecraft.entity.LivingEntity;
+                             ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/compat/FirstAidCompat.java:6: 错误: 程序包net.minecraft.entity.player不存在
+  import net.minecraft.entity.player.PlayerEntity;
+                                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:6: 错误: 程序包net.minecraft.entity不存在
+  import net.minecraft.entity.EntityType;
+                             ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:7: 错误: 程序包net.minecraft.entity不存在
+  import net.minecraft.entity.EntityPose;
+                             ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:8: 错误: 程序包net.minecraft.entity不存在
+  import net.minecraft.entity.LivingEntity;
+                             ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:9: 错误: 程序包net.minecraft.entity.player不存在
+  import net.minecraft.entity.player.PlayerEntity;
+                                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:10: 错误: 程序包net.minecraft.entity.mob不存在
+  import net.minecraft.entity.mob.AbstractSkeletonEntity;
+                                 ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:11: 错误: 程序包net.minecraft.entity.mob不存在
+  import net.minecraft.entity.mob.ZombieEntity;
+                                 ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:12: 错误: 程序包net.minecraft.util.math不存在
+  import net.minecraft.util.math.Vec3d;
+                                ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:23: 错误: 程序包net.minecraft.registry不存在
+  import net.minecraft.registry.Registries;
+                               ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:10: 错误: 程序包net.minecraft.entity不存在
+  import net.minecraft.entity.LivingEntity;
+                             ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:11: 错误: 程序包net.minecraft.util.math不存在
+  import net.minecraft.util.math.Box;
+                                ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:12: 错误: 程序包net.minecraft.util.math不存在
+  import net.minecraft.util.math.Vec3d;
+                                ^
+  100 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 24s
+1 actionable task: 1 executed

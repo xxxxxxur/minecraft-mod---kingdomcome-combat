@@ -1,0 +1,27 @@
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :generateVersionCompatSources
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :generatePal1201Backport FAILED
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file '/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build.gradle' line: 133
+
+* What went wrong:
+Execution failed for task ':generatePal1201Backport'.
+> Expected configuration ':palCore1201Sources' to contain exactly one file, however, it contains more than one file.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 1m 15s
+4 actionable tasks: 4 executed

@@ -122,28 +122,35 @@ public class LivingEntityProjectileArmorMixin {
             return;
         }
 
-        if (!source.isOf(KCC_CUSTOM_COMBAT_DAMAGE)
+        boolean internalVanillaMeleeDamage =
+                ServerHitDetectionSystem.isVanillaMeleeReplacementActive();
+
+        if (!internalVanillaMeleeDamage
+                && !source.isOf(KCC_CUSTOM_COMBAT_DAMAGE)
                 && !source.isOf(KCC_BLEEDING_DAMAGE)
                 && ServerHitDetectionSystem.tryHandleConfiguredMobAttack(world, target, source, amount)) {
             cir.setReturnValue(false);
             return;
         }
 
-        if (!source.isOf(KCC_CUSTOM_COMBAT_DAMAGE)
+        if (!internalVanillaMeleeDamage
+                && !source.isOf(KCC_CUSTOM_COMBAT_DAMAGE)
                 && !source.isOf(KCC_BLEEDING_DAMAGE)
                 && ServerHitDetectionSystem.tryHandleVanillaMeleePanelAttack(world, target, source, amount)) {
             cir.setReturnValue(false);
             return;
         }
 
-        if (!source.isOf(KCC_CUSTOM_COMBAT_DAMAGE)
+        if (!internalVanillaMeleeDamage
+                && !source.isOf(KCC_CUSTOM_COMBAT_DAMAGE)
                 && !source.isOf(KCC_BLEEDING_DAMAGE)
                 && ServerHitDetectionSystem.tryHandleExternalAttackDefense(world, target, source, amount)) {
             cir.setReturnValue(false);
             return;
         }
 
-        if (!source.isOf(KCC_CUSTOM_COMBAT_DAMAGE)
+        if (!internalVanillaMeleeDamage
+                && !source.isOf(KCC_CUSTOM_COMBAT_DAMAGE)
                 && !source.isOf(KCC_BLEEDING_DAMAGE)
                 && ServerCombatControlState.dodgesDamage(target, source)) {
             cir.setReturnValue(false);
@@ -196,8 +203,6 @@ public class LivingEntityProjectileArmorMixin {
                 owner == null ? projectile : owner
         );
         Vec3d velocityBeforeDamage = target.getVelocity();
-        target.timeUntilRegen = 0;
-        target.hurtTime = 0;
         float firstAidDamageScale = resolvedDamage <= 0.000001F
                 ? 1.0F : firstAidDamage / resolvedDamage;
         boolean damaged;
@@ -210,7 +215,6 @@ public class LivingEntityProjectileArmorMixin {
             damaged = target.damage(world, customSource, resolvedDamage);
         }
         if (damaged) {
-            target.timeUntilRegen = 0;
             ProjectileImpactHandler.removeProjectileKnockback(
                     world,
                     projectile,
@@ -228,14 +232,13 @@ public class LivingEntityProjectileArmorMixin {
 
     @Inject(method = "damage", at = @At("RETURN"))
     private void kingdomcomecombat$lightweightDamageInterruptsEveryAttack(
-            ServerWorld world,
-            DamageSource source,
-            float amount,
             CallbackInfoReturnable<Boolean> cir
     ) {
-        if (CombatServerConfig.lightweightDamageModeEnabled() && cir.getReturnValue()) {
-            ServerHitDetectionSystem.interruptAttackUnconditionally(
-                    world, (LivingEntity) (Object) this);
+        LivingEntity target = (LivingEntity) (Object) this;
+        if (CombatServerConfig.lightweightDamageModeEnabled()
+                && cir.getReturnValueZ()
+                && target.getWorld() instanceof ServerWorld world) {
+            ServerHitDetectionSystem.interruptAttackUnconditionally(world, target);
         }
     }
 

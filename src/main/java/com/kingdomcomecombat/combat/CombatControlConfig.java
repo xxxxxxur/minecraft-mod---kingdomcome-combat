@@ -13,6 +13,8 @@ public class CombatControlConfig {
     public static final int MASTER_COUNTER_WINDOW_TICKS = 8;
     public static final int MASTER_COUNTER_EARLY_GRACE_TICKS = 2;
     public static final int BLOCK_INPUT_COOLDOWN_TICKS = 16;
+    /** 0.3 seconds at 20 TPS; prevents combat mobs from guarding consecutive contacts. */
+    public static final int MOB_BLOCK_COOLDOWN_TICKS = 6;
 
     public static final int DODGE_TOTAL_TICKS = 10;
     public static final int DODGE_COOLDOWN_TICKS = 0;

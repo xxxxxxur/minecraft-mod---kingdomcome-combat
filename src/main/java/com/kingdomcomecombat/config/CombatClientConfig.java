@@ -37,6 +37,7 @@ public final class CombatClientConfig {
     private static boolean renderArmorHoles = true;
     private static boolean bladeTrailsEnabled = true;
     private static boolean armorPhysicsCompat = false;
+    private static boolean mobRendererCompatibilityMode = false;
     private static boolean showLockOnCrosshair = true;
     private static boolean showTargetStaminaRing = true;
     private static double targetStaminaRingScale = 0.65;
@@ -99,6 +100,11 @@ public final class CombatClientConfig {
             renderArmorHoles = bool(rendering, "enable_armor_holes", renderArmorHoles);
             bladeTrailsEnabled = bool(rendering, "enable_blade_trails", bladeTrailsEnabled);
             armorPhysicsCompat = bool(rendering, "enable_armor_physics_compat", armorPhysicsCompat);
+            mobRendererCompatibilityMode = bool(
+                    rendering,
+                    "enable_mob_renderer_compatibility_mode",
+                    mobRendererCompatibilityMode
+            );
             screenEffectsEnabled = bool(rendering, "enable_screen_effects", screenEffectsEnabled);
             hurtCameraMovementEnabled = bool(
                     rendering,
@@ -312,6 +318,10 @@ public final class CombatClientConfig {
         return armorPhysicsCompat;
     }
 
+    public static boolean mobRendererCompatibilityMode() {
+        return mobRendererCompatibilityMode;
+    }
+
     public static void setRenderBlood(boolean value) {
         renderBlood = value;
     }
@@ -330,6 +340,10 @@ public final class CombatClientConfig {
 
     public static void setArmorPhysicsCompat(boolean value) {
         armorPhysicsCompat = value;
+    }
+
+    public static void setMobRendererCompatibilityMode(boolean value) {
+        mobRendererCompatibilityMode = value;
     }
 
     public static boolean showLockOnCrosshair() {
@@ -680,6 +694,7 @@ public final class CombatClientConfig {
         rendering.addProperty("enable_armor_holes", renderArmorHoles);
         rendering.addProperty("enable_blade_trails", bladeTrailsEnabled);
         rendering.addProperty("enable_armor_physics_compat", armorPhysicsCompat);
+        rendering.addProperty("enable_mob_renderer_compatibility_mode", mobRendererCompatibilityMode);
         rendering.addProperty("enable_screen_effects", screenEffectsEnabled);
         rendering.addProperty("enable_hurt_camera_movement", hurtCameraMovementEnabled);
         rendering.addProperty("enable_dodge_animation", dodgeAnimationEnabled);
@@ -787,9 +802,9 @@ public final class CombatClientConfig {
     }
 
     public enum FirstPersonModelMode {
-        WHEN_NEEDED("when_needed", "仅需要时启动"),
-        ALWAYS("always", "保持启动"),
-        LOCKED_ONLY("locked_only", "仅锁定时启用");
+        WHEN_NEEDED("when_needed", "When needed"),
+        ALWAYS("always", "Always"),
+        LOCKED_ONLY("locked_only", "Only while locked on");
 
         private final String configName;
         private final String displayName;
@@ -876,6 +891,7 @@ public final class CombatClientConfig {
         result = 31 * result + Boolean.hashCode(renderBlood);
         result = 31 * result + Boolean.hashCode(renderArmorHoles);
         result = 31 * result + Boolean.hashCode(armorPhysicsCompat);
+        result = 31 * result + Boolean.hashCode(mobRendererCompatibilityMode);
         result = 31 * result + Double.hashCode(hitReactionAnimationStrength);
         result = 31 * result + Integer.hashCode(hitReactionReturnTicks);
         signature = result;

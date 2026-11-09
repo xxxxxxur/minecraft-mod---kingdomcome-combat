@@ -19,7 +19,7 @@
   ],
   "combos": {
     "rossen": {
-      "display_name": "罗森式",
+      "display_name": {"en_us": "Rossen", "zh_cn": "罗森式"},
       "level": 4,
       "sequence": "上左左右",
       "animation": "combo_rossen",
@@ -73,7 +73,7 @@
       ]
     },
     "falseedge_strike": {
-      "display_name": "逆刃斩击",
+      "display_name": {"en_us": "False Edge Strike", "zh_cn": "逆刃斩击"},
       "level": 4,
       "sequence": "下上左",
       "animation": "combo_falseedge_strike",
@@ -141,7 +141,7 @@
       ]
     },
     "strong_edge": {
-      "display_name": "剑刃重击",
+      "display_name": {"en_us": "strong_edge", "zh_cn": "剑刃重击"},
       "level": 4,
       "sequence": "左右下右",
       "animation": "combo_strong_edge",
@@ -196,7 +196,7 @@
       ]
     },
     "butcher": {
-      "display_name": "屠杀击",
+      "display_name": {"en_us": "Butcher", "zh_cn": "屠杀击"},
       "level": 2,
       "sequence": "下右左",
       "animation": "combo_highspot_cut",
@@ -233,7 +233,7 @@
       "injury_level": 1
     },
     "highspot_cut": {
-      "display_name": "高位横批",
+      "display_name": {"en_us": "Mittelhaw High", "zh_cn": "高位横批"},
       "level": 2,
       "sequence": "下右右左",
       "animation": "combo_highspot_cut",
@@ -270,7 +270,7 @@
       "injury_level": 2
     },
     "smash_attack": {
-      "display_name": "粉碎打击",
+      "display_name": {"en_us": "Crushing Blow", "zh_cn": "粉碎打击"},
       "level": 1,
       "sequence": "上左右",
       "animation": "attack_smash",
@@ -307,7 +307,7 @@
       "injury_level": 2
     },
     "smash_attack_heavy": {
-      "display_name": "重武器粉碎打击",
+      "display_name": {"en_us": "Crushing Blow heavy weapon", "zh_cn": "重武器粉碎打击"},
       "level": 1,
       "sequence": "上左右",
       "animation": "combo_smash_heavy",
@@ -344,7 +344,7 @@
       "injury_level": 3
     },
     "single_handed_thrust": {
-      "display_name": "单手刺击",
+      "display_name": {"en_us": "Single handed thrust", "zh_cn": "单手刺击"},
       "level": 3,
       "sequence": "下左右",
       "animation": "combo_smash_heavy",
@@ -381,7 +381,7 @@
       "injury_level": 2
     },
     "pommel_strike": {
-      "display_name": "剑柄打击",
+      "display_name": {"en_us": "Pommel Strike", "zh_cn": "剑柄打击"},
       "level": 1,
       "sequence": "下下右",
       "animation": "attack_smash",
@@ -418,7 +418,7 @@
       "injury_level": 3
     },
     "knee_break": {
-      "display_name": "破膝打击",
+      "display_name": {"en_us": "Knee Strike", "zh_cn": "破膝打击"},
       "level": 3,
       "sequence": "左上左",
       "animation": "combo_knee_strike",
@@ -481,7 +481,7 @@
       ]
     },
     "knee_break_heavy": {
-      "display_name": "碎膝重击",
+      "display_name": {"en_us": "Knee break", "zh_cn": "碎膝重击"},
       "level": 3,
       "sequence": "上左左右",
       "animation": "combo_knee_break_heavy",
@@ -558,7 +558,7 @@
       ]
     },
     "knee_break_longsword": {
-      "display_name": "长剑破膝打击",
+      "display_name": {"en_us": "Knee Strike: Longsword", "zh_cn": "长剑破膝打击"},
       "level": 4,
       "sequence": "左上左右",
       "animation": "combo_kneestrike_longsword",
@@ -621,7 +621,7 @@
       ]
     },
     "fiore_half_sword": {
-      "display_name": "费奥雷半剑式",
+      "display_name": {"en_us": "Fiore Halbschwerten", "zh_cn": "费奥雷半剑式"},
       "level": 4,
       "sequence": "上左右",
       "animation": "combo_halfsword",
@@ -675,7 +675,7 @@
       ]
     },
     "horizontal_strike": {
-      "display_name": "横批",
+      "display_name": {"en_us": "Mittelhaw", "zh_cn": "横批"},
       "level": 3,
       "sequence": "上右左",
       "animation": "combo_horiztanl_strike_heavy",
@@ -707,7 +707,7 @@
       "injury_level": 2
     },
     "horizontal_strike_heavy": {
-      "display_name": "重武器横批",
+      "display_name": {"en_us": "Heavy wepaon Mittelhaw", "zh_cn": "重武器横批"},
       "level": 3,
       "sequence": "上右左",
       "animation": "combo_horiztanl_strike_heavy",
@@ -739,7 +739,7 @@
       "injury_level": 3
     },
     "brutal_up_strike": {
-      "display_name": "残暴上击",
+      "display_name": {"en_us": "Brutal Uppercut", "zh_cn": "残暴上击"},
       "level": 4,
       "sequence": "左右上左",
       "animation": "combo_brutal_up_strike",
@@ -774,7 +774,7 @@
       "injury_level": 4
     },
     "comboleft": {
-      "display_name": "左上挑斩",
+      "display_name": {"en_us": "Lower left strike", "zh_cn": "左上挑斩"},
       "level": 0,
       "sequence": "左右左",
       "animation": "combo_left",
@@ -803,7 +803,7 @@
       "injury_level": 2
     },
     "short_strike": {
-      "display_name": "短击",
+      "display_name": {"en_us": "Kurzhaw", "zh_cn": "短击"},
       "level": 3,
       "sequence": "上上左",
       "animation": "combo_shortstrike_longsword",
@@ -840,7 +840,7 @@
       "injury_level": 2
     },
     "wrath_strike": {
-      "display_name": "怒击",
+      "display_name": {"en_us": "Zorn Ort", "zh_cn": "怒击"},
       "level": 4,
       "sequence": "右右右左",
       "animation": "combo_warth_strike",
@@ -877,7 +877,7 @@
       "injury_level": 3
     },
     "cleave_strike": {
-      "display_name": "顺劈斩",
+      "display_name": {"en_us": "Oben Abnehmen", "zh_cn": "顺劈斩"},
       "level": 3,
       "sequence": "左下右",
       "animation": "combo_cleave_longsword",
@@ -913,7 +913,7 @@
       "injury_level": 2
     },
     "comboright": {
-      "display_name": "右上挑斩",
+      "display_name": {"en_us": "Lower right strike", "zh_cn": "右上挑斩"},
       "level": 0,
       "sequence": "右左右",
       "animation": "combo_right",

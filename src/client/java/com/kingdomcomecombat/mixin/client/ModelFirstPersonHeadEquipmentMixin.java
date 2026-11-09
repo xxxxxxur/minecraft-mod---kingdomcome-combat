@@ -2,7 +2,6 @@ package com.kingdomcomecombat.mixin.client;
 
 import com.kingdomcomecombat.client.render.FirstPersonBodyRenderOffsetContext;
 import com.kingdomcomecombat.client.compat.FirstPersonRenderCompat;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -35,11 +34,11 @@ public class ModelFirstPersonHeadEquipmentMixin {
             int color,
             CallbackInfo ci
     ) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        boolean localFirstPerson = client.player != null
-                && client.options.getPerspective().isFirstPerson()
-                && !(client.currentScreen instanceof net.minecraft.client.gui.screen.ingame.InventoryScreen);
-        if (!(FirstPersonBodyRenderOffsetContext.isRenderingLocalFirstPersonBody() || localFirstPerson)
+        // Only the forced local-player body pass owns first-person equipment
+        // suppression. A perspective-only test also matches every NPC armor
+        // feature rendered while the camera happens to be in first person;
+        // Middle-earth's custom helmet renderer exposes exactly that shape.
+        if (!FirstPersonBodyRenderOffsetContext.isRenderingLocalFirstPersonBody()
                 || FirstPersonRenderCompat.isRenderingShadowPass()
                 || !((Object) this instanceof BipedEntityModel<?> biped)) {
             return;

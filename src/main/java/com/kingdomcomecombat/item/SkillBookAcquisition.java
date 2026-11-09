@@ -79,7 +79,7 @@ public final class SkillBookAcquisition {
         }
     }
 
-    private static boolean isSkillBookChest(String path) {
+    public static boolean isSkillBookChest(String path) {
         return path.equals("chests/ancient_city")
                 || path.equals("chests/ancient_city_ice_box")
                 || path.equals("chests/buried_treasure")
@@ -112,7 +112,7 @@ public final class SkillBookAcquisition {
                 || path.contains("ruins");
     }
 
-    private static float lootChance(String path) {
+    public static float lootChance(String path) {
         if (path.equals("chests/ancient_city")
                 || path.equals("chests/end_city_treasure")
                 || path.equals("chests/stronghold_library")
@@ -188,13 +188,13 @@ public final class SkillBookAcquisition {
         List<ItemStack> books = new ArrayList<>();
         for (ComboMoveConfig combo : ComboMoveConfigs.all()) {
             if (!PlayerComboProgress.isUnlocked(player, combo)) {
-                books.add(namedBook(SkillBookItem.createStack(combo.id(), combo.id()), combo.displayName()));
+                books.add(namedBook(SkillBookItem.createStack(combo.id(), combo.id()), SkillBookTexts.contains(combo.id()) ? SkillBookTexts.get(combo.id()).title("en_us") : combo.displayName()));
             }
         }
         for (PassiveSkillConfig passive : PassiveSkillConfigs.all()) {
             if (passive.source() == PassiveSkillConfig.Source.BOOK
                     && !PlayerPassiveSkillProgress.isUnlocked(player, passive.id())) {
-                books.add(namedBook(SkillBookItem.createPassiveStack(passive.id(), passive.id()), passive.name()));
+                books.add(namedBook(SkillBookItem.createPassiveStack(passive.id(), passive.id()), passive.name("en_us")));
             }
         }
         return books;
@@ -203,11 +203,11 @@ public final class SkillBookAcquisition {
     public static List<ItemStack> allSkillBooks() {
         List<ItemStack> books = new ArrayList<>();
         for (ComboMoveConfig combo : ComboMoveConfigs.all()) {
-            books.add(namedBook(SkillBookItem.createStack(combo.id(), combo.id()), combo.displayName()));
+            books.add(namedBook(SkillBookItem.createStack(combo.id(), combo.id()), SkillBookTexts.contains(combo.id()) ? SkillBookTexts.get(combo.id()).title("en_us") : combo.displayName()));
         }
         for (PassiveSkillConfig passive : PassiveSkillConfigs.all()) {
             if (passive.source() == PassiveSkillConfig.Source.BOOK) {
-                books.add(namedBook(SkillBookItem.createPassiveStack(passive.id(), passive.id()), passive.name()));
+                books.add(namedBook(SkillBookItem.createPassiveStack(passive.id(), passive.id()), passive.name("en_us")));
             }
         }
         return books;
@@ -215,7 +215,7 @@ public final class SkillBookAcquisition {
 
     private static ItemStack namedBook(ItemStack stack, String name) {
         if (name == null || name.isBlank()) {
-            name = "技能书";
+            name = "Skill Book";
         }
         stack.set(DataComponentTypes.ITEM_NAME, Text.literal(name).formatted(net.minecraft.util.Formatting.WHITE));
         return stack;

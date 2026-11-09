@@ -1,5 +1,7 @@
 package com.kingdomcomecombat.passive;
 
+import com.kingdomcomecombat.text.LocalizedText;
+
 import java.util.Map;
 
 public record PassiveSkillConfig(
@@ -44,13 +46,11 @@ public record PassiveSkillConfig(
     }
 
     public String name(String language) {
-        Text text = translation(language);
-        return text == null || text.name().isBlank() ? name : text.name();
+        return LocalizedText.resolve(translations, language, Text::name, name);
     }
 
     public String description(String language) {
-        Text text = translation(language);
-        return text == null || text.description().isBlank() ? description : text.description();
+        return LocalizedText.resolve(translations, language, Text::description, description);
     }
 
     public double perk(String key, double fallback) {
@@ -59,22 +59,6 @@ public record PassiveSkillConfig(
 
     public boolean hasPerk(String key) {
         return perks.containsKey(key);
-    }
-
-    private Text translation(String language) {
-        if (language == null || language.isBlank() || translations.isEmpty()) {
-            return null;
-        }
-        String normalized = language.toLowerCase();
-        Text exact = translations.get(normalized);
-        if (exact != null) {
-            return exact;
-        }
-        int separator = normalized.indexOf('_');
-        if (separator < 0) {
-            separator = normalized.indexOf('-');
-        }
-        return separator > 0 ? translations.get(normalized.substring(0, separator)) : null;
     }
 
     public record Text(String name, String description) {

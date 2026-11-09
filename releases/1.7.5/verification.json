@@ -1,0 +1,8 @@
+{
+  "verified_targets": [
+    "fabric-1.21.7",
+    "fabric-1.21",
+    "fabric-1.21.1"
+  ],
+  "shared_modern_classes_resources_identical": false
+}

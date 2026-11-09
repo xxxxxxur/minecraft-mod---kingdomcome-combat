@@ -1,6 +1,9 @@
 package com.kingdomcomecombat.client.animation;
 
 import com.kingdomcomecombat.client.mixin.EntityRenderStateKccAccess;
+import com.kingdomcomecombat.client.compat.BipedModelAiCompatReporter;
+import com.kingdomcomecombat.collision.HumanoidHurtboxLibrary;
+import com.kingdomcomecombat.config.CombatClientConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.state.LivingEntityRenderState;
@@ -22,6 +25,18 @@ public final class MobPalBodyTransformApplier {
     }
 
     public static void apply(LivingEntityRenderState state, MatrixStack matrices) {
+        if (CombatClientConfig.mobRendererCompatibilityMode()) return;
+        applyForced(state, matrices);
+    }
+
+    /** Applies the root pose from setupTransforms so copied renderer methods share it with features. */
+    public static void applyCompatibility(LivingEntityRenderState state, MatrixStack matrices) {
+        if (!CombatClientConfig.mobRendererCompatibilityMode()) return;
+        applyForced(state, matrices);
+    }
+
+    /** Applies a known renderer-specific fallback independently of the global compatibility switch. */
+    public static void applyForced(LivingEntityRenderState state, MatrixStack matrices) {
         int entityId = ((EntityRenderStateKccAccess) state).kingdomcomecombat$getEntityId();
         if (entityId < 0
                 || !ClientEntityGeckoAnimationState.shouldRenderCombatAnimation(entityId)) {
@@ -31,28 +46,37 @@ public final class MobPalBodyTransformApplier {
         MinecraftClient client = MinecraftClient.getInstance();
         Entity entity = client.world == null ? null : client.world.getEntityById(entityId);
         // PAL already applies this transform to players in PlayerRendererMixin.
-        if (entity == null || entity instanceof AbstractClientPlayerEntity) {
+        if (!(entity instanceof net.minecraft.entity.LivingEntity living)
+                || entity instanceof AbstractClientPlayerEntity
+                || BipedModelAiCompatReporter.isRenderDisabled(living)
+                || !HumanoidHurtboxLibrary.isHumanoidTarget(living)) {
             return;
         }
 
-        BodyPose pose = sample(entityId);
-        if (!pose.transformed()) return;
+        try {
+            BodyPose pose = sample(entityId);
+            if (!pose.transformed()) return;
 
-        GeckoLikeAnimationLibrary.BonePose rotation = pose.rotation();
-        GeckoLikeAnimationLibrary.BonePose position = pose.position();
+            GeckoLikeAnimationLibrary.BonePose rotation = pose.rotation();
+            GeckoLikeAnimationLibrary.BonePose position = pose.position();
 
-        // Exact Fabric/Yarn equivalent of PAL PlayerRendererMixin:
-        // translate(-x/16, y/16 + 0.75, z/16), rotate ZYX with X/Y negated,
-        // then translate back from the 12-pixel body pivot.
-        matrices.translate(
-                -position.x() * PIXEL_TO_BLOCK,
-                position.y() * PIXEL_TO_BLOCK + BODY_PIVOT_Y,
-                position.z() * PIXEL_TO_BLOCK
-        );
-        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(rotation.z()));
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-rotation.y()));
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-rotation.x()));
-        matrices.translate(0.0F, -BODY_PIVOT_Y, 0.0F);
+            // Exact Fabric/Yarn equivalent of PAL PlayerRendererMixin:
+            // translate(-x/16, y/16 + 0.75, z/16), rotate ZYX with X/Y negated,
+            // then translate back from the 12-pixel body pivot.
+            matrices.translate(
+                    -position.x() * PIXEL_TO_BLOCK,
+                    position.y() * PIXEL_TO_BLOCK + BODY_PIVOT_Y,
+                    position.z() * PIXEL_TO_BLOCK
+            );
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(rotation.z()));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-rotation.y()));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-rotation.x()));
+            matrices.translate(0.0F, -BODY_PIVOT_Y, 0.0F);
+        } catch (RuntimeException | LinkageError exception) {
+            if (!BipedModelAiCompatReporter.disableAfterFailure(living)) {
+                throw exception;
+            }
+        }
     }
 
     public static BodyPose sample(int entityId) {

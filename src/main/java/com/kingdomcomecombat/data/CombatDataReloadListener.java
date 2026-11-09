@@ -47,6 +47,7 @@ import com.kingdomcomecombat.combat.CombatItemUtil;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.entity.damage.DamageType;
@@ -171,7 +172,7 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
                     for (Map.Entry<String, JsonElement> text : translated.entrySet()) {
                         if (!text.getValue().isJsonObject()) continue;
                         JsonObject value = text.getValue().getAsJsonObject();
-                        translations.put(text.getKey().toLowerCase(), new HardshipConfig.Translation(
+                        translations.put(com.kingdomcomecombat.text.LocalizedText.normalize(text.getKey()), new HardshipConfig.Translation(
                                 firstString(value, "", "title", "translated_title"),
                                 firstString(value, "", "description", "translated_description")
                         ));
@@ -295,10 +296,10 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
             SkillBookTexts.put(
                     id,
                     new SkillBookTexts.Entry(
-                            firstString(json, "技能书", "title", "name"),
+                            firstString(json, "Skill Book", "title", "name"),
                             string(json, "author", "Kingdom Come Combat"),
-                            firstString(json, "这本书记录了一门战斗技巧。", "first_page", "page", "text"),
-                            firstString(json, "翻到这一页时，你会试着领会书中记载的招式。", "second_page", "second_text", "learn_page"),
+                            firstString(json, "This book records a combat technique.", "first_page", "page", "text"),
+                            firstString(json, "Turn to this page to learn the technique recorded in this book.", "second_page", "second_text", "learn_page"),
                             firstString(json, "", "illustration", "image", "picture"),
                             bookTranslations(json)
                     )
@@ -1579,6 +1580,30 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
         }
     }
 
+    private static boolean requiredModsLoaded(JsonObject json) {
+        JsonElement required = json.get("required_mod");
+        if (required == null) {
+            required = json.get("required_mods");
+        }
+        if (required == null) {
+            return true;
+        }
+        if (required.isJsonPrimitive() && required.getAsJsonPrimitive().isString()) {
+            return FabricLoader.getInstance().isModLoaded(required.getAsString());
+        }
+        if (!required.isJsonArray()) {
+            return false;
+        }
+        for (JsonElement element : required.getAsJsonArray()) {
+            if (!element.isJsonPrimitive()
+                    || !element.getAsJsonPrimitive().isString()
+                    || !FabricLoader.getInstance().isModLoaded(element.getAsString())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private static void registerMobAttributes(String entityName, JsonObject json) {
         Identifier entityId = Identifier.tryParse(entityName);
         if (entityId == null) {
@@ -1746,6 +1771,9 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
         for (Map.Entry<Identifier, Resource> entry : findJsonResources(
                 manager, "kingdom_come_combat/ai")) {
             JsonObject json = readJson(entry.getKey(), entry.getValue());
+            if (!requiredModsLoaded(json)) {
+                continue;
+            }
             JsonObject entities = json.getAsJsonObject("entities");
             if (entities == null) {
                 continue;
@@ -2194,7 +2222,7 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
         }
         if (element.isJsonObject()) {
             JsonObject object = element.getAsJsonObject();
-            for (String key : List.of("default", "zh_cn", "zh", "en_us", "en")) {
+            for (String key : List.of("en_us", "en", "default")) {
                 if (object.has(key)) {
                     return object.get(key).getAsString();
                 }
@@ -2219,7 +2247,7 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
             }
             JsonObject value = entry.getValue().getAsJsonObject();
             result.put(
-                    entry.getKey().toLowerCase(),
+                    com.kingdomcomecombat.text.LocalizedText.normalize(entry.getKey()),
                     new PassiveSkillConfig.Text(
                             firstString(value, "", "name", "display_name", "title"),
                             firstString(value, "", "description", "desc", "text")
@@ -2245,7 +2273,7 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
             }
             JsonObject value = entry.getValue().getAsJsonObject();
             result.put(
-                    entry.getKey().toLowerCase(),
+                    com.kingdomcomecombat.text.LocalizedText.normalize(entry.getKey()),
                     new SkillBookTexts.EntryText(
                             firstString(value, "", "title", "name"),
                             firstString(value, "", "first_page", "page", "text"),
@@ -2271,7 +2299,7 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
                 if (!entry.getValue().isJsonPrimitive()) {
                     continue;
                 }
-                JsonObject language = byLanguage.computeIfAbsent(entry.getKey().toLowerCase(), ignored -> new JsonObject());
+                JsonObject language = byLanguage.computeIfAbsent(com.kingdomcomecombat.text.LocalizedText.normalize(entry.getKey()), ignored -> new JsonObject());
                 language.addProperty(key, entry.getValue().getAsString());
             }
         }
@@ -2429,7 +2457,7 @@ public class CombatDataReloadListener implements SimpleSynchronousResourceReload
 
         Map<String, String> result = new HashMap<>();
         for (Map.Entry<String, JsonElement> entry : json.entrySet()) {
-            result.put(entry.getKey().toLowerCase(), entry.getValue().getAsString());
+            result.put(com.kingdomcomecombat.text.LocalizedText.normalize(entry.getKey()), entry.getValue().getAsString());
         }
         return result;
     }

@@ -1,6 +1,5 @@
 package com.kingdomcomecombat.mixin.client;
 
-import net.minecraft.client.MinecraftClient;
 import com.kingdomcomecombat.client.compat.FirstPersonRenderCompat;
 import com.kingdomcomecombat.client.render.FirstPersonBodyRenderOffsetContext;
 import net.minecraft.client.render.VertexConsumer;
@@ -30,11 +29,7 @@ public abstract class LegacyAnimalModelFirstPersonHeadEquipmentMixin {
             int color,
             CallbackInfo ci
     ) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        boolean localFirstPerson = client.player != null
-                && client.options.getPerspective().isFirstPerson()
-                && !(client.currentScreen instanceof net.minecraft.client.gui.screen.ingame.InventoryScreen);
-        if (!(FirstPersonBodyRenderOffsetContext.isRenderingLocalFirstPersonBody() || localFirstPerson)
+        if (!FirstPersonBodyRenderOffsetContext.isRenderingLocalFirstPersonBody()
                 || FirstPersonRenderCompat.isRenderingShadowPass()
                 || !((Object) this instanceof BipedEntityModel<?> biped)) {
             return;

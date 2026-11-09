@@ -1,0 +1,75 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Architectury Loom: 1.13.469
+This version of Architectury Loom is in beta! Please report any issues you encounter: https://github.com/architectury/architectury-loom/issues
+
+> Task :prepareShared1211Sources
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :generateVersionCompatSources
+
+BUILD SUCCESSFUL in 7s
+1 actionable task: 1 executed
+
+> Task :migrateSharedMainToMojmap
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :migrateMappings
+
+BUILD SUCCESSFUL in 5s
+1 actionable task: 1 executed
+
+> Task :migrateSharedClientToMojmap
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :migrateMappings
+
+BUILD SUCCESSFUL in 3s
+1 actionable task: 1 executed
+
+> Task :migrateLegacyClientToMojmap
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :migrateMappings
+
+BUILD SUCCESSFUL in 2s
+1 actionable task: 1 executed
+
+> Task :patchMigratedNeoSources
+
+> Task :compileJava
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/neoforge/build/generatedMojmap/legacy/com/kingdomcomecombat/network/legacy/LegacyClientPlayNetworking.java:3: 错误: 需要'.'
+import LegacyCustomPayload;
+                          ^
+1 个错误
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/neoforge/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/neoforge/build/generatedMojmap/legacy/com/kingdomcomecombat/network/legacy/LegacyClientPlayNetworking.java:3: 错误: 需要'.'
+  import LegacyCustomPayload;
+                            ^
+  1 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 2m 16s
+6 actionable tasks: 6 executed

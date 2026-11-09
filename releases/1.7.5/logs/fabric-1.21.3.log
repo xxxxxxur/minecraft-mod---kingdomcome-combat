@@ -1,0 +1,854 @@
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :generateVersionCompatSources
+
+> Task :compileJava
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:12: 错误: 找不到符号
+import net.minecraft.util.UseAction;
+                         ^
+  符号:   类 UseAction
+  位置: 程序包 net.minecraft.util
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:19: 错误: 找不到符号
+import net.minecraft.util.TypedActionResult;
+                         ^
+  符号:   类 TypedActionResult
+  位置: 程序包 net.minecraft.util
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:60: 错误: 找不到符号
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+           ^
+  符号:   类 TypedActionResult
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:93: 错误: 找不到符号
+    public UseAction getUseAction(ItemStack stack) {
+           ^
+  符号:   类 UseAction
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/recipe/ModRecipes.java:6: 错误: 找不到符号
+import net.minecraft.recipe.SpecialRecipeSerializer;
+                           ^
+  符号:   类 SpecialRecipeSerializer
+  位置: 程序包 net.minecraft.recipe
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LegacyMilkBucketInjuryMixin.java:6: 错误: 找不到符号
+import net.minecraft.item.MilkBucketItem;
+                         ^
+  符号:   类 MilkBucketItem
+  位置: 程序包 net.minecraft.item
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/ItemStackPotionCoatingMixin.java:6: 错误: 找不到符号
+import net.minecraft.util.UseAction;
+                         ^
+  符号:   类 UseAction
+  位置: 程序包 net.minecraft.util
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/ItemStackPotionCoatingMixin.java:16: 错误: 找不到符号
+    private void kingdomcomecombat$getPotionCoatingUseAction(CallbackInfoReturnable<UseAction> cir) {
+                                                                                    ^
+  符号:   类 UseAction
+  位置: 类 ItemStackPotionCoatingMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/BandageItem.java:12: 错误: 找不到符号
+import net.minecraft.util.TypedActionResult;
+                         ^
+  符号:   类 TypedActionResult
+  位置: 程序包 net.minecraft.util
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/BandageItem.java:23: 错误: 找不到符号
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+           ^
+  符号:   类 TypedActionResult
+  位置: 类 BandageItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/SkillBookItem.java:23: 错误: 找不到符号
+import net.minecraft.util.TypedActionResult;
+                         ^
+  符号:   类 TypedActionResult
+  位置: 程序包 net.minecraft.util
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/SkillBookItem.java:53: 错误: 找不到符号
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+           ^
+  符号:   类 TypedActionResult
+  位置: 类 SkillBookItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LegacyMilkBucketInjuryMixin.java:14: 错误: 找不到符号
+@Mixin(MilkBucketItem.class)
+       ^
+  符号: 类 MilkBucketItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:62: 错误: 找不到符号
+                || pose == EntityPose.FALL_FLYING
+                                     ^
+  符号:   变量 FALL_FLYING
+  位置: 类 EntityPose
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:68: 错误: 找不到符号
+                || entity.getPose() == EntityPose.FALL_FLYING
+                                                 ^
+  符号:   变量 FALL_FLYING
+  位置: 类 EntityPose
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/combat/ServerCombatTicker.java:762: 错误: 找不到符号
+                mob.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)
+                                                      ^
+  符号:   变量 GENERIC_MOVEMENT_SPEED
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/InjuryTicker.java:109: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+                            living.damage(
+                                  ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/InjuryTicker.java:110: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+                                    world.getDamageSources().create(BLEEDING_DAMAGE),
+                                                                   ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/MobCombatAttributesRegistry.java:76: 错误: 找不到符号
+        EntityAttributeInstance maxHealth = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+                                                                                        ^
+  符号:   变量 GENERIC_MAX_HEALTH
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/ModStatusEffects.java:213: 错误: 找不到符号
+        EntityAttributeInstance maxHealth = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+                                                                                        ^
+  符号:   变量 GENERIC_MAX_HEALTH
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/ModStatusEffects.java:226: 错误: 找不到符号
+        EntityAttributeInstance movementSpeed = entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+                                                                                            ^
+  符号:   变量 GENERIC_MOVEMENT_SPEED
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/ModStatusEffects.java:239: 错误: 找不到符号
+        EntityAttributeInstance jumpStrength = entity.getAttributeInstance(EntityAttributes.GENERIC_JUMP_STRENGTH);
+                                                                                           ^
+  符号:   变量 GENERIC_JUMP_STRENGTH
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/entity/ModEntities.java:24: 错误: 不兼容的类型: String无法转换为RegistryKey<EntityType<?>>
+                    .build(HAND_CANNON_BULLET_ID.toString())
+                                                         ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/entity/HandCannonBulletEntity.java:123: 错误: 无法将类 Entity中的方法 damage应用到给定类型;
+                    target.damage(source,
+                          ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/entity/HandCannonBulletEntity.java:123: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+                    target.damage(source,
+                                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:63: 错误: 找不到符号
+            return new TypedActionResult<>(ActionResult.PASS, stack);
+                       ^
+  符号:   类 TypedActionResult
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:66: 错误: 找不到符号
+            return new TypedActionResult<>(ActionResult.CONSUME, stack);
+                       ^
+  符号:   类 TypedActionResult
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:69: 错误: 找不到符号
+            return new TypedActionResult<>(ActionResult.CONSUME, stack);
+                       ^
+  符号:   类 TypedActionResult
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:75: 错误: 找不到符号
+            return new TypedActionResult<>(ActionResult.CONSUME, stack);
+                       ^
+  符号:   类 TypedActionResult
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:81: 错误: 找不到符号
+            return new TypedActionResult<>(ActionResult.FAIL, stack);
+                       ^
+  符号:   类 TypedActionResult
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:84: 错误: 找不到符号
+        return new TypedActionResult<>(ActionResult.CONSUME, stack);
+                   ^
+  符号:   类 TypedActionResult
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:94: 错误: 找不到符号
+        return UseAction.BOW;
+               ^
+  符号:   变量 UseAction
+  位置: 类 HandCannonItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:134: 错误: HandCannonItem中的onStoppedUsing(ItemStack,World,LivingEntity,int)无法覆盖Item中的onStoppedUsing(ItemStack,World,LivingEntity,int)
+    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+                ^
+  返回类型void与boolean不兼容
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:133: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:386: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+            living.damage(world.getDamageSources().explosion(null, living), 8.0F);
+                  ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:386: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+            living.damage(world.getDamageSources().explosion(null, living), 8.0F);
+                                                            ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/recipe/ModRecipes.java:13: 错误: 找不到符号
+            new SpecialRecipeSerializer<>(CombatManualRecipe::new);
+                ^
+  符号:   类 SpecialRecipeSerializer
+  位置: 类 ModRecipes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/recipe/CombatManualRecipe.java:49: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:173: 错误: 找不到符号
+        setMultiplier(player, EntityAttributes.GENERIC_MOVEMENT_SPEED, BAREFOOT_SPEED,
+                                              ^
+  符号:   变量 GENERIC_MOVEMENT_SPEED
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:180: 错误: 找不到符号
+                || player.hasVehicle() || player.isFallFlying()) return;
+                                                ^
+  符号:   方法 isFallFlying()
+  位置: 类型为ServerPlayerEntity的变量 player
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:204: 错误: 找不到符号
+        setMultiplier(player, EntityAttributes.GENERIC_MOVEMENT_SPEED, CAVE_SPEED,
+                                              ^
+  符号:   变量 GENERIC_MOVEMENT_SPEED
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:217: 错误: 找不到符号
+        setAdditive(player, EntityAttributes.PLAYER_BLOCK_INTERACTION_RANGE, BLOCK_REACH,
+                                            ^
+  符号:   变量 PLAYER_BLOCK_INTERACTION_RANGE
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:221: 错误: 找不到符号
+        setMultiplier(player, EntityAttributes.PLAYER_BLOCK_BREAK_SPEED, MINING_SPEED,
+                                              ^
+  符号:   变量 PLAYER_BLOCK_BREAK_SPEED
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:236: 错误: 找不到符号
+        setMultiplier(player, EntityAttributes.GENERIC_MOVEMENT_SPEED, CROUCH_SPEED,
+                                              ^
+  符号:   变量 GENERIC_MOVEMENT_SPEED
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:260: 错误: 找不到符号
+            double normal = hostile.getAttributeValue(EntityAttributes.GENERIC_FOLLOW_RANGE);
+                                                                      ^
+  符号:   变量 GENERIC_FOLLOW_RANGE
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LivingEntityProjectileArmorMixin.java:99: 错误: 找不到符号
+                EntityAttributes.GENERIC_ARMOR
+                                ^
+  符号:   变量 GENERIC_ARMOR
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LivingEntityProjectileArmorMixin.java:103: 错误: 找不到符号
+                EntityAttributes.GENERIC_ARMOR_TOUGHNESS
+                                ^
+  符号:   变量 GENERIC_ARMOR_TOUGHNESS
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LivingEntityProjectileArmorMixin.java:215: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+            damaged = target.damage(customSource, resolvedDamage);
+                            ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/ItemStackPotionCoatingMixin.java:19: 错误: 找不到符号
+            cir.setReturnValue(UseAction.BOW);
+                               ^
+  符号:   变量 UseAction
+  位置: 类 ItemStackPotionCoatingMixin
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/WitherBossHandler.java:215: 错误: 无法将类 ServerPlayerEntity中的方法 damage应用到给定类型;
+            player.damage(world.getDamageSources().mobAttack(wither), 18.0F);
+                  ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/WitherBossHandler.java:215: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+            player.damage(world.getDamageSources().mobAttack(wither), 18.0F);
+                                                            ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/EnderDragonBossHandler.java:59: 错误: 不兼容的类型: Vector3f无法转换为int
+            new DustParticleEffect(new org.joml.Vector3f(184.0F / 255.0F, 44.0F / 255.0F, 1.0F), 1.6F);
+                                   ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/EnderDragonBossHandler.java:203: 错误: 无法将类 EnderDragonEntity中的方法 damagePart应用到给定类型;
+        dragon.damagePart(
+              ^
+  需要: ServerWorld,EnderDragonPart,DamageSource,float
+  找到:    EnderDragonPart,DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/EnderDragonBossHandler.java:204: 错误: 不兼容的类型: EnderDragonPart无法转换为ServerWorld
+                dragon.head,
+                      ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/BandageItem.java:25: 错误: 找不到符号
+            return new TypedActionResult<>(ActionResult.PASS, user.getStackInHand(hand));
+                       ^
+  符号:   类 TypedActionResult
+  位置: 类 BandageItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/BandageItem.java:39: 错误: 找不到符号
+        return new TypedActionResult<>(ActionResult.SUCCESS, user.getStackInHand(hand));
+                   ^
+  符号:   类 TypedActionResult
+  位置: 类 BandageItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/ModItems.java:208: 错误: 找不到符号
+                                                EntityAttributes.GENERIC_ATTACK_SPEED,
+                                                                ^
+  符号:   变量 GENERIC_ATTACK_SPEED
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/ModItems.java:199: 错误: 找不到符号
+                                                EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                                                                ^
+  符号:   变量 GENERIC_ATTACK_DAMAGE
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/ModItems.java:254: 错误: 找不到符号
+                                                EntityAttributes.GENERIC_ATTACK_SPEED,
+                                                                ^
+  符号:   变量 GENERIC_ATTACK_SPEED
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/ModItems.java:245: 错误: 找不到符号
+                                                EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                                                                ^
+  符号:   变量 GENERIC_ATTACK_DAMAGE
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/SkillBookItem.java:59: 错误: 找不到符号
+        return new TypedActionResult<>(ActionResult.SUCCESS, stack);
+                   ^
+  符号:   类 TypedActionResult
+  位置: 类 SkillBookItem
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/ZombieLeaderUtil.java:44: 错误: 找不到符号
+                zombie.getAttributeInstance(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS);
+                                                            ^
+  符号:   变量 ZOMBIE_SPAWN_REINFORCEMENTS
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/HumanoidCombatAiTicker.java:123: 错误: 找不到符号
+        var scaleAttribute = mob.getAttributeInstance(EntityAttributes.GENERIC_SCALE);
+                                                                      ^
+  符号:   变量 GENERIC_SCALE
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/ConfiguredMobAttackTicker.java:88: 错误: 找不到符号
+                float damage = (float) Math.max(1.0, mob.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE));
+                                                                                           ^
+  符号:   变量 GENERIC_ATTACK_DAMAGE
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/ConfiguredMobAttackTicker.java:89: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+                target.damage(mob.getDamageSources().mobAttack(mob), damage);
+                      ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/ConfiguredMobAttackTicker.java:89: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+                target.damage(mob.getDamageSources().mobAttack(mob), damage);
+                                                              ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/MobScaleRegistry.java:14: 错误: 找不到符号
+        Registries.ENTITY_TYPE.getOrEmpty(id).ifPresent(type -> SCALES.put(type, Math.max(0.1, scale)));
+                              ^
+  符号:   方法 getOrEmpty(Identifier)
+  位置: 类型为DefaultedRegistry<EntityType<?>>的变量 ENTITY_TYPE
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:268: 错误: 找不到符号
+        if (attribute.equals(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE)) {
+                                             ^
+  符号:   变量 PLAYER_ENTITY_INTERACTION_RANGE
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:707: 错误: 找不到符号
+            return armor.getSlotType();
+                        ^
+  符号:   方法 getSlotType()
+  位置: 类型为ArmorItem的变量 armor
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:745: 错误: 找不到符号
+                    if (attribute.equals(EntityAttributes.GENERIC_ARMOR)) {
+                                                         ^
+  符号:   变量 GENERIC_ARMOR
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:751: 错误: 找不到符号
+            return armor.getProtection();
+                        ^
+  符号:   方法 getProtection()
+  位置: 类型为ArmorItem的变量 armor
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/potion/PotionCoatingHandler.java:136: 错误: 对于PotionContentsComponent(Optional<Object>,Optional<Integer>,List<Object>), 找不到合适的构造器
+        stack.set(DataComponentTypes.POTION_CONTENTS, new PotionContentsComponent(
+                                                      ^
+    构造器 PotionContentsComponent.PotionContentsComponent(RegistryEntry<Potion>)不适用
+      (实际参数列表和形式参数列表长度不同)
+    构造器 PotionContentsComponent.PotionContentsComponent(Optional<RegistryEntry<Potion>>,Optional<Integer>,List<StatusEffectInstance>,Optional<String>)不适用
+      (实际参数列表和形式参数列表长度不同)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/potion/PotionCoatingHandler.java:232: 错误: 对于PotionContentsComponent(Optional<Object>,Optional<Integer>,List<Object>), 找不到合适的构造器
+            return new PotionContentsComponent(
+                   ^
+    构造器 PotionContentsComponent.PotionContentsComponent(RegistryEntry<Potion>)不适用
+      (实际参数列表和形式参数列表长度不同)
+    构造器 PotionContentsComponent.PotionContentsComponent(Optional<RegistryEntry<Potion>>,Optional<Integer>,List<StatusEffectInstance>,Optional<String>)不适用
+      (实际参数列表和形式参数列表长度不同)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1089: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+            damaged = target.damage(damageSource, finalDamage);
+                            ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1153: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+            damaged = target.damage(createDamageSource(world, attacker), damage);
+                            ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1153: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+            damaged = target.damage(createDamageSource(world, attacker), damage);
+                                                      ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1184: 错误: 找不到符号
+        var attackDamage = attacker.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+                                                                         ^
+  符号:   变量 GENERIC_ATTACK_DAMAGE
+  位置: 类 EntityAttributes
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1341: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+            damaged = target.damage(damageSource, finalDamage);
+                            ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2087: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+            damaged = appliedDamage <= 0.0F || target.damage(createDamageSource(world, attacker),
+                                                     ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2087: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+            damaged = appliedDamage <= 0.0F || target.damage(createDamageSource(world, attacker),
+                                                                               ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2241: 错误: 无法将类 LivingEntity中的方法 kill应用到给定类型;
+            target.kill();
+                  ^
+  需要: ServerWorld
+  找到:    没有参数
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2250: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+        target.damage(
+              ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2251: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+                createDamageSource(world, attacker),
+                                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:4009: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+            return target.damage(vanillaMeleeDamageSource(world, attacker), damage);
+                         ^
+  需要: ServerWorld,DamageSource,float
+  找到:    DamageSource,float
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:4009: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+            return target.damage(vanillaMeleeDamageSource(world, attacker), damage);
+                                                         ^
+注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+85 个错误
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/InjuryTicker.java:109: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+                              living.damage(
+                                    ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/entity/HandCannonBulletEntity.java:123: 错误: 无法将类 Entity中的方法 damage应用到给定类型;
+                      target.damage(source,
+                            ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:386: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+              living.damage(world.getDamageSources().explosion(null, living), 8.0F);
+                    ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LivingEntityProjectileArmorMixin.java:215: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+              damaged = target.damage(customSource, resolvedDamage);
+                              ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/WitherBossHandler.java:215: 错误: 无法将类 ServerPlayerEntity中的方法 damage应用到给定类型;
+              player.damage(world.getDamageSources().mobAttack(wither), 18.0F);
+                    ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/EnderDragonBossHandler.java:203: 错误: 无法将类 EnderDragonEntity中的方法 damagePart应用到给定类型;
+          dragon.damagePart(
+                ^
+    需要: ServerWorld,EnderDragonPart,DamageSource,float
+    找到:    EnderDragonPart,DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/ConfiguredMobAttackTicker.java:89: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+                  target.damage(mob.getDamageSources().mobAttack(mob), damage);
+                        ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1089: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+              damaged = target.damage(damageSource, finalDamage);
+                              ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1153: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+              damaged = target.damage(createDamageSource(world, attacker), damage);
+                              ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1341: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+              damaged = target.damage(damageSource, finalDamage);
+                              ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2087: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+              damaged = appliedDamage <= 0.0F || target.damage(createDamageSource(world, attacker),
+                                                       ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2241: 错误: 无法将类 LivingEntity中的方法 kill应用到给定类型;
+              target.kill();
+                    ^
+    需要: ServerWorld
+    找到:    没有参数
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2250: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+          target.damage(
+                ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:4009: 错误: 无法将类 LivingEntity中的方法 damage应用到给定类型;
+              return target.damage(vanillaMeleeDamageSource(world, attacker), damage);
+                           ^
+    需要: ServerWorld,DamageSource,float
+    找到:    DamageSource,float
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/potion/PotionCoatingHandler.java:136: 错误: 对于PotionContentsComponent(Optional<Object>,Optional<Integer>,List<Object>), 找不到合适的构造器
+          stack.set(DataComponentTypes.POTION_CONTENTS, new PotionContentsComponent(
+                                                        ^
+      构造器 PotionContentsComponent.PotionContentsComponent(RegistryEntry<Potion>)不适用
+        (实际参数列表和形式参数列表长度不同)
+      构造器 PotionContentsComponent.PotionContentsComponent(Optional<RegistryEntry<Potion>>,Optional<Integer>,List<StatusEffectInstance>,Optional<String>)不适用
+        (实际参数列表和形式参数列表长度不同)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/potion/PotionCoatingHandler.java:232: 错误: 对于PotionContentsComponent(Optional<Object>,Optional<Integer>,List<Object>), 找不到合适的构造器
+              return new PotionContentsComponent(
+                     ^
+      构造器 PotionContentsComponent.PotionContentsComponent(RegistryEntry<Potion>)不适用
+        (实际参数列表和形式参数列表长度不同)
+      构造器 PotionContentsComponent.PotionContentsComponent(Optional<RegistryEntry<Potion>>,Optional<Integer>,List<StatusEffectInstance>,Optional<String>)不适用
+        (实际参数列表和形式参数列表长度不同)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:134: 错误: HandCannonItem中的onStoppedUsing(ItemStack,World,LivingEntity,int)无法覆盖Item中的onStoppedUsing(ItemStack,World,LivingEntity,int)
+      public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+                  ^
+    返回类型void与boolean不兼容
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/InjuryTicker.java:110: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+                                      world.getDamageSources().create(BLEEDING_DAMAGE),
+                                                                     ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/entity/ModEntities.java:24: 错误: 不兼容的类型: String无法转换为RegistryKey<EntityType<?>>
+                      .build(HAND_CANNON_BULLET_ID.toString())
+                                                           ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/entity/HandCannonBulletEntity.java:123: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+                      target.damage(source,
+                                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:386: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+              living.damage(world.getDamageSources().explosion(null, living), 8.0F);
+                                                              ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/WitherBossHandler.java:215: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+              player.damage(world.getDamageSources().mobAttack(wither), 18.0F);
+                                                              ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/EnderDragonBossHandler.java:59: 错误: 不兼容的类型: Vector3f无法转换为int
+              new DustParticleEffect(new org.joml.Vector3f(184.0F / 255.0F, 44.0F / 255.0F, 1.0F), 1.6F);
+                                     ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/boss/EnderDragonBossHandler.java:204: 错误: 不兼容的类型: EnderDragonPart无法转换为ServerWorld
+                  dragon.head,
+                        ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/ConfiguredMobAttackTicker.java:89: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+                  target.damage(mob.getDamageSources().mobAttack(mob), damage);
+                                                                ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1153: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+              damaged = target.damage(createDamageSource(world, attacker), damage);
+                                                        ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2087: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+              damaged = appliedDamage <= 0.0F || target.damage(createDamageSource(world, attacker),
+                                                                                 ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:2251: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+                  createDamageSource(world, attacker),
+                                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:4009: 错误: 不兼容的类型: DamageSource无法转换为ServerWorld
+              return target.damage(vanillaMeleeDamageSource(world, attacker), damage);
+                                                           ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:12: 错误: 找不到符号
+  import net.minecraft.util.UseAction;
+                           ^
+    符号:   类 UseAction
+    位置: 程序包 net.minecraft.util
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:19: 错误: 找不到符号
+  import net.minecraft.util.TypedActionResult;
+                           ^
+    符号:   类 TypedActionResult
+    位置: 程序包 net.minecraft.util
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:60: 错误: 找不到符号
+      public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+             ^
+    符号:   类 TypedActionResult
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:93: 错误: 找不到符号
+      public UseAction getUseAction(ItemStack stack) {
+             ^
+    符号:   类 UseAction
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/recipe/ModRecipes.java:6: 错误: 找不到符号
+  import net.minecraft.recipe.SpecialRecipeSerializer;
+                             ^
+    符号:   类 SpecialRecipeSerializer
+    位置: 程序包 net.minecraft.recipe
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LegacyMilkBucketInjuryMixin.java:6: 错误: 找不到符号
+  import net.minecraft.item.MilkBucketItem;
+                           ^
+    符号:   类 MilkBucketItem
+    位置: 程序包 net.minecraft.item
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/ItemStackPotionCoatingMixin.java:6: 错误: 找不到符号
+  import net.minecraft.util.UseAction;
+                           ^
+    符号:   类 UseAction
+    位置: 程序包 net.minecraft.util
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/ItemStackPotionCoatingMixin.java:16: 错误: 找不到符号
+      private void kingdomcomecombat$getPotionCoatingUseAction(CallbackInfoReturnable<UseAction> cir) {
+                                                                                      ^
+    符号:   类 UseAction
+    位置: 类 ItemStackPotionCoatingMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/BandageItem.java:12: 错误: 找不到符号
+  import net.minecraft.util.TypedActionResult;
+                           ^
+    符号:   类 TypedActionResult
+    位置: 程序包 net.minecraft.util
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/BandageItem.java:23: 错误: 找不到符号
+      public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+             ^
+    符号:   类 TypedActionResult
+    位置: 类 BandageItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/SkillBookItem.java:23: 错误: 找不到符号
+  import net.minecraft.util.TypedActionResult;
+                           ^
+    符号:   类 TypedActionResult
+    位置: 程序包 net.minecraft.util
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/SkillBookItem.java:53: 错误: 找不到符号
+      public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+             ^
+    符号:   类 TypedActionResult
+    位置: 类 SkillBookItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:62: 错误: 找不到符号
+                  || pose == EntityPose.FALL_FLYING
+                                       ^
+    符号:   变量 FALL_FLYING
+    位置: 类 EntityPose
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:68: 错误: 找不到符号
+                  || entity.getPose() == EntityPose.FALL_FLYING
+                                                   ^
+    符号:   变量 FALL_FLYING
+    位置: 类 EntityPose
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/combat/ServerCombatTicker.java:762: 错误: 找不到符号
+                  mob.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)
+                                                        ^
+    符号:   变量 GENERIC_MOVEMENT_SPEED
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/MobCombatAttributesRegistry.java:76: 错误: 找不到符号
+          EntityAttributeInstance maxHealth = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+                                                                                          ^
+    符号:   变量 GENERIC_MAX_HEALTH
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/ModStatusEffects.java:213: 错误: 找不到符号
+          EntityAttributeInstance maxHealth = entity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+                                                                                          ^
+    符号:   变量 GENERIC_MAX_HEALTH
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/ModStatusEffects.java:226: 错误: 找不到符号
+          EntityAttributeInstance movementSpeed = entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
+                                                                                              ^
+    符号:   变量 GENERIC_MOVEMENT_SPEED
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/injury/ModStatusEffects.java:239: 错误: 找不到符号
+          EntityAttributeInstance jumpStrength = entity.getAttributeInstance(EntityAttributes.GENERIC_JUMP_STRENGTH);
+                                                                                             ^
+    符号:   变量 GENERIC_JUMP_STRENGTH
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:63: 错误: 找不到符号
+              return new TypedActionResult<>(ActionResult.PASS, stack);
+                         ^
+    符号:   类 TypedActionResult
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:66: 错误: 找不到符号
+              return new TypedActionResult<>(ActionResult.CONSUME, stack);
+                         ^
+    符号:   类 TypedActionResult
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:69: 错误: 找不到符号
+              return new TypedActionResult<>(ActionResult.CONSUME, stack);
+                         ^
+    符号:   类 TypedActionResult
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:75: 错误: 找不到符号
+              return new TypedActionResult<>(ActionResult.CONSUME, stack);
+                         ^
+    符号:   类 TypedActionResult
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:81: 错误: 找不到符号
+              return new TypedActionResult<>(ActionResult.FAIL, stack);
+                         ^
+    符号:   类 TypedActionResult
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:84: 错误: 找不到符号
+          return new TypedActionResult<>(ActionResult.CONSUME, stack);
+                     ^
+    符号:   类 TypedActionResult
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:94: 错误: 找不到符号
+          return UseAction.BOW;
+                 ^
+    符号:   变量 UseAction
+    位置: 类 HandCannonItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/recipe/ModRecipes.java:13: 错误: 找不到符号
+              new SpecialRecipeSerializer<>(CombatManualRecipe::new);
+                  ^
+    符号:   类 SpecialRecipeSerializer
+    位置: 类 ModRecipes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:173: 错误: 找不到符号
+          setMultiplier(player, EntityAttributes.GENERIC_MOVEMENT_SPEED, BAREFOOT_SPEED,
+                                                ^
+    符号:   变量 GENERIC_MOVEMENT_SPEED
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:204: 错误: 找不到符号
+          setMultiplier(player, EntityAttributes.GENERIC_MOVEMENT_SPEED, CAVE_SPEED,
+                                                ^
+    符号:   变量 GENERIC_MOVEMENT_SPEED
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:217: 错误: 找不到符号
+          setAdditive(player, EntityAttributes.PLAYER_BLOCK_INTERACTION_RANGE, BLOCK_REACH,
+                                              ^
+    符号:   变量 PLAYER_BLOCK_INTERACTION_RANGE
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:221: 错误: 找不到符号
+          setMultiplier(player, EntityAttributes.PLAYER_BLOCK_BREAK_SPEED, MINING_SPEED,
+                                                ^
+    符号:   变量 PLAYER_BLOCK_BREAK_SPEED
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:236: 错误: 找不到符号
+          setMultiplier(player, EntityAttributes.GENERIC_MOVEMENT_SPEED, CROUCH_SPEED,
+                                                ^
+    符号:   变量 GENERIC_MOVEMENT_SPEED
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:260: 错误: 找不到符号
+              double normal = hostile.getAttributeValue(EntityAttributes.GENERIC_FOLLOW_RANGE);
+                                                                        ^
+    符号:   变量 GENERIC_FOLLOW_RANGE
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LivingEntityProjectileArmorMixin.java:99: 错误: 找不到符号
+                  EntityAttributes.GENERIC_ARMOR
+                                  ^
+    符号:   变量 GENERIC_ARMOR
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LivingEntityProjectileArmorMixin.java:103: 错误: 找不到符号
+                  EntityAttributes.GENERIC_ARMOR_TOUGHNESS
+                                  ^
+    符号:   变量 GENERIC_ARMOR_TOUGHNESS
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/ItemStackPotionCoatingMixin.java:19: 错误: 找不到符号
+              cir.setReturnValue(UseAction.BOW);
+                                 ^
+    符号:   变量 UseAction
+    位置: 类 ItemStackPotionCoatingMixin
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/BandageItem.java:25: 错误: 找不到符号
+              return new TypedActionResult<>(ActionResult.PASS, user.getStackInHand(hand));
+                         ^
+    符号:   类 TypedActionResult
+    位置: 类 BandageItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/BandageItem.java:39: 错误: 找不到符号
+          return new TypedActionResult<>(ActionResult.SUCCESS, user.getStackInHand(hand));
+                     ^
+    符号:   类 TypedActionResult
+    位置: 类 BandageItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/ModItems.java:208: 错误: 找不到符号
+                                                  EntityAttributes.GENERIC_ATTACK_SPEED,
+                                                                  ^
+    符号:   变量 GENERIC_ATTACK_SPEED
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/ModItems.java:199: 错误: 找不到符号
+                                                  EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                                                                  ^
+    符号:   变量 GENERIC_ATTACK_DAMAGE
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/ModItems.java:254: 错误: 找不到符号
+                                                  EntityAttributes.GENERIC_ATTACK_SPEED,
+                                                                  ^
+    符号:   变量 GENERIC_ATTACK_SPEED
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/ModItems.java:245: 错误: 找不到符号
+                                                  EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                                                                  ^
+    符号:   变量 GENERIC_ATTACK_DAMAGE
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/SkillBookItem.java:59: 错误: 找不到符号
+          return new TypedActionResult<>(ActionResult.SUCCESS, stack);
+                     ^
+    符号:   类 TypedActionResult
+    位置: 类 SkillBookItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/ZombieLeaderUtil.java:44: 错误: 找不到符号
+                  zombie.getAttributeInstance(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS);
+                                                              ^
+    符号:   变量 ZOMBIE_SPAWN_REINFORCEMENTS
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/HumanoidCombatAiTicker.java:123: 错误: 找不到符号
+          var scaleAttribute = mob.getAttributeInstance(EntityAttributes.GENERIC_SCALE);
+                                                                        ^
+    符号:   变量 GENERIC_SCALE
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/ai/ConfiguredMobAttackTicker.java:88: 错误: 找不到符号
+                  float damage = (float) Math.max(1.0, mob.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE));
+                                                                                             ^
+    符号:   变量 GENERIC_ATTACK_DAMAGE
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:268: 错误: 找不到符号
+          if (attribute.equals(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE)) {
+                                               ^
+    符号:   变量 PLAYER_ENTITY_INTERACTION_RANGE
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:745: 错误: 找不到符号
+                      if (attribute.equals(EntityAttributes.GENERIC_ARMOR)) {
+                                                           ^
+    符号:   变量 GENERIC_ARMOR
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/collision/ServerHitDetectionSystem.java:1184: 错误: 找不到符号
+          var attackDamage = attacker.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+                                                                           ^
+    符号:   变量 GENERIC_ATTACK_DAMAGE
+    位置: 类 EntityAttributes
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/item/HandCannonItem.java:133: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/recipe/CombatManualRecipe.java:49: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/mixin/LegacyMilkBucketInjuryMixin.java:14: 错误: 找不到符号
+  @Mixin(MilkBucketItem.class)
+         ^
+    符号: 类 MilkBucketItem
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/hardship/HardshipEffects.java:180: 错误: 找不到符号
+                  || player.hasVehicle() || player.isFallFlying()) return;
+                                                  ^
+    符号:   方法 isFallFlying()
+    位置: 类型为ServerPlayerEntity的变量 player
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/MobScaleRegistry.java:14: 错误: 找不到符号
+          Registries.ENTITY_TYPE.getOrEmpty(id).ifPresent(type -> SCALES.put(type, Math.max(0.1, scale)));
+                                ^
+    符号:   方法 getOrEmpty(Identifier)
+    位置: 类型为DefaultedRegistry<EntityType<?>>的变量 ENTITY_TYPE
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:707: 错误: 找不到符号
+              return armor.getSlotType();
+                          ^
+    符号:   方法 getSlotType()
+    位置: 类型为ArmorItem的变量 armor
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:751: 错误: 找不到符号
+              return armor.getProtection();
+                          ^
+    符号:   方法 getProtection()
+    位置: 类型为ArmorItem的变量 armor
+  85 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 44s
+2 actionable tasks: 2 executed

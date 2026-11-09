@@ -23,6 +23,7 @@ import com.kingdomcomecombat.combat.ServerCombatState;
 import com.kingdomcomecombat.combat.ServerExecutionState;
 import com.kingdomcomecombat.combat.ExecutionMoveConfigs;
 import com.kingdomcomecombat.compat.FirstAidCompat;
+import com.kingdomcomecombat.compat.StoneyCoreCombatCompat;
 import com.kingdomcomecombat.ai.HumanoidCombatAiProfile;
 import com.kingdomcomecombat.equipment.ArmorCombatAttributes;
 import com.kingdomcomecombat.equipment.BloodiedEquipment;
@@ -81,6 +82,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.EntityTypeTags;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -457,6 +459,12 @@ public class ServerHitDetectionSystem {
             DamageSource source,
             float amount
     ) {
+        // Environmental fire (including lava and being on fire) is never a
+        // directional attack and must not be consumed by a custom classifier.
+        if (source.isIn(DamageTypeTags.IS_FIRE)) {
+            return false;
+        }
+
         Optional<KingdomComeCombatApi.ExternalAttack> classified =
                 KingdomComeCombatApi.classifyExternalAttack(world, target, source, amount);
         if (classified.isEmpty()) {
@@ -481,6 +489,7 @@ public class ServerHitDetectionSystem {
         if (!blockResult.blocked()) {
             return false;
         }
+        startMobBlockCooldown(target);
         ServerBlockState.clear(target.getUuid());
         PassiveSkillPerks.recordBlockedAttack(target);
 
@@ -541,6 +550,7 @@ public class ServerHitDetectionSystem {
         if (!heavyHammer && externalAttack.blockable()) {
             BlockResult blockResult = tryBlockExternal(world, attacker, target, blockDirection, amount);
             if (blockResult.blocked()) {
+                startMobBlockCooldown(target);
                 ServerBlockState.clear(target.getUuid());
                 PassiveSkillPerks.recordBlockedAttack(target);
                 syncBlockAnimation(world, target, attacker, blockResult);
@@ -577,6 +587,10 @@ public class ServerHitDetectionSystem {
             DamageSource source,
             float amount
     ) {
+        if (source.isIn(DamageTypeTags.IS_FIRE)) {
+            return false;
+        }
+
         Entity sourceAttacker = source.getAttacker();
         if (!(sourceAttacker instanceof LivingEntity attacker)
                 || attacker instanceof PlayerEntity
@@ -651,6 +665,7 @@ public class ServerHitDetectionSystem {
                     directionAgnosticPerfect
             );
             if (blockResult.blocked()) {
+                startMobBlockCooldown(target);
                 ServerBlockState.clear(target.getUuid());
                 MobCombatAttributes attributes = configured.orElse(null);
                 if (attributes != null) {
@@ -767,6 +782,7 @@ public class ServerHitDetectionSystem {
 
         CombatDirection direction = inferProjectileBlockDirection(projectile, target);
         BlockResult result = BlockResult.unperfect(direction);
+        startMobBlockCooldown(target);
         ServerBlockState.clear(target.getUuid());
         Entity owner = projectile.getOwner();
         if (owner instanceof LivingEntity attacker) {
@@ -903,7 +919,7 @@ public class ServerHitDetectionSystem {
                     1.0F,
                     (float) attackDamageOrFallback(attacker, 1.0F)
             );
-            if (damageConfiguredMobAttack(world, attacker, target, configuredAmount, heightDetailedPart)) {
+            if (damageConfiguredMobAttack(world, attacker, target, configuredAmount, heightDetailedPart, true)) {
                 attack.connectedOrNormalBlocked = true;
                 return;
             }
@@ -977,6 +993,17 @@ public class ServerHitDetectionSystem {
             float vanillaAmount,
             String forcedDetailedPart
     ) {
+        return damageConfiguredMobAttack(world, attacker, target, vanillaAmount, forcedDetailedPart, false);
+    }
+
+    private static boolean damageConfiguredMobAttack(
+            ServerWorld world,
+            LivingEntity attacker,
+            LivingEntity target,
+            float vanillaAmount,
+            String forcedDetailedPart,
+            boolean ignoreVanillaHurtIFrames
+    ) {
         Optional<MobCombatAttributes> configured = MobCombatAttributesRegistry.get(attacker);
         if (configured.isEmpty() || vanillaAmount <= 0.0F) {
             return false;
@@ -997,8 +1024,14 @@ public class ServerHitDetectionSystem {
                     Math.max(modifiers.strike(), modifiers.slash()))
                     * ("face".equals(detailedPart) || "crown".equals(detailedPart)
                     || "side_head".equals(detailedPart) ? 1.5 : 1.0));
-            boolean damaged = target.damage(world, vanillaMeleeDamageSource(world, attacker), damage);
-            if (damaged) interruptAttackUnconditionally(world, target);
+            Vec3d velocityBeforeDamage = target.getVelocity();
+            boolean damaged = applyLightweightVanillaDamage(
+                    world, attacker, target, damage, ignoreVanillaHurtIFrames);
+            if (damaged) {
+                restoreVelocityBeforeVanillaDamage(target, velocityBeforeDamage);
+                applyConfiguredMobKnockback(attacker, target, attributes, true);
+                interruptAttackUnconditionally(world, target);
+            }
             return true;
         }
 
@@ -1043,8 +1076,9 @@ public class ServerHitDetectionSystem {
             return true;
         }
 
-        target.timeUntilRegen = 0;
-        target.hurtTime = 0;
+        if (ignoreVanillaHurtIFrames) {
+            clearVanillaHurtIFrames(target);
+        }
         DamageSource damageSource = createDamageSource(world, attacker);
         int replacementDepth = VANILLA_MELEE_REPLACEMENT_DEPTH.get();
         VANILLA_MELEE_REPLACEMENT_DEPTH.set(replacementDepth + 1);
@@ -1112,8 +1146,6 @@ public class ServerHitDetectionSystem {
             return true;
         }
 
-        target.timeUntilRegen = 0;
-        target.hurtTime = 0;
         boolean damaged;
         try (FirstAidCompat.Scope ignored = FirstAidCompat.target(
                 target, fallbackPartForDetailedPart(detailedPart), detailedPart,
@@ -1299,8 +1331,6 @@ public class ServerHitDetectionSystem {
             return true;
         }
 
-        target.timeUntilRegen = 0;
-        target.hurtTime = 0;
         DamageSource damageSource = createDamageSource(world, attacker);
         int replacementDepth = VANILLA_MELEE_REPLACEMENT_DEPTH.get();
         VANILLA_MELEE_REPLACEMENT_DEPTH.set(replacementDepth + 1);
@@ -1369,6 +1399,7 @@ public class ServerHitDetectionSystem {
                 ? trySpearShieldBlock(attacker, livingTarget, direction, amount)
                 : tryBlockExternal(world, attacker, livingTarget, direction, amount);
         if (block.blocked()) {
+            startMobBlockCooldown(livingTarget);
             syncBlockAnimation(world, livingTarget, attacker, block);
             syncBlockImpact(world, attacker, livingTarget);
             playBlockSound(world, livingTarget, block);
@@ -1589,6 +1620,7 @@ public class ServerHitDetectionSystem {
                 && isAttackInFrontOfTarget(attacker, target)
                 && canMobUseHumanoidDefense(mob)
                 && HumanoidCombatAiTicker.tryStartMasterCounter(mob, attacker, defenseDirection)) {
+            startMobBlockCooldown(target);
             attack.hitTargets.add(target.getUuid());
             attack.perfectBlocked = true;
             return;
@@ -1604,6 +1636,7 @@ public class ServerHitDetectionSystem {
         BlockResult blockResult = tryBlock(world, attacker, target, attack);
         Vec3d particleHitboxMotion = comboWeaponHitboxMotion(attacker, attack).orElse(hitboxMotion);
         if (blockResult.blocked()) {
+            startMobBlockCooldown(target);
             ServerBlockState.clear(target.getUuid());
             PassiveSkillPerks.recordBlockedAttack(target);
             attack.hitTargets.add(target.getUuid());
@@ -1752,6 +1785,9 @@ public class ServerHitDetectionSystem {
         float baseDamage = (float) attackDamageOrFallback(attacker, 1.0F);
         if (!(attacker instanceof MobEntity && attacker.getMainHandStack().isEmpty())) {
             baseDamage = Math.max(0.0F, baseDamage - 1.0F);
+        }
+        if (baseDamage <= 0.000001F) {
+            baseDamage = (float) StoneyCoreCombatCompat.weaponBaseDamage(attacker.getMainHandStack());
         }
 
         float cooldown = attacker instanceof PlayerEntity player
@@ -1924,9 +1960,17 @@ public class ServerHitDetectionSystem {
             float lightweightDamage = (float) (calculateVanillaLikeAttackDamage(attacker)
                     * actionModifier * damageMultiplier
                     * (hitResult.part() == HumanoidHurtboxLibrary.Part.HEAD ? 1.5 : 1.0));
-            boolean damaged = target.damage(world, vanillaMeleeDamageSource(world, attacker), lightweightDamage);
+            Vec3d velocityBeforeDamage = target.getVelocity();
+            boolean damaged = applyLightweightVanillaDamage(
+                    world, attacker, target, lightweightDamage);
             if (damageWeapon) damageWeaponDurability(attacker, damaged);
-            if (damaged) interruptAttackUnconditionally(world, target);
+            if (damaged) {
+                restoreVelocityBeforeVanillaDamage(target, velocityBeforeDamage);
+                if (!cinematic) {
+                    applyConfiguredHorizontalKnockback(attacker, target, attack, true);
+                }
+                interruptAttackUnconditionally(world, target);
+            }
             return new DamageApplication(true, damaged ? lightweightDamage : 0.0F, 0.0);
         }
         CombatDamageBreakdown damageBreakdown =
@@ -2320,24 +2364,6 @@ public class ServerHitDetectionSystem {
     ) {
     }
 
-    private static String displayPartName(String detailedPart) {
-        return switch (detailedPart) {
-            case "face" -> "脸部";
-            case "neck" -> "颈部";
-            case "crown" -> "头顶";
-            case "side_head" -> "头侧";
-            case "shoulder" -> "肩部";
-            case "arm" -> "手臂";
-            case "hand" -> "手部";
-            case "chest" -> "胸部";
-            case "abdomen" -> "腹部";
-            case "thigh" -> "大腿";
-            case "knee" -> "膝部";
-            case "calf" -> "小腿";
-            case "foot" -> "脚部";
-            default -> detailedPart == null || detailedPart.isBlank() ? "未知" : detailedPart;
-        };
-    }
 
     private static String formatOneDecimal(double value) {
         return String.format(java.util.Locale.ROOT, "%.1f", value);
@@ -2751,16 +2777,12 @@ public class ServerHitDetectionSystem {
                     resolvedDefense.slash() * partProtection
             );
 
-            double candidateThrustDamage =
-                    raw.thrust() * Math.max(0.0, 1.0 - thrustReduction);
-            double candidateStrikeDamage =
-                    raw.strike() * Math.max(0.0, 1.0 - strikeReduction);
-            double candidateSlashDamage =
-                    raw.slash() * Math.max(0.0, 1.0 - slashReduction);
-
-            thrustDamage = Math.min(thrustDamage, candidateThrustDamage);
-            strikeDamage = Math.min(strikeDamage, candidateStrikeDamage);
-            slashDamage = Math.min(slashDamage, candidateSlashDamage);
+            // Every matching equipped layer now contributes. StoneyCore folds
+            // its under-armor attachments into this stack's armor attribute,
+            // while overlapping equipped slots are applied sequentially here.
+            thrustDamage *= Math.max(0.0, 1.0 - thrustReduction);
+            strikeDamage *= Math.max(0.0, 1.0 - strikeReduction);
+            slashDamage *= Math.max(0.0, 1.0 - slashReduction);
 
             double totalReduction = thrustReduction + strikeReduction + slashReduction;
             if (totalReduction > bestTotalReduction && stack.isDamageable()) {
@@ -2768,10 +2790,13 @@ public class ServerHitDetectionSystem {
                 durabilityTarget = stack;
             }
 
-            bestImpactMitigation = Math.max(
-                    bestImpactMitigation,
-                    Math.min(0.95, matchedProtection.impactMitigationPercent()
-                            + enchantmentImpactMitigation(stack))
+            double layerImpactMitigation = Math.min(
+                    0.95,
+                    matchedProtection.impactMitigationPercent() + enchantmentImpactMitigation(stack)
+            );
+            bestImpactMitigation = Math.min(
+                    0.95,
+                    1.0 - (1.0 - bestImpactMitigation) * (1.0 - layerImpactMitigation)
             );
         }
 
@@ -3955,6 +3980,49 @@ public class ServerHitDetectionSystem {
                 : world.getDamageSources().mobAttack(attacker);
     }
 
+    /** True only while KCC intentionally delegates one lightweight hit to vanilla damage math. */
+    public static boolean isVanillaMeleeReplacementActive() {
+        return VANILLA_MELEE_REPLACEMENT_DEPTH.get() > 0;
+    }
+
+    private static boolean applyLightweightVanillaDamage(
+            ServerWorld world,
+            LivingEntity attacker,
+            LivingEntity target,
+            float damage
+    ) {
+        return applyLightweightVanillaDamage(world, attacker, target, damage, false);
+    }
+
+    private static boolean applyLightweightVanillaDamage(
+            ServerWorld world,
+            LivingEntity attacker,
+            LivingEntity target,
+            float damage,
+            boolean ignoreVanillaHurtIFrames
+    ) {
+        if (ignoreVanillaHurtIFrames) {
+            clearVanillaHurtIFrames(target);
+        }
+        int replacementDepth = VANILLA_MELEE_REPLACEMENT_DEPTH.get();
+        VANILLA_MELEE_REPLACEMENT_DEPTH.set(replacementDepth + 1);
+        try {
+            return target.damage(world, vanillaMeleeDamageSource(world, attacker), damage);
+        } finally {
+            if (replacementDepth == 0) {
+                VANILLA_MELEE_REPLACEMENT_DEPTH.remove();
+            } else {
+                VANILLA_MELEE_REPLACEMENT_DEPTH.set(replacementDepth);
+            }
+        }
+    }
+
+    /** KCC animation-timed melee hits are the only attacks allowed to bypass hurt immunity. */
+    private static void clearVanillaHurtIFrames(LivingEntity target) {
+        target.timeUntilRegen = 0;
+        target.hurtTime = 0;
+    }
+
     public static void interruptAttackUnconditionally(ServerWorld world, LivingEntity target) {
         if (ServerCombatState.getAttack(target.getUuid()) == null || isExecutingPlayerAttack(target)) return;
         ServerCombatState.removeAttack(target.getUuid());
@@ -3981,6 +4049,12 @@ public class ServerHitDetectionSystem {
                 0.0
         );
 
+        target.velocityModified = true;
+    }
+
+    /** Replaces any damage-source knockback while preserving pre-hit movement and vertical velocity. */
+    private static void restoreVelocityBeforeVanillaDamage(LivingEntity target, Vec3d velocity) {
+        target.setVelocity(velocity);
         target.velocityModified = true;
     }
 
@@ -5618,6 +5692,15 @@ public class ServerHitDetectionSystem {
         HumanoidCombatAiTicker.onUnperfectBlock(target);
         PassiveSkillPerks.applyPerfectBlockChancePenalty(attacker, target);
         return BlockResult.unperfect(expectedDirection);
+    }
+
+    private static void startMobBlockCooldown(LivingEntity target) {
+        if (target instanceof MobEntity) {
+            ServerCombatControlState.disableBlock(
+                    target.getUuid(),
+                    CombatControlConfig.MOB_BLOCK_COOLDOWN_TICKS
+            );
+        }
     }
 
     private static BlockResult tryBlockExternal(

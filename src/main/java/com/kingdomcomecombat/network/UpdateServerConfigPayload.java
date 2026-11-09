@@ -29,6 +29,7 @@ public record UpdateServerConfigPayload(
         boolean clientProjectileHurtboxEnabled,
         boolean reachAttributeHitboxScalingEnabled,
         boolean blockingMovementSlowdownEnabled,
+        boolean customUnarmedAttacksDisabled,
         boolean mountedKccCombatEnabled,
         double reachAttributeHitboxScalePerBlock,
         List<String> vanillaAttackWeaponIds
@@ -59,6 +60,7 @@ public record UpdateServerConfigPayload(
                 buf.writeBoolean(value.clientProjectileHurtboxEnabled());
                 buf.writeBoolean(value.reachAttributeHitboxScalingEnabled());
                 buf.writeBoolean(value.blockingMovementSlowdownEnabled());
+                buf.writeBoolean(value.customUnarmedAttacksDisabled());
                 buf.writeBoolean(value.mountedKccCombatEnabled());
                 buf.writeDouble(value.reachAttributeHitboxScalePerBlock());
                 writeStringList(buf, value.vanillaAttackWeaponIds());
@@ -77,6 +79,7 @@ public record UpdateServerConfigPayload(
                     buf.readVarInt(),
                     buf.readDouble(),
                     buf.readDouble(),
+                    buf.readBoolean(),
                     buf.readBoolean(),
                     buf.readBoolean(),
                     buf.readBoolean(),

@@ -40,6 +40,10 @@ public class ClientPlayerInteractionManagerMixin {
             BlockHitResult hitResult,
             CallbackInfoReturnable<ActionResult> cir
     ) {
+        if (LockOnState.locked) {
+            cir.setReturnValue(ActionResult.FAIL);
+            return;
+        }
         MinecraftClient client = MinecraftClient.getInstance();
         if (!CombatClientConfig.cauldronFaceWashEnabled()
                 || hand != Hand.MAIN_HAND
@@ -51,6 +55,28 @@ public class ClientPlayerInteractionManagerMixin {
         ClientPlayNetworking.send(new WashFacePayload(hitResult.getBlockPos()));
         CauldronWashScreenEffect.start();
         cir.setReturnValue(ActionResult.SUCCESS);
+    }
+
+    @Inject(method = "attackBlock", at = @At("HEAD"), cancellable = true)
+    private void kingdomcomecombat$cancelLockedBlockAttack(
+            net.minecraft.util.math.BlockPos pos,
+            net.minecraft.util.math.Direction direction,
+            CallbackInfoReturnable<Boolean> cir
+    ) {
+        if (LockOnState.locked) {
+            cir.setReturnValue(false);
+        }
+    }
+
+    @Inject(method = "updateBlockBreakingProgress", at = @At("HEAD"), cancellable = true)
+    private void kingdomcomecombat$cancelLockedBlockBreaking(
+            net.minecraft.util.math.BlockPos pos,
+            net.minecraft.util.math.Direction direction,
+            CallbackInfoReturnable<Boolean> cir
+    ) {
+        if (LockOnState.locked) {
+            cir.setReturnValue(false);
+        }
     }
 
     @Inject(method = "attackEntity", at = @At("HEAD"), cancellable = true)

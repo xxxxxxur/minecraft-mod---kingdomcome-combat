@@ -52,6 +52,9 @@ public final class KccConfigScreen {
                 CombatClientConfig::setBladeTrailsEnabled);
         addBoolean(category, entries, "armor_physics_compat", CombatClientConfig.armorPhysicsCompat(),
                 CombatClientConfig::setArmorPhysicsCompat);
+        addBoolean(category, entries, "mob_renderer_compatibility_mode",
+                CombatClientConfig.mobRendererCompatibilityMode(),
+                CombatClientConfig::setMobRendererCompatibilityMode);
         addBoolean(category, entries, "screen_effects", CombatClientConfig.screenEffectsEnabled(),
                 CombatClientConfig::setScreenEffectsEnabled);
         addBoolean(category, entries, "hurt_camera_movement", CombatClientConfig.hurtCameraMovementEnabled(),
@@ -539,6 +542,17 @@ public final class KccConfigScreen {
                 })
                 .setTooltip(tr("server.mounted_kcc_combat.tooltip"))
                 .build());
+        category.addEntry(entries.startBooleanToggle(
+                        tr("server.disable_custom_unarmed_attacks"),
+                        ClientServerConfigState.customUnarmedAttacksDisabled())
+                .setRequirement(ClientServerConfigState::canEdit)
+                .setDefaultValue(false)
+                .setSaveConsumer(disabled -> {
+                    ClientServerConfigState.setCustomUnarmedAttacksDisabled(disabled);
+                    sendServerConfigUpdate();
+                })
+                .setTooltip(tr("server.disable_custom_unarmed_attacks.tooltip"))
+                .build());
         category.addEntry(entries.startIntSlider(
                         tr("server.collision_cache_radius"),
                         (int) Math.round(ClientServerConfigState.collisionCacheRadius()),
@@ -676,6 +690,7 @@ public final class KccConfigScreen {
                 ClientServerConfigState.clientProjectileHurtboxEnabled(),
                 ClientServerConfigState.reachAttributeHitboxScalingEnabled(),
                 ClientServerConfigState.blockingMovementSlowdownEnabled(),
+                ClientServerConfigState.customUnarmedAttacksDisabled(),
                 ClientServerConfigState.mountedKccCombatEnabled(),
                 ClientServerConfigState.reachAttributeHitboxScalePerBlock(),
                 ClientServerConfigState.vanillaAttackWeaponIds()

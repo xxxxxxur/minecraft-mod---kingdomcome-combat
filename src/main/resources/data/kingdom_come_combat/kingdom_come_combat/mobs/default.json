@@ -186,6 +186,12 @@
       "stamina": 180.0,
       "stamina_regen_per_tick": 0.16,
       "melee_attack": {
+        "attack_type": "lunge",
+        "windup_ticks": 12,
+        "cooldown_ticks": 28,
+        "active_ticks": 10,
+        "start_distance": 5.5,
+        "movement_speed": 0.65,
         "impact": 14.0,
         "knockback": 0.45,
         "vertical_knockback": 0.2,

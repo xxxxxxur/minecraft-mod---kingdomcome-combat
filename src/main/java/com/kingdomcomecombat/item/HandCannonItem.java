@@ -75,7 +75,7 @@ public class HandCannonItem extends Item {
         }
         if (!isPowderLoaded(stack) && ammoType(user.getOffHandStack()) == null) {
             if (!world.isClient) {
-                user.sendMessage(net.minecraft.text.Text.literal("副手需要火枪弹药"), true);
+                user.sendMessage(net.minecraft.text.Text.translatable("message.kingdom_come_combat.ammo_required"), true);
             }
             return ActionResult.FAIL;
         }

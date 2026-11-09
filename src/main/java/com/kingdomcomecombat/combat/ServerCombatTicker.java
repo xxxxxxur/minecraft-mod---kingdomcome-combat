@@ -3,6 +3,7 @@ package com.kingdomcomecombat.combat;
 import com.kingdomcomecombat.ai.HumanoidCombatAiTicker;
 import com.kingdomcomecombat.collision.AnimatedAttackHitboxLibrary;
 import com.kingdomcomecombat.collision.ServerHitDetectionSystem;
+import com.kingdomcomecombat.config.CombatServerConfig;
 import com.kingdomcomecombat.equipment.EquipmentCombatAttributesRegistry;
 import com.kingdomcomecombat.stamina.ServerStaminaState;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -121,7 +122,8 @@ public class ServerCombatTicker {
                 }
                 if (ServerBlockState.isMovementLocked(uuid)) {
                     applyBlockMovementLock(livingEntity);
-                } else if (ServerBlockState.isHeld(uuid)) {
+                } else if (ServerBlockState.isHeld(uuid)
+                        && CombatServerConfig.blockingMovementSlowdownEnabled()) {
                     applyHeldBlockSlowdown(livingEntity);
                 }
                 if (ServerCombatControlState.isDodging(livingEntity)) {

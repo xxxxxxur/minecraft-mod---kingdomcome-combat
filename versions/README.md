@@ -17,9 +17,10 @@ dependencies.
 
 | Minecraft | Status | Known boundary |
 | --- | --- | --- |
+| 1.20.1 | Port in progress | Shared source generation, Java 17, mappings, dependencies, and typed-network bridge are scaffolded; pre-component item, advancement, tracker, and recipe adapters remain |
 | 1.21-1.21.1 | Compiles with legacy adapter | Predates `ItemRenderState`, armed render states, and equipment assets |
 | 1.21.2-1.21.5 | Adapter incomplete | Intermediate item, damage, attribute, recipe, and renderer APIs require a dedicated adapter |
-| 1.21.6 | Compiles | Shared modern source group |
+| 1.21.6 | Stable | Shared modern source group; binary-identical with 1.21.7–1.21.8 |
 | 1.21.7 | Stable | Release target; shared source and bundled dependency set verified |
 | 1.21.8 | Stable | Release target; shared source and bundled dependency set verified |
 | 1.21.9 | Adapter incomplete | Renderer and particle submission API changed |

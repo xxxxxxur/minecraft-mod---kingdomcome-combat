@@ -1,0 +1,45 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="CC0-1.0"
+
+[[mods]]
+modId="kingdom_come_combat"
+version="${version}"
+displayName="Kingdom Come Combat"
+authors="DUCK goose"
+description='''Kingdom Come inspired directional combat for Forge 1.20.1.'''
+
+[[dependencies.kingdom_come_combat]]
+modId="forge"
+mandatory=true
+versionRange="[${forge_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.kingdom_come_combat]]
+modId="minecraft"
+mandatory=true
+versionRange="[${minecraft_version}]"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.kingdom_come_combat]]
+modId="fabric_api"
+mandatory=true
+versionRange="[0.92.2,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.kingdom_come_combat]]
+modId="cloth_config"
+mandatory=true
+versionRange="[11.1.136,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.kingdom_come_combat]]
+modId="player_animation_library"
+mandatory=true
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"

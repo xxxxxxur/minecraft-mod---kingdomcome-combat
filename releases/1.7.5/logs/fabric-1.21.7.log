@@ -1,0 +1,36 @@
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileClientJava
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+
+> Task :processClientResources UP-TO-DATE
+> Task :jar
+> Task :processIncludeJars
+> Task :sourcesJar
+Cannot remap method_2828 because it does not exist in any of the targets [software/bernie/geckolib/renderer/GeoArmorRenderer]
+Cannot remap renderToBuffer because it does not exist in any of the targets [software/bernie/geckolib/renderer/GeoArmorRenderer]
+> Task :clientClasses
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :validateAccessWidener NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :remapJar
+> Task :remapSourcesJar
+> Task :assemble
+> Task :build
+
+[Incubating] Problems report is available at: file:///Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 47s
+9 actionable tasks: 6 executed, 3 up-to-date

@@ -1,0 +1,227 @@
+START fabric-1.21.7
+SUCCESS fabric-1.21.7 (47.3s)
+START fabric-1.21
+SUCCESS fabric-1.21 (73.5s)
+START fabric-1.21.1
+SUCCESS fabric-1.21.1 (82.1s)
+START fabric-1.21.6
+SUCCESS fabric-1.21.6 (63.3s)
+START fabric-1.21.8
+SUCCESS fabric-1.21.8 (58.3s)
+START fabric-1.21.10
+SUCCESS fabric-1.21.10 (65.4s)
+START fabric-1.21.11
+SUCCESS fabric-1.21.11 (43.3s)
+START fabric-1.20.1
+FAILED fabric-1.20.1 (75.6s)
+> Task :classes
+> Task :generatePal1201Backport FAILED
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file '/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build.gradle' line: 133
+
+* What went wrong:
+Execution failed for task ':generatePal1201Backport'.
+> Expected configuration ':palCore1201Sources' to contain exactly one file, however, it contains more than one file.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 1m 15s
+4 actionable tasks: 4 executed
+START fabric-1.21.2
+FAILED fabric-1.21.2 (36.0s)
+    符号:   方法 getOrEmpty(Identifier)
+    位置: 类型为DefaultedRegistry<EntityType<?>>的变量 ENTITY_TYPE
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:707: 错误: 找不到符号
+              return armor.getSlotType();
+                          ^
+    符号:   方法 getSlotType()
+    位置: 类型为ArmorItem的变量 armor
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:751: 错误: 找不到符号
+              return armor.getProtection();
+                          ^
+    符号:   方法 getProtection()
+    位置: 类型为ArmorItem的变量 armor
+  85 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 35s
+2 actionable tasks: 2 executed
+START fabric-1.21.3
+FAILED fabric-1.21.3 (44.6s)
+    符号:   方法 getOrEmpty(Identifier)
+    位置: 类型为DefaultedRegistry<EntityType<?>>的变量 ENTITY_TYPE
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:707: 错误: 找不到符号
+              return armor.getSlotType();
+                          ^
+    符号:   方法 getSlotType()
+    位置: 类型为ArmorItem的变量 armor
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:751: 错误: 找不到符号
+              return armor.getProtection();
+                          ^
+    符号:   方法 getProtection()
+    位置: 类型为ArmorItem的变量 armor
+  85 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 44s
+2 actionable tasks: 2 executed
+START fabric-1.21.4
+Traceback (most recent call last):
+  File "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/releases/1.7.5/build_all.py", line 91, in <module>
+    build('fabric', version)
+    ~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/releases/1.7.5/build_all.py", line 49, in build
+    completed = subprocess.run(command, cwd=ROOT, env=env, stdout=stream, stderr=subprocess.STDOUT)
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1212, in communicate
+    self.wait()
+    ~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1278, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2083, in _wait
+    (pid, sts) = self._try_wait(0)
+                 ~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 2041, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+SKIP fabric-1.21.7: success
+SKIP fabric-1.21: success
+SKIP fabric-1.21.1: success
+SKIP fabric-1.21.6: success
+SKIP fabric-1.21.8: success
+SKIP fabric-1.21.10: success
+SKIP fabric-1.21.11: success
+SKIP fabric-1.21.2: failed
+SKIP fabric-1.21.3: failed
+START fabric-1.21.4
+FAILED fabric-1.21.4 (94.1s)
+    符号:   方法 getOrEmpty(Identifier)
+    位置: 类型为DefaultedRegistry<EntityType<?>>的变量 ENTITY_TYPE
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:707: 错误: 找不到符号
+              return armor.getSlotType();
+                          ^
+    符号:   方法 getSlotType()
+    位置: 类型为ArmorItem的变量 armor
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/main/com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java:751: 错误: 找不到符号
+              return armor.getProtection();
+                          ^
+    符号:   方法 getProtection()
+    位置: 类型为ArmorItem的变量 armor
+  85 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 1m 33s
+2 actionable tasks: 2 executed
+START fabric-1.21.5
+FAILED fabric-1.21.5 (36.8s)
+    其中, T是类型变量:
+      T扩展已在类 LegacyIllagerArmorFeatureRenderer中声明的IllagerEntity
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyAnimalModelFirstPersonHeadEquipmentMixin.java:17: 错误: 找不到符号
+  @Mixin(value = AnimalModel.class, priority = 1100)
+                 ^
+    符号: 类 AnimalModel
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java:5: 错误: 程序包net.minecraft.client.color.item不存在
+  import net.minecraft.client.color.item.ItemColors;
+                                        ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/compat/legacy/java/com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java:85: 错误: 程序包ArmorMaterial不存在
+          for (ArmorMaterial.Layer layer : material.layers()) {
+                            ^
+  84 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 36s
+4 actionable tasks: 4 executed
+START fabric-1.21.9
+FAILED fabric-1.21.9 (33.2s)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/KingdomComeCombatClient.java:479: 错误: 程序包WorldRenderEvents不存在
+  		WorldRenderEvents.START.register(context -> {
+  		                 ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:37: 错误: 程序包WorldRenderEvents不存在
+          WorldRenderEvents.AFTER_ENTITIES.register(BladeTrailRenderer::render);
+                           ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:35: 错误: 程序包WorldRenderEvents不存在
+          WorldRenderEvents.AFTER_ENTITIES.register(CombatCollisionDebugRenderer::render);
+                           ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/hud/LockOnCrosshairOverlay.java:68: 错误: 程序包WorldRenderEvents不存在
+          WorldRenderEvents.LAST.register(context -> updateTargetScreenPosition());
+                           ^
+  152 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 32s
+4 actionable tasks: 4 executed
+START fabric-1.21.6-1.21.8
+SUCCESS fabric-1.21.6-1.21.8 (38.9s)
+START neoforge-1.21.1
+FAILED neoforge-1.21.1 (137.1s)
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/neoforge/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/neoforge/build/generatedMojmap/legacy/com/kingdomcomecombat/network/legacy/LegacyClientPlayNetworking.java:3: 错误: 需要'.'
+  import LegacyCustomPayload;
+                            ^
+  1 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 2m 16s
+6 actionable tasks: 6 executed
+START fabric-26.2
+FAILED fabric-26.2 (25.4s)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/HumanoidHurtboxLibrary.java:23: 错误: 程序包net.minecraft.registry不存在
+  import net.minecraft.registry.Registries;
+                               ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:10: 错误: 程序包net.minecraft.entity不存在
+  import net.minecraft.entity.LivingEntity;
+                             ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:11: 错误: 程序包net.minecraft.util.math不存在
+  import net.minecraft.util.math.Box;
+                                ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/src/main/java/com/kingdomcomecombat/collision/AnimatedAttackHitboxLibrary.java:12: 错误: 程序包net.minecraft.util.math不存在
+  import net.minecraft.util.math.Vec3d;
+                                ^
+  100 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 24s
+1 actionable task: 1 executed
+FINISHED
+START neoforge-1.21.1
+SUCCESS neoforge-1.21.1 (72.8s)

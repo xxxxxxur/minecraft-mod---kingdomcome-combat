@@ -164,6 +164,18 @@ public class HumanoidCombatAiProfiles {
         return true;
     }
 
+    /** Conservative filter used only by automatic rendered-model compatibility. */
+    public static boolean hasPlausibleAutomaticHumanoidDimensions(LivingEntity entity) {
+        if (entity == null) {
+            return false;
+        }
+        float width = entity.getWidth();
+        float height = entity.getHeight();
+        return width >= 0.30F && width <= 1.25F
+                && height >= 1.20F && height <= 2.60F
+                && height >= width * 1.35F;
+    }
+
     public static HumanoidCombatAiProfile defaultHumanoid() {
         return DEFAULT_HUMANOID;
     }
@@ -210,6 +222,13 @@ public class HumanoidCombatAiProfiles {
         if (entityType != null) {
             AUTO_INCLUDED_TYPES.add(entityType);
             AUTO_EXCLUDED_TYPES.remove(entityType);
+        }
+    }
+
+    /** Runtime detection cannot override an exclusion or safety quarantine. */
+    public static void includeAutomaticallyDetectedType(EntityType<?> entityType) {
+        if (entityType != null && !AUTO_EXCLUDED_TYPES.contains(entityType)) {
+            AUTO_INCLUDED_TYPES.add(entityType);
         }
     }
 

@@ -1,0 +1,266 @@
+{
+  "fabric-1.21.7": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.7",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.7.log",
+    "exit_code": 0,
+    "duration_seconds": 47.3,
+    "artifact": "kingdom_come_combat-1.7.5+fabric-mc1.21.7.jar",
+    "sha256": "b2dd15dc6ef4e1b360627cac49a78e01e9a1b0f6107c9f7398277cfa9403c7a0"
+  },
+  "fabric-1.21": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.log",
+    "exit_code": 0,
+    "duration_seconds": 73.5,
+    "artifact": "kingdom_come_combat-1.7.5+fabric-mc1.21.jar",
+    "sha256": "01795b9e5852873778231b17ad34cb3be7b603ceb4c1e7013b2ab013fef35452"
+  },
+  "fabric-1.21.1": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.1",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.1.log",
+    "exit_code": 0,
+    "duration_seconds": 82.1,
+    "artifact": "kingdom_come_combat-1.7.5+fabric-mc1.21.1.jar",
+    "sha256": "ca5bd43e3e9503bdac154011cfcb55b1ed9ccb586e1921140ff36e90974984d6"
+  },
+  "fabric-1.21.6": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.6",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.6.log",
+    "exit_code": 0,
+    "duration_seconds": 63.3,
+    "artifact": "kingdom_come_combat-1.7.5+fabric-mc1.21.6.jar",
+    "sha256": "d5d9e212974b40aaad42c9cda205ed77ac10362f23a72df6c19991d376f45ced"
+  },
+  "fabric-1.21.8": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.8",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.8.log",
+    "exit_code": 0,
+    "duration_seconds": 58.3,
+    "artifact": "kingdom_come_combat-1.7.5+fabric-mc1.21.8.jar",
+    "sha256": "2398f7feaa22605c866ae5970c96a715606bc742ccf1d2d3fe284a3703555e71"
+  },
+  "fabric-1.21.10": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.10",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.10.log",
+    "exit_code": 0,
+    "duration_seconds": 65.4,
+    "artifact": "kingdom_come_combat-1.7.5+fabric-mc1.21.10.jar",
+    "sha256": "c3bd544397c6b3559696b45858aba77b7b34ff9d22c8de7eb9bc2f47559a5264"
+  },
+  "fabric-1.21.11": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.11",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.11.log",
+    "exit_code": 0,
+    "duration_seconds": 43.3,
+    "artifact": "kingdom_come_combat-1.7.5+fabric-mc1.21.11.jar",
+    "sha256": "b61995f04476825a3378d4d72abe72b58b5d835dbed7c2e916ebfca77e6088c5"
+  },
+  "fabric-1.20.1": {
+    "status": "excluded",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.20.1",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.20.1.log",
+    "exit_code": 1,
+    "duration_seconds": 75.6,
+    "note": "Excluded at user request; do not retry."
+  },
+  "fabric-1.21.2": {
+    "status": "failed",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.2",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.2.log",
+    "exit_code": 1,
+    "duration_seconds": 36.0
+  },
+  "fabric-1.21.3": {
+    "status": "failed",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.3",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.3.log",
+    "exit_code": 1,
+    "duration_seconds": 44.6
+  },
+  "fabric-1.21.4": {
+    "status": "failed",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.4",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.4.log",
+    "exit_code": 1,
+    "duration_seconds": 94.1
+  },
+  "forge-1.20.1": {
+    "status": "excluded",
+    "note": "Excluded at user request; not built."
+  },
+  "fabric-1.21.5": {
+    "status": "failed",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.5",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.5.log",
+    "exit_code": 1,
+    "duration_seconds": 36.8
+  },
+  "fabric-1.21.9": {
+    "status": "failed",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-Ptarget_mc=1.21.9",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.9.log",
+    "exit_code": 1,
+    "duration_seconds": 33.2
+  },
+  "fabric-1.21.6-1.21.8": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-1.21.6-1.21.8.log",
+    "exit_code": 0,
+    "duration_seconds": 38.9,
+    "artifact": "kingdom_come_combat-1.7.5+fabric-mc1.21.6-1.21.8.jar",
+    "sha256": "f75cf2075ff051e1dbfc6f1ea1db7156061fecfd939147d1802c9e7bc4dd52a2"
+  },
+  "neoforge-1.21.1": {
+    "status": "success",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-p",
+      "neoforge",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/neoforge-1.21.1.log",
+    "exit_code": 0,
+    "duration_seconds": 72.8,
+    "artifact": "kingdom_come_combat-1.7.5+neoforge-mc1.21.1.jar",
+    "sha256": "0108e55432e32121b369fb47126ae5831ca710be0a95af3e839e3d595265c2b1"
+  },
+  "fabric-26.2": {
+    "status": "failed",
+    "command": [
+      "/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/gradlew",
+      "-p",
+      "versions/26.2",
+      "build",
+      "--console=plain",
+      "--max-workers=4",
+      "-Dorg.gradle.internal.http.connectionTimeout=15000",
+      "-Dorg.gradle.internal.http.socketTimeout=15000"
+    ],
+    "log": "logs/fabric-26.2.log",
+    "exit_code": 1,
+    "duration_seconds": 25.4
+  }
+}

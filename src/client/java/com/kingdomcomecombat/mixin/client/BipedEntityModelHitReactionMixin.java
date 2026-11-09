@@ -9,6 +9,7 @@ import com.kingdomcomecombat.client.animation.ClientLockedMovementLeanState;
 import com.kingdomcomecombat.client.animation.MobStanceHeadTargeting;
 import com.kingdomcomecombat.client.animation.VanillaSkeletonGeckoAnimationApplier;
 import com.kingdomcomecombat.client.compat.FirstPersonRenderCompat;
+import com.kingdomcomecombat.client.compat.BipedModelAiCompatReporter;
 import com.kingdomcomecombat.client.mixin.EntityRenderStateKccAccess;
 import com.kingdomcomecombat.collision.HumanoidHurtboxLibrary;
 import com.kingdomcomecombat.compat.GuardVillagersCompat;
@@ -47,66 +48,89 @@ public class BipedEntityModelHitReactionMixin<T extends BipedEntityRenderState> 
         int entityId = ((EntityRenderStateKccAccess) state).kingdomcomecombat$getEntityId();
         MinecraftClient client = MinecraftClient.getInstance();
         net.minecraft.entity.Entity renderedEntity = client.world == null ? null : client.world.getEntityById(entityId);
-        boolean renderCombatAnimation =
-                ClientEntityGeckoAnimationState.shouldRenderCombatAnimation(entityId);
-        boolean trackCollision = renderedEntity instanceof net.minecraft.entity.LivingEntity living
-                && ClientCollisionTrackingPolicy.shouldCaptureHurtbox(living);
-        if (!renderCombatAnimation
-                && !ClientHitReactionState.hasActive(entityId)
-                && !ClientDodgeAnimationState.hasActive(entityId)
-                && !ClientLockedMovementLeanState.hasActive(entityId)
-                && !trackCollision) {
-            return;
-        }
-        boolean genericConfiguredHumanoid = renderedEntity instanceof net.minecraft.entity.LivingEntity living
-                && renderCombatAnimation
-                && !HumanoidHurtboxLibrary.isBuiltInHumanoidTarget(living);
-        if (renderCombatAnimation
-                && (GuardVillagersCompat.isGuard(renderedEntity) || genericConfiguredHumanoid)) {
-            BipedEntityModel<T> model = (BipedEntityModel<T>) (Object) this;
-            if (genericConfiguredHumanoid) {
-                VanillaSkeletonGeckoAnimationApplier.applyBipedCombatLayers(model, state);
-            } else {
-                VanillaSkeletonGeckoAnimationApplier.applyBiped(model, state);
+        net.minecraft.entity.LivingEntity renderedLiving =
+                renderedEntity instanceof net.minecraft.entity.LivingEntity living ? living : null;
+        try {
+            if (renderedLiving != null) {
+                BipedModelAiCompatReporter.observe(renderedLiving, hasCompleteBipedRig());
+                if (BipedModelAiCompatReporter.isRenderDisabled(renderedLiving)
+                        || !HumanoidHurtboxLibrary.isHumanoidTarget(renderedLiving)) {
+                    return;
+                }
             }
-            if (ClientEntityGeckoAnimationState.isStanceOnly(entityId)) {
-                MobStanceHeadTargeting.apply(entityId, state, head, body);
+            boolean renderCombatAnimation =
+                    ClientEntityGeckoAnimationState.shouldRenderCombatAnimation(entityId);
+            boolean trackCollision = renderedLiving != null
+                    && ClientCollisionTrackingPolicy.shouldCaptureHurtbox(renderedLiving);
+            if (!renderCombatAnimation
+                    && !ClientHitReactionState.hasActive(entityId)
+                    && !ClientDodgeAnimationState.hasActive(entityId)
+                    && !ClientLockedMovementLeanState.hasActive(entityId)
+                    && !trackCollision) {
+                return;
             }
-        }
+            boolean genericConfiguredHumanoid = renderedLiving != null
+                    && renderCombatAnimation
+                    && !HumanoidHurtboxLibrary.isBuiltInHumanoidTarget(renderedLiving);
+            if (renderCombatAnimation
+                    && (GuardVillagersCompat.isGuard(renderedEntity) || genericConfiguredHumanoid)) {
+                BipedEntityModel<T> model = (BipedEntityModel<T>) (Object) this;
+                if (genericConfiguredHumanoid) {
+                    VanillaSkeletonGeckoAnimationApplier.applyBipedCombatLayers(model, state);
+                } else {
+                    VanillaSkeletonGeckoAnimationApplier.applyBiped(model, state);
+                }
+                if (ClientEntityGeckoAnimationState.isStanceOnly(entityId)) {
+                    MobStanceHeadTargeting.apply(entityId, state, head, body);
+                }
+            }
 
-        ClientHitReactionState.BoneDelta bodyDelta =
-                ClientHitReactionState.getDelta(entityId, HumanoidHurtboxLibrary.Part.BODY);
-        apply(body, bodyDelta);
-        apply(head, parentedDelta(
-                ClientHitReactionState.getDelta(entityId, HumanoidHurtboxLibrary.Part.HEAD),
-                bodyDelta,
-                0.55F
-        ));
-        apply(leftArm, parentedDelta(
-                ClientHitReactionState.getDelta(entityId, HumanoidHurtboxLibrary.Part.LEFT_ARM),
-                bodyDelta,
-                1.0F
-        ));
-        apply(rightArm, parentedDelta(
-                ClientHitReactionState.getDelta(entityId, HumanoidHurtboxLibrary.Part.RIGHT_ARM),
-                bodyDelta,
-                1.0F
-        ));
-        apply(leftLeg, entityId, HumanoidHurtboxLibrary.Part.LEFT_LEG);
-        apply(rightLeg, entityId, HumanoidHurtboxLibrary.Part.RIGHT_LEG);
-        ClientDodgeAnimationState.applyBiped(entityId, body, head, rightArm, leftArm, rightLeg, leftLeg);
-        ClientLockedMovementLeanState.applyBiped(entityId, body, head, rightArm, leftArm, rightLeg, leftLeg);
-        // Armor and other feature models also call BipedEntityModel#setAngles
-        // after the player's PAL-animated base model. They must not replace
-        // the rendered player hurtbox with their copied/vanilla pose.
-        if (renderedEntity instanceof net.minecraft.entity.player.PlayerEntity
-                && !((Object) this instanceof PlayerEntityModel)) {
-            return;
+            ClientHitReactionState.BoneDelta bodyDelta =
+                    ClientHitReactionState.getDelta(entityId, HumanoidHurtboxLibrary.Part.BODY);
+            apply(body, bodyDelta);
+            apply(head, parentedDelta(
+                    ClientHitReactionState.getDelta(entityId, HumanoidHurtboxLibrary.Part.HEAD),
+                    bodyDelta,
+                    0.55F
+            ));
+            apply(leftArm, parentedDelta(
+                    ClientHitReactionState.getDelta(entityId, HumanoidHurtboxLibrary.Part.LEFT_ARM),
+                    bodyDelta,
+                    1.0F
+            ));
+            apply(rightArm, parentedDelta(
+                    ClientHitReactionState.getDelta(entityId, HumanoidHurtboxLibrary.Part.RIGHT_ARM),
+                    bodyDelta,
+                    1.0F
+            ));
+            apply(leftLeg, entityId, HumanoidHurtboxLibrary.Part.LEFT_LEG);
+            apply(rightLeg, entityId, HumanoidHurtboxLibrary.Part.RIGHT_LEG);
+            ClientDodgeAnimationState.applyBiped(entityId, body, head, rightArm, leftArm, rightLeg, leftLeg);
+            ClientLockedMovementLeanState.applyBiped(entityId, body, head, rightArm, leftArm, rightLeg, leftLeg);
+            // Armor and other feature models also call BipedEntityModel#setAngles
+            // after the player's PAL-animated base model. They must not replace
+            // the rendered player hurtbox with their copied/vanilla pose.
+            if (renderedEntity instanceof net.minecraft.entity.player.PlayerEntity
+                    && !((Object) this instanceof PlayerEntityModel)) {
+                return;
+            }
+            if (!ClientModelHurtboxCache.shouldCaptureRenderedPose(entityId)) {
+                return;
+            }
+            ClientModelHurtboxCache.update(entityId, head, body, rightArm, leftArm, rightLeg, leftLeg);
+        } catch (RuntimeException | LinkageError exception) {
+            if (renderedLiving != null
+                    && BipedModelAiCompatReporter.disableAfterFailure(renderedLiving)) {
+                return;
+            }
+            throw exception;
         }
-        if (!ClientModelHurtboxCache.shouldCaptureRenderedPose(entityId)) {
-            return;
-        }
-        ClientModelHurtboxCache.update(entityId, head, body, rightArm, leftArm, rightLeg, leftLeg);
+    }
+
+    private boolean hasCompleteBipedRig() {
+        return head != null && body != null
+                && rightArm != null && leftArm != null
+                && rightLeg != null && leftLeg != null;
     }
 
     private static void apply(

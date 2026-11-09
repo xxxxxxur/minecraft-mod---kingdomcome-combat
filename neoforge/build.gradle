@@ -37,6 +37,8 @@ sourceSets.main {
             'build/generatedMojmap/legacy',
             'src/main/java'
     ]
+    // The typed-payload backport is exclusive to 1.20.1, not the native 1.21.1 target.
+    java.exclude 'com/kingdomcomecombat/network/legacy/**'
     resources.srcDirs = ['../src/main/resources', '../src/client/resources', 'src/main/resources']
 }
 
@@ -456,6 +458,10 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 processResources {
+    // This is a native NeoForge artifact. Leaving Fabric metadata in the jar
+    // makes Sinytra Connector load it a second time as a Fabric mod and apply
+    // the wrong method descriptors to NeoForge-patched LivingEntity methods.
+    exclude 'fabric.mod.json'
     exclude 'assets/kingdom_come_combat/textures/item/老式全身板甲.png'
     exclude 'assets/kingdom_come_combat/models/item/老式全身板甲.json'
     exclude 'assets/kingdom_come_combat/models/item/十字军.geo.json'

@@ -1,5 +1,7 @@
 package com.kingdomcomecombat.item;
 
+import com.kingdomcomecombat.text.LocalizedText;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +23,10 @@ public final class SkillBookTexts {
         BY_ID.put(id, entry);
     }
 
+    public static boolean contains(String id) {
+        return BY_ID.containsKey(id);
+    }
+
     public static Entry get(String id) {
         Entry entry = BY_ID.get(id);
         if (entry != null) {
@@ -28,10 +34,10 @@ public final class SkillBookTexts {
         }
 
         return new Entry(
-                "技能书",
+                "Skill Book",
                 "Kingdom Come Combat",
-                "这本书记录了一门战斗技巧。",
-                "翻到这一页时，你会试着领会书中记载的招式。",
+                "This book records a combat technique.",
+                "Turn to this page to learn the technique recorded in this book.",
                 "",
                 Map.of()
         );
@@ -54,52 +60,32 @@ public final class SkillBookTexts {
         }
 
         public Entry {
-            title = title == null || title.isBlank() ? "技能书" : title;
+            title = title == null || title.isBlank() ? "Skill Book" : title;
             author = author == null || author.isBlank() ? "Kingdom Come Combat" : author;
             firstPage = firstPage == null || firstPage.isBlank()
-                    ? "这本书记录了一门战斗技巧。"
+                    ? "This book records a combat technique."
                     : firstPage;
             secondPage = secondPage == null || secondPage.isBlank()
-                    ? "翻到这一页时，你会试着领会书中记载的招式。"
+                    ? "Turn to this page to learn the technique recorded in this book."
                     : secondPage;
             illustration = illustration == null ? "" : illustration;
             translations = translations == null ? Map.of() : Map.copyOf(translations);
         }
 
         public String title(String language) {
-            EntryText text = translation(language);
-            return text == null || text.title().isBlank() ? title : text.title();
+            return LocalizedText.resolve(translations, language, EntryText::title, title);
         }
 
         public String firstPage(String language) {
-            EntryText text = translation(language);
-            return text == null || text.firstPage().isBlank() ? firstPage : text.firstPage();
+            return LocalizedText.resolve(translations, language, EntryText::firstPage, firstPage);
         }
 
         public String secondPage(String language) {
-            EntryText text = translation(language);
-            return text == null || text.secondPage().isBlank() ? secondPage : text.secondPage();
+            return LocalizedText.resolve(translations, language, EntryText::secondPage, secondPage);
         }
 
         public String illustration(String language) {
-            EntryText text = translation(language);
-            return text == null || text.illustration().isBlank() ? illustration : text.illustration();
-        }
-
-        private EntryText translation(String language) {
-            if (language == null || language.isBlank() || translations.isEmpty()) {
-                return null;
-            }
-            String normalized = language.toLowerCase();
-            EntryText exact = translations.get(normalized);
-            if (exact != null) {
-                return exact;
-            }
-            int separator = normalized.indexOf('_');
-            if (separator < 0) {
-                separator = normalized.indexOf('-');
-            }
-            return separator > 0 ? translations.get(normalized.substring(0, separator)) : null;
+            return LocalizedText.resolve(translations, language, EntryText::illustration, illustration);
         }
     }
 

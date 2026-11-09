@@ -1,0 +1,1291 @@
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :generateVersionCompatSources
+
+> Task :compileJava
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+
+> Task :processResources
+> Task :classes
+
+> Task :compileClientJava FAILED
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/EntityRenderDispatcherPalCompatMixin.java:9: 错误: 找不到符号
+import net.minecraft.client.render.entity.EntityRenderDispatcher;
+                                         ^
+  符号:   类 EntityRenderDispatcher
+  位置: 程序包 net.minecraft.client.render.entity
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/WorldRendererFirstPersonCollisionMixin.java:50: 错误: 找不到符号
+            net.minecraft.client.render.entity.EntityRenderDispatcher dispatcher,
+                                              ^
+  符号:   类 EntityRenderDispatcher
+  位置: 程序包 net.minecraft.client.render.entity
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/KingdomComeCombatClient.java:47: 错误: 找不到符号
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+                                                  ^
+  符号:   类 WorldRenderEvents
+  位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:11: 错误: 找不到符号
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+                                                  ^
+  符号:   类 WorldRenderContext
+  位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:12: 错误: 找不到符号
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+                                                  ^
+  符号:   类 WorldRenderEvents
+  位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:40: 错误: 找不到符号
+    private static void render(WorldRenderContext context) {
+                               ^
+  符号:   类 WorldRenderContext
+  位置: 类 BladeTrailRenderer
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:6: 错误: 找不到符号
+import net.minecraft.client.particle.SpriteBillboardParticle;
+                                    ^
+  符号:   类 SpriteBillboardParticle
+  位置: 程序包 net.minecraft.client.particle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:11: 错误: 找不到符号
+public class CombatSparkParticle extends SpriteBillboardParticle {
+                                         ^
+  符号: 类 SpriteBillboardParticle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:6: 错误: 找不到符号
+import net.minecraft.client.particle.SpriteBillboardParticle;
+                                    ^
+  符号:   类 SpriteBillboardParticle
+  位置: 程序包 net.minecraft.client.particle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:11: 错误: 找不到符号
+public class BloodDropParticle extends SpriteBillboardParticle {
+                                       ^
+  符号: 类 SpriteBillboardParticle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:6: 错误: 找不到符号
+import net.minecraft.client.particle.SpriteBillboardParticle;
+                                    ^
+  符号:   类 SpriteBillboardParticle
+  位置: 程序包 net.minecraft.client.particle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:12: 错误: 找不到符号
+public final class BloodTraceParticle extends SpriteBillboardParticle {
+                                              ^
+  符号: 类 SpriteBillboardParticle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:7: 错误: 找不到符号
+import net.minecraft.client.particle.SpriteBillboardParticle;
+                                    ^
+  符号:   类 SpriteBillboardParticle
+  位置: 程序包 net.minecraft.client.particle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:12: 错误: 找不到符号
+public class BloodMistParticle extends SpriteBillboardParticle {
+                                       ^
+  符号: 类 SpriteBillboardParticle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:6: 错误: 找不到符号
+import net.minecraft.client.particle.SpriteBillboardParticle;
+                                    ^
+  符号:   类 SpriteBillboardParticle
+  位置: 程序包 net.minecraft.client.particle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:11: 错误: 找不到符号
+public class BloodSparkParticle extends SpriteBillboardParticle {
+                                        ^
+  符号: 类 SpriteBillboardParticle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:16: 错误: 找不到符号
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+                                                  ^
+  符号:   类 WorldRenderContext
+  位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:17: 错误: 找不到符号
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+                                                  ^
+  符号:   类 WorldRenderEvents
+  位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:38: 错误: 找不到符号
+    private static void render(WorldRenderContext context) {
+                               ^
+  符号:   类 WorldRenderContext
+  位置: 类 CombatCollisionDebugRenderer
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/hud/LockOnCrosshairOverlay.java:13: 错误: 找不到符号
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+                                                  ^
+  符号:   类 WorldRenderEvents
+  位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/EntityRenderDispatcherPalCompatMixin.java:19: 错误: 找不到符号
+@Mixin(value = EntityRenderDispatcher.class, priority = 900)
+               ^
+  符号: 类 EntityRenderDispatcher
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:22: 错误: 不兼容的类型: String无法转换为Category
+                CATEGORY
+                ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:28: 错误: 不兼容的类型: String无法转换为Category
+                CATEGORY
+                ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:34: 错误: 不兼容的类型: String无法转换为Category
+                CATEGORY
+                ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:40: 错误: 不兼容的类型: String无法转换为Category
+                CATEGORY
+                ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:46: 错误: 不兼容的类型: String无法转换为Category
+                CATEGORY
+                ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/IllagerEntityRendererArmorMixin.java:37: 错误: 找不到符号
+                new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR)),
+                                                                        ^
+  符号:   变量 PLAYER_OUTER_ARMOR
+  位置: 类 EntityModelLayers
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/IllagerEntityRendererArmorMixin.java:38: 错误: 找不到符号
+                new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR)),
+                                                                        ^
+  符号:   变量 PLAYER_OUTER_ARMOR
+  位置: 类 EntityModelLayers
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/IllagerEntityRendererArmorMixin.java:39: 错误: 找不到符号
+                new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR)),
+                                                                        ^
+  符号:   变量 PLAYER_OUTER_ARMOR
+  位置: 类 EntityModelLayers
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/lockon/LockOnCameraController.java:333: 错误: 找不到符号
+        Vec3d cameraAfterShoulder = client.gameRenderer.getCamera().getEntityPos().add(shoulderOffset);
+                                                                   ^
+  符号:   方法 getEntityPos()
+  位置: 类 Camera
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/lockon/LockOnCameraController.java:347: 错误: 找不到符号
+            Vec3d cameraPos = client.gameRenderer.getCamera().getEntityPos().add(baseOffset);
+                                                             ^
+  符号:   方法 getEntityPos()
+  位置: 类 Camera
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:108: 错误: 找不到符号
+        context.drawBorder(panelX, panelY, panelW, panelH, 0xFF6B5A43);
+               ^
+  符号:   方法 drawBorder(int,int,int,int,int)
+  位置: 类型为DrawContext的变量 context
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:190: 错误: 找不到符号
+        context.drawBorder(x, y, 28, 28, 0xFF8B7554);
+               ^
+  符号:   方法 drawBorder(int,int,int,int,int)
+  位置: 类型为DrawContext的变量 context
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:223: 错误: 找不到符号
+        context.drawBorder(x, y, 28, 28, 0xFF8B7554);
+               ^
+  符号:   方法 drawBorder(int,int,int,int,int)
+  位置: 类型为DrawContext的变量 context
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:328: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:339: 错误: 无法将接口 ParentElement中的方法 mouseClicked应用到给定类型;
+        return super.mouseClicked(mouseX, mouseY, button);
+                    ^
+  需要: Click,boolean
+  找到:    double,double,int
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:342: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:348: 错误: 无法将接口 ParentElement中的方法 mouseReleased应用到给定类型;
+        return super.mouseReleased(mouseX, mouseY, button);
+                    ^
+  需要: Click
+  找到:    double,double,int
+  原因: 实际参数列表和形式参数列表长度不同
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/HardshipSelectionScreen.java:96: 错误: 找不到符号
+            context.drawBorder(x - 1, y - 1, ICON_SIZE + 2, ICON_SIZE + 2, border);
+                   ^
+  符号:   方法 drawBorder(int,int,int,int,int)
+  位置: 类型为DrawContext的变量 context
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/KingdomComeCombatClient.java:479: 错误: 程序包WorldRenderEvents不存在
+		WorldRenderEvents.START.register(context -> {
+		                 ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/HandCannonBulletRenderer.java:24: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/HandCannonBulletRenderer.java:36: 错误: 不兼容的类型: VertexConsumerProvider无法转换为OrderedRenderCommandQueue
+        super.render(state, matrices, vertexConsumers, light);
+                                      ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:22: 错误: IllagerArmorFeatureRenderer不是抽象的, 并且未覆盖FeatureRenderer中的抽象方法render(MatrixStack,OrderedRenderCommandQueue,int,IllagerEntityRenderState,float,float)
+public class IllagerArmorFeatureRenderer
+       ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:45: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:99: 错误: 对于render(LayerType,RegistryKey<EquipmentAsset>,BipedEntityModel<BipedEntityRenderState>,ItemStack,MatrixStack,VertexConsumerProvider,int), 找不到合适的方法
+        equipmentRenderer.render(
+                         ^
+    方法 EquipmentRenderer.<S#1>render(LayerType,RegistryKey<EquipmentAsset>,Model<? super S#1>,S#1,ItemStack,MatrixStack,OrderedRenderCommandQueue,int,int)不适用
+      (无法推断类型变量 S#1
+        (实际参数列表和形式参数列表长度不同))
+    方法 EquipmentRenderer.<S#2>render(LayerType,RegistryKey<EquipmentAsset>,Model<? super S#2>,S#2,ItemStack,MatrixStack,OrderedRenderCommandQueue,int,Identifier,int,int)不适用
+      (无法推断类型变量 S#2
+        (实际参数列表和形式参数列表长度不同))
+  其中, S#1,S#2是类型变量:
+    S#1扩展已在方法 <S#1>render(LayerType,RegistryKey<EquipmentAsset>,Model<? super S#1>,S#1,ItemStack,MatrixStack,OrderedRenderCommandQueue,int,int)中声明的Object
+    S#2扩展已在方法 <S#2>render(LayerType,RegistryKey<EquipmentAsset>,Model<? super S#2>,S#2,ItemStack,MatrixStack,OrderedRenderCommandQueue,int,Identifier,int,int)中声明的Object
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:112: 错误: 找不到符号
+        model.getRootPart().copyTransform(illagerModel.getRootPart());
+                           ^
+  符号:   方法 copyTransform(ModelPart)
+  位置: 类 ModelPart
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:120: 错误: 找不到符号
+        model.head.copyTransform(illagerModel.getHead());
+                  ^
+  符号:   方法 copyTransform(ModelPart)
+  位置: 类型为ModelPart的变量 head
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:121: 错误: 找不到符号
+        model.hat.copyTransform(illagerModel.getHat());
+                 ^
+  符号:   方法 copyTransform(ModelPart)
+  位置: 类型为ModelPart的变量 hat
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:129: 错误: 找不到符号
+                model.body.copyTransform(body);
+                          ^
+  符号:   方法 copyTransform(ModelPart)
+  位置: 类型为ModelPart的变量 body
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:131: 错误: 找不到符号
+            model.rightArm.copyTransform(parts.kingdomcomecombat$getRightArm());
+                          ^
+  符号:   方法 copyTransform(ModelPart)
+  位置: 类型为ModelPart的变量 rightArm
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:132: 错误: 找不到符号
+            model.leftArm.copyTransform(parts.kingdomcomecombat$getLeftArm());
+                         ^
+  符号:   方法 copyTransform(ModelPart)
+  位置: 类型为ModelPart的变量 leftArm
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:37: 错误: 程序包WorldRenderEvents不存在
+        WorldRenderEvents.AFTER_ENTITIES.register(BladeTrailRenderer::render);
+                         ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:23: 错误: 找不到符号
+        this.velocityX = velocityX;
+            ^
+  符号: 变量 velocityX
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:24: 错误: 找不到符号
+        this.velocityY = velocityY;
+            ^
+  符号: 变量 velocityY
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:25: 错误: 找不到符号
+        this.velocityZ = velocityZ;
+            ^
+  符号: 变量 velocityZ
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:26: 错误: 找不到符号
+        this.scale = 0.035F;
+            ^
+  符号: 变量 scale
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:27: 错误: 找不到符号
+        this.maxAge = 18;
+            ^
+  符号: 变量 maxAge
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:28: 错误: 找不到符号
+        this.gravityStrength = 0.13F;
+            ^
+  符号: 变量 gravityStrength
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:29: 错误: 找不到符号
+        this.velocityMultiplier = 0.82F;
+            ^
+  符号: 变量 velocityMultiplier
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:30: 错误: 找不到符号
+        this.collidesWithWorld = true;
+            ^
+  符号: 变量 collidesWithWorld
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:31: 错误: 找不到符号
+        this.setBoundingBoxSpacing(0.012F, 0.012F);
+            ^
+  符号: 方法 setBoundingBoxSpacing(float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:32: 错误: 找不到符号
+        this.setColor(1.0F, 0.84F, 0.16F);
+            ^
+  符号: 方法 setColor(float,float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:33: 错误: 找不到符号
+        this.setAlpha(1.0F);
+            ^
+  符号: 方法 setAlpha(float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:34: 错误: 找不到符号
+        this.setSprite(spriteProvider);
+            ^
+  符号: 方法 setSprite(SpriteProvider)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:37: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:39: 错误: 找不到符号
+        return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
+                                   ^
+  符号:   变量 PARTICLE_SHEET_OPAQUE
+  位置: 类 ParticleTextureSheet
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:42: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:47: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
+                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:54: 错误: 方法不会覆盖或实现超类型的方法
+        @Override
+        ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:65: 错误: 不兼容的类型: CombatSparkParticle无法转换为Particle
+            return new CombatSparkParticle(
+                   ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:23: 错误: 找不到符号
+        this.velocityX = velocityX;
+            ^
+  符号: 变量 velocityX
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:24: 错误: 找不到符号
+        this.velocityY = velocityY;
+            ^
+  符号: 变量 velocityY
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:25: 错误: 找不到符号
+        this.velocityZ = velocityZ;
+            ^
+  符号: 变量 velocityZ
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:26: 错误: 找不到符号
+        this.scale = 0.078F + world.random.nextFloat() * 0.036F;
+            ^
+  符号: 变量 scale
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:27: 错误: 找不到符号
+        this.maxAge = 325;
+            ^
+  符号: 变量 maxAge
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:28: 错误: 找不到符号
+        this.gravityStrength = 0.68F;
+            ^
+  符号: 变量 gravityStrength
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:29: 错误: 找不到符号
+        this.velocityMultiplier = 0.90F;
+            ^
+  符号: 变量 velocityMultiplier
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:30: 错误: 找不到符号
+        this.collidesWithWorld = true;
+            ^
+  符号: 变量 collidesWithWorld
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:31: 错误: 找不到符号
+        this.setBoundingBoxSpacing(0.018F, 0.018F);
+            ^
+  符号: 方法 setBoundingBoxSpacing(float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:32: 错误: 找不到符号
+        this.setColor(1.0F, 1.0F, 1.0F);
+            ^
+  符号: 方法 setColor(float,float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:33: 错误: 找不到符号
+        this.setAlpha(1.0F);
+            ^
+  符号: 方法 setAlpha(float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:34: 错误: 找不到符号
+        this.setSprite(spriteProvider);
+            ^
+  符号: 方法 setSprite(SpriteProvider)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:37: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:39: 错误: 找不到符号
+        return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
+                                   ^
+  符号:   变量 PARTICLE_SHEET_TRANSLUCENT
+  位置: 类 ParticleTextureSheet
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:42: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
+                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:49: 错误: 方法不会覆盖或实现超类型的方法
+        @Override
+        ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:60: 错误: 不兼容的类型: BloodDropParticle无法转换为Particle
+            return new BloodDropParticle(
+                   ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:17: 错误: 找不到符号
+        this.velocityX = velocityX;
+            ^
+  符号: 变量 velocityX
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:18: 错误: 找不到符号
+        this.velocityY = velocityY;
+            ^
+  符号: 变量 velocityY
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:19: 错误: 找不到符号
+        this.velocityZ = velocityZ;
+            ^
+  符号: 变量 velocityZ
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:20: 错误: 找不到符号
+        this.scale = 0.026F + world.random.nextFloat() * 0.016F;
+            ^
+  符号: 变量 scale
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:21: 错误: 找不到符号
+        this.maxAge = 18 + world.random.nextInt(7);
+            ^
+  符号: 变量 maxAge
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:22: 错误: 找不到符号
+        this.gravityStrength = 0.0F;
+            ^
+  符号: 变量 gravityStrength
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:23: 错误: 找不到符号
+        this.velocityMultiplier = 0.94F;
+            ^
+  符号: 变量 velocityMultiplier
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:24: 错误: 找不到符号
+        this.collidesWithWorld = false;
+            ^
+  符号: 变量 collidesWithWorld
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:25: 错误: 找不到符号
+        this.setBoundingBoxSpacing(0.01F, 0.01F);
+            ^
+  符号: 方法 setBoundingBoxSpacing(float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:26: 错误: 找不到符号
+        this.setColor(1.0F, 1.0F, 1.0F);
+            ^
+  符号: 方法 setColor(float,float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:27: 错误: 找不到符号
+        this.setAlpha(0.34F);
+            ^
+  符号: 方法 setAlpha(float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:28: 错误: 找不到符号
+        this.setSprite(spriteProvider);
+            ^
+  符号: 方法 setSprite(SpriteProvider)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:31: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:33: 错误: 找不到符号
+        return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
+                                   ^
+  符号:   变量 PARTICLE_SHEET_TRANSLUCENT
+  位置: 类 ParticleTextureSheet
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:36: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
+                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:43: 错误: 方法不会覆盖或实现超类型的方法
+        @Override
+        ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:54: 错误: 不兼容的类型: BloodTraceParticle无法转换为Particle
+            return new BloodTraceParticle(world, x, y, z,
+                   ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:29: 错误: 找不到符号
+        this.velocityX = velocityX;
+            ^
+  符号: 变量 velocityX
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:30: 错误: 找不到符号
+        this.velocityY = velocityY;
+            ^
+  符号: 变量 velocityY
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:31: 错误: 找不到符号
+        this.velocityZ = velocityZ;
+            ^
+  符号: 变量 velocityZ
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:32: 错误: 找不到符号
+        this.scale = 0.16F + world.random.nextFloat() * 0.12F;
+            ^
+  符号: 变量 scale
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:33: 错误: 找不到符号
+        this.maxAge = 18 + world.random.nextInt(10);
+            ^
+  符号: 变量 maxAge
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:34: 错误: 找不到符号
+        this.gravityStrength = 0.0F;
+            ^
+  符号: 变量 gravityStrength
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:35: 错误: 找不到符号
+        this.velocityMultiplier = 0.90F;
+            ^
+  符号: 变量 velocityMultiplier
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:36: 错误: 找不到符号
+        this.collidesWithWorld = false;
+            ^
+  符号: 变量 collidesWithWorld
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:37: 错误: 找不到符号
+        this.setColor(0.62F, 0.05F, 0.045F);
+            ^
+  符号: 方法 setColor(float,float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:39: 错误: 找不到符号
+        this.setAlpha(this.initialAlpha);
+            ^
+  符号: 方法 setAlpha(float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:40: 错误: 找不到符号
+        this.setSpriteForAge(spriteProvider);
+            ^
+  符号: 方法 setSpriteForAge(SpriteProvider)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:43: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:45: 错误: 找不到符号
+        super.tick();
+        ^
+  符号:   变量 super
+  位置: 类 BloodMistParticle
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:46: 错误: 找不到符号
+        if (!this.dead) {
+                 ^
+  符号: 变量 dead
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:47: 错误: 找不到符号
+            float life = this.age / (float) this.maxAge;
+                             ^
+  符号: 变量 age
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:47: 错误: 找不到符号
+            float life = this.age / (float) this.maxAge;
+                                                ^
+  符号: 变量 maxAge
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:48: 错误: 找不到符号
+            this.setAlpha(this.initialAlpha * (1.0F - life));
+                ^
+  符号: 方法 setAlpha(float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:49: 错误: 找不到符号
+            this.setSpriteForAge(this.spriteProvider);
+                ^
+  符号: 方法 setSpriteForAge(SpriteProvider)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:53: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:55: 错误: 找不到符号
+        return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
+                                   ^
+  符号:   变量 PARTICLE_SHEET_TRANSLUCENT
+  位置: 类 ParticleTextureSheet
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:58: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
+                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:65: 错误: 方法不会覆盖或实现超类型的方法
+        @Override
+        ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:76: 错误: 不兼容的类型: BloodMistParticle无法转换为Particle
+            return new BloodMistParticle(
+                   ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:25: 错误: 找不到符号
+        this.velocityX = velocityX;
+            ^
+  符号: 变量 velocityX
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:26: 错误: 找不到符号
+        this.velocityY = velocityY;
+            ^
+  符号: 变量 velocityY
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:27: 错误: 找不到符号
+        this.velocityZ = velocityZ;
+            ^
+  符号: 变量 velocityZ
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:29: 错误: 找不到符号
+        this.scale = TWO_PIXEL_SCALE;
+            ^
+  符号: 变量 scale
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:30: 错误: 找不到符号
+        this.maxAge = 16 + world.random.nextInt(9);
+            ^
+  符号: 变量 maxAge
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:31: 错误: 找不到符号
+        this.gravityStrength = 0.025F;
+            ^
+  符号: 变量 gravityStrength
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:32: 错误: 找不到符号
+        this.velocityMultiplier = 0.88F;
+            ^
+  符号: 变量 velocityMultiplier
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:33: 错误: 找不到符号
+        this.collidesWithWorld = false;
+            ^
+  符号: 变量 collidesWithWorld
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:34: 错误: 找不到符号
+        this.setBoundingBoxSpacing(2.0F / 16.0F, 2.0F / 16.0F);
+            ^
+  符号: 方法 setBoundingBoxSpacing(float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:35: 错误: 找不到符号
+        this.setColor(0.72F, 0.015F, 0.01F);
+            ^
+  符号: 方法 setColor(float,float,float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:36: 错误: 找不到符号
+        this.setAlpha(1.0F);
+            ^
+  符号: 方法 setAlpha(float)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:37: 错误: 找不到符号
+        this.setSprite(spriteProvider);
+            ^
+  符号: 方法 setSprite(SpriteProvider)
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:40: 错误: 方法不会覆盖或实现超类型的方法
+    @Override
+    ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:42: 错误: 找不到符号
+        return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
+                                   ^
+  符号:   变量 PARTICLE_SHEET_OPAQUE
+  位置: 类 ParticleTextureSheet
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:45: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
+                  ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:52: 错误: 方法不会覆盖或实现超类型的方法
+        @Override
+        ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:63: 错误: 不兼容的类型: BloodSparkParticle无法转换为Particle
+            return new BloodSparkParticle(
+                   ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/collision/ClientItemHitboxCache.java:114: 错误: 找不到符号
+                .add(client.gameRenderer.getCamera().getEntityPos())
+                                                    ^
+  符号:   方法 getEntityPos()
+  位置: 类 Camera
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/collision/ClientGenericModelTracker.java:203: 错误: 找不到符号
+        Vec3d camera = MinecraftClient.getInstance().gameRenderer.getCamera().getEntityPos();
+                                                                             ^
+  符号:   方法 getEntityPos()
+  位置: 类 Camera
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/collision/ClientGenericModelTracker.java:246: 错误: 找不到符号
+                    ? MinecraftClient.getInstance().gameRenderer.getCamera().getEntityPos().add(renderedCenter)
+                                                                            ^
+  符号:   方法 getEntityPos()
+  位置: 类 Camera
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/collision/ClientCollisionTrackingPolicy.java:50: 错误: 找不到符号
+        return client.getEntityRenderDispatcher().shouldRenderHitboxes();
+                                                 ^
+  符号:   方法 shouldRenderHitboxes()
+  位置: 类 EntityRenderManager
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:35: 错误: 程序包WorldRenderEvents不存在
+        WorldRenderEvents.AFTER_ENTITIES.register(CombatCollisionDebugRenderer::render);
+                         ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:42: 错误: 找不到符号
+                || !client.getEntityRenderDispatcher().shouldRenderHitboxes()
+                                                      ^
+  符号:   方法 shouldRenderHitboxes()
+  位置: 类 EntityRenderManager
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/hud/LockOnCrosshairOverlay.java:68: 错误: 程序包WorldRenderEvents不存在
+        WorldRenderEvents.LAST.register(context -> updateTargetScreenPosition());
+                         ^
+/Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/hud/LockOnCrosshairOverlay.java:115: 错误: 找不到符号
+        Vec3d cameraPos = camera.getEntityPos();
+                                ^
+  符号:   方法 getEntityPos()
+  位置: 类型为Camera的变量 camera
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+152 个错误
+
+[Incubating] Problems report is available at: file:///Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileClientJava'.
+> Compilation failed; see the compiler output below.
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:339: 错误: 无法将接口 ParentElement中的方法 mouseClicked应用到给定类型;
+          return super.mouseClicked(mouseX, mouseY, button);
+                      ^
+    需要: Click,boolean
+    找到:    double,double,int
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:348: 错误: 无法将接口 ParentElement中的方法 mouseReleased应用到给定类型;
+          return super.mouseReleased(mouseX, mouseY, button);
+                      ^
+    需要: Click
+    找到:    double,double,int
+    原因: 实际参数列表和形式参数列表长度不同
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:99: 错误: 对于render(LayerType,RegistryKey<EquipmentAsset>,BipedEntityModel<BipedEntityRenderState>,ItemStack,MatrixStack,VertexConsumerProvider,int), 找不到合适的方法
+          equipmentRenderer.render(
+                           ^
+      方法 EquipmentRenderer.<S#1>render(LayerType,RegistryKey<EquipmentAsset>,Model<? super S#1>,S#1,ItemStack,MatrixStack,OrderedRenderCommandQueue,int,int)不适用
+        (无法推断类型变量 S#1
+          (实际参数列表和形式参数列表长度不同))
+      方法 EquipmentRenderer.<S#2>render(LayerType,RegistryKey<EquipmentAsset>,Model<? super S#2>,S#2,ItemStack,MatrixStack,OrderedRenderCommandQueue,int,Identifier,int,int)不适用
+        (无法推断类型变量 S#2
+          (实际参数列表和形式参数列表长度不同))
+    其中, S#1,S#2是类型变量:
+      S#1扩展已在方法 <S#1>render(LayerType,RegistryKey<EquipmentAsset>,Model<? super S#1>,S#1,ItemStack,MatrixStack,OrderedRenderCommandQueue,int,int)中声明的Object
+      S#2扩展已在方法 <S#2>render(LayerType,RegistryKey<EquipmentAsset>,Model<? super S#2>,S#2,ItemStack,MatrixStack,OrderedRenderCommandQueue,int,Identifier,int,int)中声明的Object
+  注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/EntityRenderDispatcherPalCompatMixin.java:9: 错误: 找不到符号
+  import net.minecraft.client.render.entity.EntityRenderDispatcher;
+                                           ^
+    符号:   类 EntityRenderDispatcher
+    位置: 程序包 net.minecraft.client.render.entity
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/WorldRendererFirstPersonCollisionMixin.java:50: 错误: 找不到符号
+              net.minecraft.client.render.entity.EntityRenderDispatcher dispatcher,
+                                                ^
+    符号:   类 EntityRenderDispatcher
+    位置: 程序包 net.minecraft.client.render.entity
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/KingdomComeCombatClient.java:47: 错误: 找不到符号
+  import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+                                                    ^
+    符号:   类 WorldRenderEvents
+    位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:11: 错误: 找不到符号
+  import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+                                                    ^
+    符号:   类 WorldRenderContext
+    位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:12: 错误: 找不到符号
+  import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+                                                    ^
+    符号:   类 WorldRenderEvents
+    位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:40: 错误: 找不到符号
+      private static void render(WorldRenderContext context) {
+                                 ^
+    符号:   类 WorldRenderContext
+    位置: 类 BladeTrailRenderer
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:6: 错误: 找不到符号
+  import net.minecraft.client.particle.SpriteBillboardParticle;
+                                      ^
+    符号:   类 SpriteBillboardParticle
+    位置: 程序包 net.minecraft.client.particle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:6: 错误: 找不到符号
+  import net.minecraft.client.particle.SpriteBillboardParticle;
+                                      ^
+    符号:   类 SpriteBillboardParticle
+    位置: 程序包 net.minecraft.client.particle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:6: 错误: 找不到符号
+  import net.minecraft.client.particle.SpriteBillboardParticle;
+                                      ^
+    符号:   类 SpriteBillboardParticle
+    位置: 程序包 net.minecraft.client.particle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:7: 错误: 找不到符号
+  import net.minecraft.client.particle.SpriteBillboardParticle;
+                                      ^
+    符号:   类 SpriteBillboardParticle
+    位置: 程序包 net.minecraft.client.particle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:6: 错误: 找不到符号
+  import net.minecraft.client.particle.SpriteBillboardParticle;
+                                      ^
+    符号:   类 SpriteBillboardParticle
+    位置: 程序包 net.minecraft.client.particle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:16: 错误: 找不到符号
+  import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
+                                                    ^
+    符号:   类 WorldRenderContext
+    位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:17: 错误: 找不到符号
+  import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+                                                    ^
+    符号:   类 WorldRenderEvents
+    位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:38: 错误: 找不到符号
+      private static void render(WorldRenderContext context) {
+                                 ^
+    符号:   类 WorldRenderContext
+    位置: 类 CombatCollisionDebugRenderer
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/hud/LockOnCrosshairOverlay.java:13: 错误: 找不到符号
+  import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+                                                    ^
+    符号:   类 WorldRenderEvents
+    位置: 程序包 net.fabricmc.fabric.api.client.rendering.v1
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/IllagerEntityRendererArmorMixin.java:37: 错误: 找不到符号
+                  new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR)),
+                                                                          ^
+    符号:   变量 PLAYER_OUTER_ARMOR
+    位置: 类 EntityModelLayers
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/IllagerEntityRendererArmorMixin.java:38: 错误: 找不到符号
+                  new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR)),
+                                                                          ^
+    符号:   变量 PLAYER_OUTER_ARMOR
+    位置: 类 EntityModelLayers
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/IllagerEntityRendererArmorMixin.java:39: 错误: 找不到符号
+                  new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR)),
+                                                                          ^
+    符号:   变量 PLAYER_OUTER_ARMOR
+    位置: 类 EntityModelLayers
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:39: 错误: 找不到符号
+          return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
+                                     ^
+    符号:   变量 PARTICLE_SHEET_OPAQUE
+    位置: 类 ParticleTextureSheet
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:39: 错误: 找不到符号
+          return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
+                                     ^
+    符号:   变量 PARTICLE_SHEET_TRANSLUCENT
+    位置: 类 ParticleTextureSheet
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:33: 错误: 找不到符号
+          return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
+                                     ^
+    符号:   变量 PARTICLE_SHEET_TRANSLUCENT
+    位置: 类 ParticleTextureSheet
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:45: 错误: 找不到符号
+          super.tick();
+          ^
+    符号:   变量 super
+    位置: 类 BloodMistParticle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:55: 错误: 找不到符号
+          return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
+                                     ^
+    符号:   变量 PARTICLE_SHEET_TRANSLUCENT
+    位置: 类 ParticleTextureSheet
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:42: 错误: 找不到符号
+          return ParticleTextureSheet.PARTICLE_SHEET_OPAQUE;
+                                     ^
+    符号:   变量 PARTICLE_SHEET_OPAQUE
+    位置: 类 ParticleTextureSheet
+  注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+  注: 某些输入文件使用或覆盖了已过时的 API。
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:328: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:342: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/HandCannonBulletRenderer.java:24: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:45: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:37: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:42: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:54: 错误: 方法不会覆盖或实现超类型的方法
+          @Override
+          ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:37: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:49: 错误: 方法不会覆盖或实现超类型的方法
+          @Override
+          ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:31: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:43: 错误: 方法不会覆盖或实现超类型的方法
+          @Override
+          ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:43: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:53: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:65: 错误: 方法不会覆盖或实现超类型的方法
+          @Override
+          ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:40: 错误: 方法不会覆盖或实现超类型的方法
+      @Override
+      ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:52: 错误: 方法不会覆盖或实现超类型的方法
+          @Override
+          ^
+  注: 某些输入文件使用了未经检查或不安全的操作。
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/lockon/LockOnCameraController.java:333: 错误: 找不到符号
+          Vec3d cameraAfterShoulder = client.gameRenderer.getCamera().getEntityPos().add(shoulderOffset);
+                                                                     ^
+    符号:   方法 getEntityPos()
+    位置: 类 Camera
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/lockon/LockOnCameraController.java:347: 错误: 找不到符号
+              Vec3d cameraPos = client.gameRenderer.getCamera().getEntityPos().add(baseOffset);
+                                                               ^
+    符号:   方法 getEntityPos()
+    位置: 类 Camera
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:108: 错误: 找不到符号
+          context.drawBorder(panelX, panelY, panelW, panelH, 0xFF6B5A43);
+                 ^
+    符号:   方法 drawBorder(int,int,int,int,int)
+    位置: 类型为DrawContext的变量 context
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:190: 错误: 找不到符号
+          context.drawBorder(x, y, 28, 28, 0xFF8B7554);
+                 ^
+    符号:   方法 drawBorder(int,int,int,int,int)
+    位置: 类型为DrawContext的变量 context
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java:223: 错误: 找不到符号
+          context.drawBorder(x, y, 28, 28, 0xFF8B7554);
+                 ^
+    符号:   方法 drawBorder(int,int,int,int,int)
+    位置: 类型为DrawContext的变量 context
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/ui/HardshipSelectionScreen.java:96: 错误: 找不到符号
+              context.drawBorder(x - 1, y - 1, ICON_SIZE + 2, ICON_SIZE + 2, border);
+                     ^
+    符号:   方法 drawBorder(int,int,int,int,int)
+    位置: 类型为DrawContext的变量 context
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:112: 错误: 找不到符号
+          model.getRootPart().copyTransform(illagerModel.getRootPart());
+                             ^
+    符号:   方法 copyTransform(ModelPart)
+    位置: 类 ModelPart
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:120: 错误: 找不到符号
+          model.head.copyTransform(illagerModel.getHead());
+                    ^
+    符号:   方法 copyTransform(ModelPart)
+    位置: 类型为ModelPart的变量 head
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:121: 错误: 找不到符号
+          model.hat.copyTransform(illagerModel.getHat());
+                   ^
+    符号:   方法 copyTransform(ModelPart)
+    位置: 类型为ModelPart的变量 hat
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:129: 错误: 找不到符号
+                  model.body.copyTransform(body);
+                            ^
+    符号:   方法 copyTransform(ModelPart)
+    位置: 类型为ModelPart的变量 body
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:131: 错误: 找不到符号
+              model.rightArm.copyTransform(parts.kingdomcomecombat$getRightArm());
+                            ^
+    符号:   方法 copyTransform(ModelPart)
+    位置: 类型为ModelPart的变量 rightArm
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:132: 错误: 找不到符号
+              model.leftArm.copyTransform(parts.kingdomcomecombat$getLeftArm());
+                           ^
+    符号:   方法 copyTransform(ModelPart)
+    位置: 类型为ModelPart的变量 leftArm
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/collision/ClientItemHitboxCache.java:114: 错误: 找不到符号
+                  .add(client.gameRenderer.getCamera().getEntityPos())
+                                                      ^
+    符号:   方法 getEntityPos()
+    位置: 类 Camera
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/collision/ClientGenericModelTracker.java:203: 错误: 找不到符号
+          Vec3d camera = MinecraftClient.getInstance().gameRenderer.getCamera().getEntityPos();
+                                                                               ^
+    符号:   方法 getEntityPos()
+    位置: 类 Camera
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/collision/ClientGenericModelTracker.java:246: 错误: 找不到符号
+                      ? MinecraftClient.getInstance().gameRenderer.getCamera().getEntityPos().add(renderedCenter)
+                                                                              ^
+    符号:   方法 getEntityPos()
+    位置: 类 Camera
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/collision/ClientCollisionTrackingPolicy.java:50: 错误: 找不到符号
+          return client.getEntityRenderDispatcher().shouldRenderHitboxes();
+                                                   ^
+    符号:   方法 shouldRenderHitboxes()
+    位置: 类 EntityRenderManager
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:42: 错误: 找不到符号
+                  || !client.getEntityRenderDispatcher().shouldRenderHitboxes()
+                                                        ^
+    符号:   方法 shouldRenderHitboxes()
+    位置: 类 EntityRenderManager
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/hud/LockOnCrosshairOverlay.java:115: 错误: 找不到符号
+          Vec3d cameraPos = camera.getEntityPos();
+                                  ^
+    符号:   方法 getEntityPos()
+    位置: 类型为Camera的变量 camera
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:31: 错误: 找不到符号
+          this.setBoundingBoxSpacing(0.012F, 0.012F);
+              ^
+    符号: 方法 setBoundingBoxSpacing(float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:32: 错误: 找不到符号
+          this.setColor(1.0F, 0.84F, 0.16F);
+              ^
+    符号: 方法 setColor(float,float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:33: 错误: 找不到符号
+          this.setAlpha(1.0F);
+              ^
+    符号: 方法 setAlpha(float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:34: 错误: 找不到符号
+          this.setSprite(spriteProvider);
+              ^
+    符号: 方法 setSprite(SpriteProvider)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:31: 错误: 找不到符号
+          this.setBoundingBoxSpacing(0.018F, 0.018F);
+              ^
+    符号: 方法 setBoundingBoxSpacing(float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:32: 错误: 找不到符号
+          this.setColor(1.0F, 1.0F, 1.0F);
+              ^
+    符号: 方法 setColor(float,float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:33: 错误: 找不到符号
+          this.setAlpha(1.0F);
+              ^
+    符号: 方法 setAlpha(float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:34: 错误: 找不到符号
+          this.setSprite(spriteProvider);
+              ^
+    符号: 方法 setSprite(SpriteProvider)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:25: 错误: 找不到符号
+          this.setBoundingBoxSpacing(0.01F, 0.01F);
+              ^
+    符号: 方法 setBoundingBoxSpacing(float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:26: 错误: 找不到符号
+          this.setColor(1.0F, 1.0F, 1.0F);
+              ^
+    符号: 方法 setColor(float,float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:27: 错误: 找不到符号
+          this.setAlpha(0.34F);
+              ^
+    符号: 方法 setAlpha(float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:28: 错误: 找不到符号
+          this.setSprite(spriteProvider);
+              ^
+    符号: 方法 setSprite(SpriteProvider)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:37: 错误: 找不到符号
+          this.setColor(0.62F, 0.05F, 0.045F);
+              ^
+    符号: 方法 setColor(float,float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:39: 错误: 找不到符号
+          this.setAlpha(this.initialAlpha);
+              ^
+    符号: 方法 setAlpha(float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:40: 错误: 找不到符号
+          this.setSpriteForAge(spriteProvider);
+              ^
+    符号: 方法 setSpriteForAge(SpriteProvider)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:48: 错误: 找不到符号
+              this.setAlpha(this.initialAlpha * (1.0F - life));
+                  ^
+    符号: 方法 setAlpha(float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:49: 错误: 找不到符号
+              this.setSpriteForAge(this.spriteProvider);
+                  ^
+    符号: 方法 setSpriteForAge(SpriteProvider)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:34: 错误: 找不到符号
+          this.setBoundingBoxSpacing(2.0F / 16.0F, 2.0F / 16.0F);
+              ^
+    符号: 方法 setBoundingBoxSpacing(float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:35: 错误: 找不到符号
+          this.setColor(0.72F, 0.015F, 0.01F);
+              ^
+    符号: 方法 setColor(float,float,float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:36: 错误: 找不到符号
+          this.setAlpha(1.0F);
+              ^
+    符号: 方法 setAlpha(float)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:37: 错误: 找不到符号
+          this.setSprite(spriteProvider);
+              ^
+    符号: 方法 setSprite(SpriteProvider)
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/IllagerArmorFeatureRenderer.java:22: 错误: IllagerArmorFeatureRenderer不是抽象的, 并且未覆盖FeatureRenderer中的抽象方法render(MatrixStack,OrderedRenderCommandQueue,int,IllagerEntityRenderState,float,float)
+  public class IllagerArmorFeatureRenderer
+         ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:47: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+      public static class Factory implements ParticleFactory<SimpleParticleType> {
+                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:42: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+      public static class Factory implements ParticleFactory<SimpleParticleType> {
+                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:36: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+      public static class Factory implements ParticleFactory<SimpleParticleType> {
+                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:58: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+      public static class Factory implements ParticleFactory<SimpleParticleType> {
+                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:45: 错误: Factory不是抽象的, 并且未覆盖ParticleFactory中的抽象方法createParticle(SimpleParticleType,ClientWorld,double,double,double,double,double,double,Random)
+      public static class Factory implements ParticleFactory<SimpleParticleType> {
+                    ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:22: 错误: 不兼容的类型: String无法转换为Category
+                  CATEGORY
+                  ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:28: 错误: 不兼容的类型: String无法转换为Category
+                  CATEGORY
+                  ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:34: 错误: 不兼容的类型: String无法转换为Category
+                  CATEGORY
+                  ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:40: 错误: 不兼容的类型: String无法转换为Category
+                  CATEGORY
+                  ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/input/CombatKeyBindings.java:46: 错误: 不兼容的类型: String无法转换为Category
+                  CATEGORY
+                  ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/HandCannonBulletRenderer.java:36: 错误: 不兼容的类型: VertexConsumerProvider无法转换为OrderedRenderCommandQueue
+          super.render(state, matrices, vertexConsumers, light);
+                                        ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:65: 错误: 不兼容的类型: CombatSparkParticle无法转换为Particle
+              return new CombatSparkParticle(
+                     ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:60: 错误: 不兼容的类型: BloodDropParticle无法转换为Particle
+              return new BloodDropParticle(
+                     ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:54: 错误: 不兼容的类型: BloodTraceParticle无法转换为Particle
+              return new BloodTraceParticle(world, x, y, z,
+                     ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:76: 错误: 不兼容的类型: BloodMistParticle无法转换为Particle
+              return new BloodMistParticle(
+                     ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:63: 错误: 不兼容的类型: BloodSparkParticle无法转换为Particle
+              return new BloodSparkParticle(
+                     ^
+  注: 某些消息已经过简化; 请使用 -Xdiags:verbose 重新编译以获得完整输出
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:11: 错误: 找不到符号
+  public class CombatSparkParticle extends SpriteBillboardParticle {
+                                           ^
+    符号: 类 SpriteBillboardParticle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:11: 错误: 找不到符号
+  public class BloodDropParticle extends SpriteBillboardParticle {
+                                         ^
+    符号: 类 SpriteBillboardParticle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:12: 错误: 找不到符号
+  public final class BloodTraceParticle extends SpriteBillboardParticle {
+                                                ^
+    符号: 类 SpriteBillboardParticle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:12: 错误: 找不到符号
+  public class BloodMistParticle extends SpriteBillboardParticle {
+                                         ^
+    符号: 类 SpriteBillboardParticle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:11: 错误: 找不到符号
+  public class BloodSparkParticle extends SpriteBillboardParticle {
+                                          ^
+    符号: 类 SpriteBillboardParticle
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/mixin/client/EntityRenderDispatcherPalCompatMixin.java:19: 错误: 找不到符号
+  @Mixin(value = EntityRenderDispatcher.class, priority = 900)
+                 ^
+    符号: 类 EntityRenderDispatcher
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:23: 错误: 找不到符号
+          this.velocityX = velocityX;
+              ^
+    符号: 变量 velocityX
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:24: 错误: 找不到符号
+          this.velocityY = velocityY;
+              ^
+    符号: 变量 velocityY
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:25: 错误: 找不到符号
+          this.velocityZ = velocityZ;
+              ^
+    符号: 变量 velocityZ
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:26: 错误: 找不到符号
+          this.scale = 0.035F;
+              ^
+    符号: 变量 scale
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:27: 错误: 找不到符号
+          this.maxAge = 18;
+              ^
+    符号: 变量 maxAge
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:28: 错误: 找不到符号
+          this.gravityStrength = 0.13F;
+              ^
+    符号: 变量 gravityStrength
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:29: 错误: 找不到符号
+          this.velocityMultiplier = 0.82F;
+              ^
+    符号: 变量 velocityMultiplier
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/CombatSparkParticle.java:30: 错误: 找不到符号
+          this.collidesWithWorld = true;
+              ^
+    符号: 变量 collidesWithWorld
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:23: 错误: 找不到符号
+          this.velocityX = velocityX;
+              ^
+    符号: 变量 velocityX
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:24: 错误: 找不到符号
+          this.velocityY = velocityY;
+              ^
+    符号: 变量 velocityY
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:25: 错误: 找不到符号
+          this.velocityZ = velocityZ;
+              ^
+    符号: 变量 velocityZ
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:26: 错误: 找不到符号
+          this.scale = 0.078F + world.random.nextFloat() * 0.036F;
+              ^
+    符号: 变量 scale
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:27: 错误: 找不到符号
+          this.maxAge = 325;
+              ^
+    符号: 变量 maxAge
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:28: 错误: 找不到符号
+          this.gravityStrength = 0.68F;
+              ^
+    符号: 变量 gravityStrength
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:29: 错误: 找不到符号
+          this.velocityMultiplier = 0.90F;
+              ^
+    符号: 变量 velocityMultiplier
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodDropParticle.java:30: 错误: 找不到符号
+          this.collidesWithWorld = true;
+              ^
+    符号: 变量 collidesWithWorld
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:17: 错误: 找不到符号
+          this.velocityX = velocityX;
+              ^
+    符号: 变量 velocityX
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:18: 错误: 找不到符号
+          this.velocityY = velocityY;
+              ^
+    符号: 变量 velocityY
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:19: 错误: 找不到符号
+          this.velocityZ = velocityZ;
+              ^
+    符号: 变量 velocityZ
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:20: 错误: 找不到符号
+          this.scale = 0.026F + world.random.nextFloat() * 0.016F;
+              ^
+    符号: 变量 scale
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:21: 错误: 找不到符号
+          this.maxAge = 18 + world.random.nextInt(7);
+              ^
+    符号: 变量 maxAge
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:22: 错误: 找不到符号
+          this.gravityStrength = 0.0F;
+              ^
+    符号: 变量 gravityStrength
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:23: 错误: 找不到符号
+          this.velocityMultiplier = 0.94F;
+              ^
+    符号: 变量 velocityMultiplier
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodTraceParticle.java:24: 错误: 找不到符号
+          this.collidesWithWorld = false;
+              ^
+    符号: 变量 collidesWithWorld
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:29: 错误: 找不到符号
+          this.velocityX = velocityX;
+              ^
+    符号: 变量 velocityX
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:30: 错误: 找不到符号
+          this.velocityY = velocityY;
+              ^
+    符号: 变量 velocityY
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:31: 错误: 找不到符号
+          this.velocityZ = velocityZ;
+              ^
+    符号: 变量 velocityZ
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:32: 错误: 找不到符号
+          this.scale = 0.16F + world.random.nextFloat() * 0.12F;
+              ^
+    符号: 变量 scale
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:33: 错误: 找不到符号
+          this.maxAge = 18 + world.random.nextInt(10);
+              ^
+    符号: 变量 maxAge
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:34: 错误: 找不到符号
+          this.gravityStrength = 0.0F;
+              ^
+    符号: 变量 gravityStrength
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:35: 错误: 找不到符号
+          this.velocityMultiplier = 0.90F;
+              ^
+    符号: 变量 velocityMultiplier
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:36: 错误: 找不到符号
+          this.collidesWithWorld = false;
+              ^
+    符号: 变量 collidesWithWorld
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:46: 错误: 找不到符号
+          if (!this.dead) {
+                   ^
+    符号: 变量 dead
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:47: 错误: 找不到符号
+              float life = this.age / (float) this.maxAge;
+                               ^
+    符号: 变量 age
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodMistParticle.java:47: 错误: 找不到符号
+              float life = this.age / (float) this.maxAge;
+                                                  ^
+    符号: 变量 maxAge
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:25: 错误: 找不到符号
+          this.velocityX = velocityX;
+              ^
+    符号: 变量 velocityX
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:26: 错误: 找不到符号
+          this.velocityY = velocityY;
+              ^
+    符号: 变量 velocityY
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:27: 错误: 找不到符号
+          this.velocityZ = velocityZ;
+              ^
+    符号: 变量 velocityZ
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:29: 错误: 找不到符号
+          this.scale = TWO_PIXEL_SCALE;
+              ^
+    符号: 变量 scale
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:30: 错误: 找不到符号
+          this.maxAge = 16 + world.random.nextInt(9);
+              ^
+    符号: 变量 maxAge
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:31: 错误: 找不到符号
+          this.gravityStrength = 0.025F;
+              ^
+    符号: 变量 gravityStrength
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:32: 错误: 找不到符号
+          this.velocityMultiplier = 0.88F;
+              ^
+    符号: 变量 velocityMultiplier
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/particle/BloodSparkParticle.java:33: 错误: 找不到符号
+          this.collidesWithWorld = false;
+              ^
+    符号: 变量 collidesWithWorld
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/KingdomComeCombatClient.java:479: 错误: 程序包WorldRenderEvents不存在
+  		WorldRenderEvents.START.register(context -> {
+  		                 ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/render/BladeTrailRenderer.java:37: 错误: 程序包WorldRenderEvents不存在
+          WorldRenderEvents.AFTER_ENTITIES.register(BladeTrailRenderer::render);
+                           ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/debug/CombatCollisionDebugRenderer.java:35: 错误: 程序包WorldRenderEvents不存在
+          WorldRenderEvents.AFTER_ENTITIES.register(CombatCollisionDebugRenderer::render);
+                           ^
+  /Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/build/generated/versionCompat/client/com/kingdomcomecombat/client/hud/LockOnCrosshairOverlay.java:68: 错误: 程序包WorldRenderEvents不存在
+          WorldRenderEvents.LAST.register(context -> updateTargetScreenPosition());
+                           ^
+  152 个错误
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 32s
+4 actionable tasks: 4 executed

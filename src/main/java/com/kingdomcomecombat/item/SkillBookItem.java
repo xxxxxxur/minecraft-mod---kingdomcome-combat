@@ -143,7 +143,7 @@ public class SkillBookItem extends WrittenBookItem {
         String passiveId = passiveId(stack).orElse("");
         String bookId = bookId(stack).orElse(comboId.isBlank() ? passiveId : comboId);
         SkillBookTexts.Entry text = SkillBookTexts.get(bookId);
-        String language = player.getClientOptions().language();
+        String language = playerLanguage(player);
         Optional<ComboMoveConfig> combo = ComboMoveConfigs.all().stream()
                 .filter(candidate -> candidate.id().equals(comboId))
                 .findFirst();
@@ -185,7 +185,7 @@ public class SkillBookItem extends WrittenBookItem {
     private static WrittenBookContentComponent bookContent(SkillBookTexts.Entry text, String language) {
         String title = text.title(language);
         String illustration = text.illustration(language);
-        boolean chinese = normalizeLanguage(language).startsWith("zh");
+        boolean chinese = normalizeLanguage(language).equals("zh_cn");
         String illustrationLabel = chinese ? "插图" : "Illustration";
         String firstPage = title
                 + "\n\n"
@@ -208,7 +208,7 @@ public class SkillBookItem extends WrittenBookItem {
         if (!stack.isOf(ModItems.SKILL_BOOK)) {
             return;
         }
-        String language = normalizeLanguage(player.getClientOptions().language());
+        String language = normalizeLanguage(playerLanguage(player));
         NbtComponent customData = stack.get(DataComponentTypes.CUSTOM_DATA);
         String appliedLanguage = customData == null
                 ? ""
@@ -222,8 +222,13 @@ public class SkillBookItem extends WrittenBookItem {
         }
     }
 
+    public static String playerLanguage(ServerPlayerEntity player) {
+        String language = player.getClientOptions().language();
+        return normalizeLanguage(language);
+    }
+
     private static String normalizeLanguage(String language) {
-        return language == null ? "" : language.trim().toLowerCase(java.util.Locale.ROOT);
+        return com.kingdomcomecombat.text.LocalizedText.normalize(language);
     }
 
     public static boolean learn(ServerPlayerEntity player, String comboId) {
@@ -236,15 +241,18 @@ public class SkillBookItem extends WrittenBookItem {
                 .findFirst()
                 .orElse(null);
         if (combo == null) {
-            player.sendMessage(Text.literal("技能书记录的招式不存在：" + comboId), false);
+            player.sendMessage(Text.translatable("message.kingdom_come_combat.book_unknown_combo", comboId), false);
             return false;
         }
 
         boolean changed = PlayerComboProgress.unlock(player, comboId);
         player.sendMessage(
-                Text.literal(changed
-                        ? "习得招式：" + combo.displayName()
-                        : "你已经掌握了：" + combo.displayName()),
+                Text.translatable(changed
+                        ? "message.kingdom_come_combat.learned_combo"
+                        : "message.kingdom_come_combat.already_learned",
+                        SkillBookTexts.contains(comboId)
+                                ? SkillBookTexts.get(comboId).title(playerLanguage(player))
+                                : combo.displayName()),
                 false
         );
         return changed;
@@ -257,14 +265,15 @@ public class SkillBookItem extends WrittenBookItem {
 
         PassiveSkillConfig passive = PassiveSkillConfigs.get(passiveId);
         if (passive == null) {
-            player.sendMessage(Text.literal("技能书记录的被动技能不存在：" + passiveId), false);
+            player.sendMessage(Text.translatable("message.kingdom_come_combat.book_unknown_passive", passiveId), false);
             return false;
         }
         boolean changed = PlayerPassiveSkillProgress.unlock(player, passiveId);
         player.sendMessage(
-                Text.literal(changed
-                        ? "习得被动技能：" + passive.name()
-                        : "你已经掌握了：" + passive.name()),
+                Text.translatable(changed
+                        ? "message.kingdom_come_combat.learned_passive"
+                        : "message.kingdom_come_combat.already_learned",
+                        passive.name(playerLanguage(player))),
                 false
         );
         return changed;
@@ -273,7 +282,7 @@ public class SkillBookItem extends WrittenBookItem {
     public static boolean learnFromHeldBook(ServerPlayerEntity player, String comboId, String passiveId) {
         if (!heldBookMatches(player, Hand.MAIN_HAND, comboId, passiveId)
                 && !heldBookMatches(player, Hand.OFF_HAND, comboId, passiveId)) {
-            player.sendMessage(Text.literal("手上没有对应的技能书"), false);
+            player.sendMessage(Text.translatable("message.kingdom_come_combat.no_matching_book"), false);
             return false;
         }
 

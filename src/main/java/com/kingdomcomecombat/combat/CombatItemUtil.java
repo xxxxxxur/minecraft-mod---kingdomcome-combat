@@ -40,7 +40,7 @@ public class CombatItemUtil {
 
         // 空手
         if (stack.isEmpty()) {
-            return true;
+            return !CombatServerConfig.customUnarmedAttacksDisabled();
         }
 
         if (isPolearm(stack) && !player.getOffHandStack().isEmpty()) {
@@ -171,7 +171,9 @@ public class CombatItemUtil {
 
     public static boolean shouldUseVanillaEntityAttack(PlayerEntity player, Entity target) {
         return player != null
-                && (isConfiguredVanillaAttackWeapon(player.getMainHandStack())
+                && ((player.getMainHandStack().isEmpty()
+                        && CombatServerConfig.customUnarmedAttacksDisabled())
+                || isConfiguredVanillaAttackWeapon(player.getMainHandStack())
                 || isAllowedVanillaAttackMount(player.getVehicle())
                 || canUseAirborneHeavyHammerAttack(player)
                 || target instanceof ArmorStandEntity

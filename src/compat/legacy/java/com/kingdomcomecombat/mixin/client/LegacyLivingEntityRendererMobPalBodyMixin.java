@@ -31,4 +31,17 @@ public abstract class LegacyLivingEntityRendererMobPalBodyMixin {
     ) {
         LegacyMobPalBodyTransformApplier.apply(entity, matrices);
     }
+
+    @Inject(method = "setupTransforms", at = @At("RETURN"))
+    private void kingdomcomecombat$applyCompatiblePalBodyTransform(
+            LivingEntity entity,
+            MatrixStack matrices,
+            float animationProgress,
+            float bodyYaw,
+            float tickDelta,
+            float scale,
+            CallbackInfo ci
+    ) {
+        LegacyMobPalBodyTransformApplier.applyCompatibility(entity, matrices);
+    }
 }

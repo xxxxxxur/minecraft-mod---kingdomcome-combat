@@ -20,7 +20,7 @@ public class ComboMoveConfigs {
                 "上左右",
                 new ComboMoveConfig(
                         "smash_attack",
-                        "粉碎打击",
+                        "Smash Attack",
                         parseSequence("上左右"),
                         new DamageTypeProfile(0.20, 1.20, 0.0),
                         "attack_smash",
@@ -62,7 +62,7 @@ public class ComboMoveConfigs {
                 "下下右",
                 new ComboMoveConfig(
                         "pommel_strike",
-                        "剑柄打击",
+                        "Pommel Strike",
                         parseSequence("下下右"),
                         new DamageTypeProfile(0.20, 1.20, 0.0),
                         "attack_smash",

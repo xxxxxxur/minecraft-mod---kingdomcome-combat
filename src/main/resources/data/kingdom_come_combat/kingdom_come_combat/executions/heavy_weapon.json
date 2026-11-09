@@ -4,7 +4,7 @@
     "right": {
       "set": "heavy_weapon",
       "id": "execution_heavy_weapon_right_or_up",
-      "display_name": "重武器处决",
+      "display_name": {"en_us": "Heavy Weapon Execution", "zh_cn": "重武器处决"},
       "animation": "execution_heavy_weapon_1",
       "victim_animation": "execution_heavy_weapon_hit_1",
       "damage_modifiers": {"thrust": 0.2, "strike": 2.0, "slash": 1.0},
@@ -27,7 +27,7 @@
     "left": {
       "set": "heavy_weapon",
       "id": "execution_heavy_weapon_left_or_down",
-      "display_name": "重武器处决",
+      "display_name": {"en_us": "Heavy Weapon Execution", "zh_cn": "重武器处决"},
       "animation": "execution_heavy_weapon_1",
       "victim_animation": "execution_heavy_weapon_hit_1",
       "damage_modifiers": {"thrust": 0.2, "strike": 2.0, "slash": 1.0},

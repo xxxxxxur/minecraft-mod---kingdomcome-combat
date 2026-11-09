@@ -240,7 +240,7 @@ public class HumanoidHurtboxLibrary {
         }
 
         EntityType<?> type = entity.getType();
-        return HumanoidCombatAiProfiles.hasConfiguredType(type)
+        return HumanoidCombatAiProfiles.hasProfile(entity)
                 || entity instanceof ZombieEntity
                 || entity instanceof AbstractSkeletonEntity
                 || SYNCED_HUMANOID_AI_TYPES.contains(Registries.ENTITY_TYPE.getId(type))

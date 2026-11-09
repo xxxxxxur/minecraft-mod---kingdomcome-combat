@@ -38,6 +38,7 @@ import com.kingdomcomecombat.network.WarCryPayload;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
@@ -566,7 +567,7 @@ public class CombatInputClient {
     ) {
         if (localAttackDisabledTicks > 0) {
             if (CombatClientState.bufferAttackDuringDisabled(attackDirection)) {
-                debugMessage(client, "禁攻预输入：" + attackDirection.name());
+                debugMessage(client, Text.translatable("debug.kingdom_come_combat.buffered_locked", attackDirection.name()));
             }
             return;
         }
@@ -621,8 +622,8 @@ public class CombatInputClient {
         debugMessage(
                 client,
                 chained
-                        ? "预输入攻击：" + attackDirection.name()
-                        : "短按攻击：" + attackDirection.name()
+                        ? Text.translatable("debug.kingdom_come_combat.buffered_attack", attackDirection.name())
+                        : Text.translatable("debug.kingdom_come_combat.tap_attack", attackDirection.name())
         );
 
         if (!moveConfig.animationName().isBlank()) {
@@ -855,7 +856,7 @@ public class CombatInputClient {
             CombatClientState.setDirection(direction);
             syncCombatStateIfChanged();
 
-            debugMessage(client, "架势：" + direction.name());
+            debugMessage(client, Text.translatable("debug.kingdom_come_combat.stance", direction.name()));
 
             /*
              * 攻击期间允许改变 currentDirection，
@@ -1354,10 +1355,10 @@ public class CombatInputClient {
                         boolean buffered = CombatClientState.bufferAttackInPostWindow(pressedDirection);
 
                         if (buffered) {
-                            debugMessage(client, "攻击末段预输入：" + pressedDirection.name());
+                            debugMessage(client, Text.translatable("debug.kingdom_come_combat.buffered_late", pressedDirection.name()));
                         }
                     } else {
-                        debugMessage(client, "攻击前段，不能预输入");
+                        debugMessage(client, Text.translatable("debug.kingdom_come_combat.cannot_buffer"));
                     }
                 } else if (CombatClientState.isInPostAttackWindow()) {
                     /*
@@ -1366,7 +1367,7 @@ public class CombatInputClient {
                     boolean buffered = CombatClientState.bufferAttackInPostWindow(pressedDirection);
 
                     if (buffered) {
-                        debugMessage(client, "预输入：" + pressedDirection.name());
+                        debugMessage(client, Text.translatable("debug.kingdom_come_combat.buffered", pressedDirection.name()));
                     }
                 } else {
                     /*
@@ -1454,7 +1455,7 @@ public class CombatInputClient {
     ) {
     }
 
-    private static void debugMessage(MinecraftClient client, String message) {
+    private static void debugMessage(MinecraftClient client, Text message) {
     }
 
     private static boolean controlifyResolved;

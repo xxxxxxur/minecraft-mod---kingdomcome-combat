@@ -22,6 +22,7 @@ import com.kingdomcomecombat.combat.ServerCombatStanceState;
 import com.kingdomcomecombat.combat.ServerExecutionState;
 import com.kingdomcomecombat.config.CombatServerConfig;
 import com.kingdomcomecombat.ai.HumanoidCombatAiTicker;
+import com.kingdomcomecombat.ai.HumanoidCombatAiProfiles;
 import com.kingdomcomecombat.collision.ServerHitDetectionSystem;
 import com.kingdomcomecombat.equipment.EquipmentCombatAttributesRegistry;
 import com.kingdomcomecombat.game.ModGameRules;
@@ -104,6 +105,7 @@ public class CombatNetworking {
                 UpdatePlayerInterruptConfigPayload.ID,
                 UpdatePlayerInterruptConfigPayload.CODEC
         );
+        PayloadTypeRegistry.playC2S().register(BipedModelDetectedPayload.ID, BipedModelDetectedPayload.CODEC);
         PayloadTypeRegistry.playC2S().register(WashFacePayload.ID, WashFacePayload.CODEC);
         PayloadTypeRegistry.playC2S().register(WarCryPayload.ID, WarCryPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(
@@ -219,6 +221,22 @@ public class CombatNetworking {
                 (payload, context) -> HardshipSelectionState.submit(context.player(), payload.ids())
         );
 
+        ServerPlayNetworking.registerGlobalReceiver(BipedModelDetectedPayload.ID, (payload, context) -> {
+            Entity entity = context.player().getWorld().getEntityById(payload.entityId());
+            if (!(entity instanceof MobEntity mob)
+                    || !mob.isAlive()
+                    || context.player().squaredDistanceTo(mob) > 128.0 * 128.0) {
+                return;
+            }
+            if (payload.compatible()) {
+                if (HumanoidCombatAiProfiles.hasPlausibleAutomaticHumanoidDimensions(mob)) {
+                    HumanoidCombatAiProfiles.includeAutomaticallyDetectedType(mob.getType());
+                }
+            } else {
+                HumanoidCombatAiProfiles.excludeAutomaticType(mob.getType());
+            }
+        });
+
         ServerPlayNetworking.registerGlobalReceiver(
                 UpdateServerConfigPayload.ID,
                 (payload, context) -> {
@@ -251,6 +269,7 @@ public class CombatNetworking {
                     CombatServerConfig.setClientProjectileHurtboxEnabled(payload.clientProjectileHurtboxEnabled());
                     CombatServerConfig.setReachAttributeHitboxScalingEnabled(payload.reachAttributeHitboxScalingEnabled());
                     CombatServerConfig.setBlockingMovementSlowdownEnabled(payload.blockingMovementSlowdownEnabled());
+                    CombatServerConfig.setCustomUnarmedAttacksDisabled(payload.customUnarmedAttacksDisabled());
                     CombatServerConfig.setMountedKccCombatEnabled(payload.mountedKccCombatEnabled());
                     CombatServerConfig.setReachAttributeHitboxScalePerBlock(payload.reachAttributeHitboxScalePerBlock());
                     CombatServerConfig.setVanillaAttackWeaponIds(payload.vanillaAttackWeaponIds());
@@ -913,6 +932,7 @@ public class CombatNetworking {
                         CombatServerConfig.clientProjectileHurtboxEnabled(),
                         CombatServerConfig.reachAttributeHitboxScalingEnabled(),
                         CombatServerConfig.blockingMovementSlowdownEnabled(),
+                        CombatServerConfig.customUnarmedAttacksDisabled(),
                         CombatServerConfig.mountedKccCombatEnabled(),
                         CombatServerConfig.reachAttributeHitboxScalePerBlock(),
                         CombatServerConfig.vanillaAttackWeaponIds(),

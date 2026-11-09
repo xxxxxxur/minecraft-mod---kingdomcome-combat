@@ -170,6 +170,9 @@ public class KingdomComeCombatClient implements ClientModInitializer {
 						ClientServerConfigState.setBlockingMovementSlowdownEnabled(
 								payload.blockingMovementSlowdownEnabled()
 						);
+						ClientServerConfigState.setCustomUnarmedAttacksDisabled(
+								payload.customUnarmedAttacksDisabled()
+						);
 						ClientServerConfigState.setMountedKccCombatEnabled(payload.mountedKccCombatEnabled());
 						ClientServerConfigState.setReachAttributeHitboxScalePerBlock(
 								payload.reachAttributeHitboxScalePerBlock()
@@ -512,6 +515,7 @@ public class KingdomComeCombatClient implements ClientModInitializer {
 		ClientExecutionState.clear();
 		HumanoidHurtboxLibrary.replaceSyncedHumanoidAiTypes(java.util.List.of());
 		HumanoidHurtboxLibrary.replaceSyncedAiTypes(java.util.List.of());
+		com.kingdomcomecombat.client.compat.BipedModelAiCompatReporter.clear();
 	}
 
 	private static void registerAnimationCacheReload() {

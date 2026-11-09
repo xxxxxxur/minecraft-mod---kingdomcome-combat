@@ -6,6 +6,7 @@ import com.kingdomcomecombat.client.animation.ClientDodgeAnimationState;
 import com.kingdomcomecombat.client.animation.ClientLockedMovementLeanState;
 import com.kingdomcomecombat.client.animation.ClientEntityGeckoAnimationState;
 import com.kingdomcomecombat.client.animation.ClientHitReactionState;
+import com.kingdomcomecombat.client.compat.BipedModelAiCompatReporter;
 import com.kingdomcomecombat.collision.HumanoidHurtboxLibrary;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
@@ -36,12 +37,23 @@ public class LegacyBipedEntityModelHurtboxMixin<T extends LivingEntity> {
             float headPitch,
             CallbackInfo ci
     ) {
-        head.resetTransform();
-        body.resetTransform();
-        rightArm.resetTransform();
-        leftArm.resetTransform();
-        rightLeg.resetTransform();
-        leftLeg.resetTransform();
+        try {
+            BipedModelAiCompatReporter.observe(entity, hasCompleteBipedRig());
+            if (BipedModelAiCompatReporter.isRenderDisabled(entity)
+                    || !HumanoidHurtboxLibrary.isHumanoidTarget(entity)) {
+                return;
+            }
+            head.resetTransform();
+            body.resetTransform();
+            rightArm.resetTransform();
+            leftArm.resetTransform();
+            rightLeg.resetTransform();
+            leftLeg.resetTransform();
+        } catch (RuntimeException | LinkageError exception) {
+            if (!BipedModelAiCompatReporter.disableAfterFailure(entity)) {
+                throw exception;
+            }
+        }
     }
 
     @Inject(method = "setAngles", at = @At("RETURN"))
@@ -54,40 +66,57 @@ public class LegacyBipedEntityModelHurtboxMixin<T extends LivingEntity> {
             float headPitch,
             CallbackInfo ci
     ) {
-        // The modern BipedEntityModel feedback hook is render-state based and
-        // cannot run on 1.21.1. Apply the same final-pose deltas here.
-        ClientHitReactionState.BoneDelta bodyDelta =
-                ClientHitReactionState.getDelta(entity.getId(), HumanoidHurtboxLibrary.Part.BODY);
-        apply(body, bodyDelta);
-        apply(head, parented(ClientHitReactionState.getDelta(
-                entity.getId(), HumanoidHurtboxLibrary.Part.HEAD), bodyDelta, 0.55F));
-        apply(leftArm, parented(ClientHitReactionState.getDelta(
-                entity.getId(), HumanoidHurtboxLibrary.Part.LEFT_ARM), bodyDelta, 1.0F));
-        apply(rightArm, parented(ClientHitReactionState.getDelta(
-                entity.getId(), HumanoidHurtboxLibrary.Part.RIGHT_ARM), bodyDelta, 1.0F));
-        apply(leftLeg, ClientHitReactionState.getDelta(
-                entity.getId(), HumanoidHurtboxLibrary.Part.LEFT_LEG));
-        apply(rightLeg, ClientHitReactionState.getDelta(
-                entity.getId(), HumanoidHurtboxLibrary.Part.RIGHT_LEG));
-        ClientDodgeAnimationState.applyBiped(
-                entity.getId(), body, head, rightArm, leftArm, rightLeg, leftLeg);
-        ClientLockedMovementLeanState.applyBiped(
-                entity.getId(), body, head, rightArm, leftArm, rightLeg, leftLeg);
+        try {
+            BipedModelAiCompatReporter.observe(entity, hasCompleteBipedRig());
+            if (BipedModelAiCompatReporter.isRenderDisabled(entity)
+                    || !HumanoidHurtboxLibrary.isHumanoidTarget(entity)) {
+                return;
+            }
+            // The modern BipedEntityModel feedback hook is render-state based and
+            // cannot run on 1.21.1. Apply the same final-pose deltas here.
+            ClientHitReactionState.BoneDelta bodyDelta =
+                    ClientHitReactionState.getDelta(entity.getId(), HumanoidHurtboxLibrary.Part.BODY);
+            apply(body, bodyDelta);
+            apply(head, parented(ClientHitReactionState.getDelta(
+                    entity.getId(), HumanoidHurtboxLibrary.Part.HEAD), bodyDelta, 0.55F));
+            apply(leftArm, parented(ClientHitReactionState.getDelta(
+                    entity.getId(), HumanoidHurtboxLibrary.Part.LEFT_ARM), bodyDelta, 1.0F));
+            apply(rightArm, parented(ClientHitReactionState.getDelta(
+                    entity.getId(), HumanoidHurtboxLibrary.Part.RIGHT_ARM), bodyDelta, 1.0F));
+            apply(leftLeg, ClientHitReactionState.getDelta(
+                    entity.getId(), HumanoidHurtboxLibrary.Part.LEFT_LEG));
+            apply(rightLeg, ClientHitReactionState.getDelta(
+                    entity.getId(), HumanoidHurtboxLibrary.Part.RIGHT_LEG));
+            ClientDodgeAnimationState.applyBiped(
+                    entity.getId(), body, head, rightArm, leftArm, rightLeg, leftLeg);
+            ClientLockedMovementLeanState.applyBiped(
+                    entity.getId(), body, head, rightArm, leftArm, rightLeg, leftLeg);
 
-        // Newer versions overwrite the stance animation's baked head channel
-        // with the entity's actual look direction. Do the same on legacy so a
-        // neutral enemy does not retain the animation's small permanent tilt.
-        if (ClientEntityGeckoAnimationState.isStanceOnly(entity.getId())) {
-            head.yaw = headYaw * DEG_TO_RAD;
-            head.pitch = headPitch * DEG_TO_RAD;
-        }
+            // Newer versions overwrite the stance animation's baked head channel
+            // with the entity's actual look direction. Do the same on legacy so a
+            // neutral enemy does not retain the animation's small permanent tilt.
+            if (ClientEntityGeckoAnimationState.isStanceOnly(entity.getId())) {
+                head.yaw = headYaw * DEG_TO_RAD;
+                head.pitch = headPitch * DEG_TO_RAD;
+            }
 
-        if (!ClientCollisionTrackingPolicy.shouldCaptureHurtbox(entity)
-                || !ClientModelHurtboxCache.shouldCaptureRenderedPose(entity.getId())) {
-            return;
+            if (!ClientCollisionTrackingPolicy.shouldCaptureHurtbox(entity)
+                    || !ClientModelHurtboxCache.shouldCaptureRenderedPose(entity.getId())) {
+                return;
+            }
+            ClientModelHurtboxCache.update(
+                    entity.getId(), head, body, rightArm, leftArm, rightLeg, leftLeg);
+        } catch (RuntimeException | LinkageError exception) {
+            if (!BipedModelAiCompatReporter.disableAfterFailure(entity)) {
+                throw exception;
+            }
         }
-        ClientModelHurtboxCache.update(
-                entity.getId(), head, body, rightArm, leftArm, rightLeg, leftLeg);
+    }
+
+    private boolean hasCompleteBipedRig() {
+        return head != null && body != null
+                && rightArm != null && leftArm != null
+                && rightLeg != null && leftLeg != null;
     }
 
     private static void apply(net.minecraft.client.model.ModelPart part,

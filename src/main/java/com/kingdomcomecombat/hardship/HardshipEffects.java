@@ -7,6 +7,8 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -86,18 +88,24 @@ public final class HardshipEffects {
             return ActionResult.PASS;
         });
         ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamage, damage, blocked) -> {
-            onPlayerDamaged(entity, damage);
+            onPlayerDamaged(entity, source, damage);
         });
     }
 
-    private static void onPlayerDamaged(net.minecraft.entity.LivingEntity entity, float damage) {
+    private static void onPlayerDamaged(
+            net.minecraft.entity.LivingEntity entity,
+            DamageSource source,
+            float damage
+    ) {
         if (!(entity instanceof ServerPlayerEntity player) || damage <= 0.0F) return;
         if (HardshipSelectionState.active(player, "hardship_15")) {
             float trueDamage = (float) HardshipSelectionState.prek(
                     player, "hardship_15", "unblocked_true_damage", 1.0);
             if (trueDamage > 0.0F) player.setHealth(Math.max(0.0F, player.getHealth() - trueDamage));
         }
-        if (HardshipSelectionState.active(player, "hardship_20")
+        if (damage > 2.0F
+                && !source.isOf(DamageTypes.DROWN)
+                && HardshipSelectionState.active(player, "hardship_20")
                 && player.getRandom().nextDouble() < HardshipSelectionState.prek(
                         player, "hardship_20", "bleeding_chance_on_damage", 0.5)) {
             ModStatusEffects.applyInjury(player, "bleeding", 1);

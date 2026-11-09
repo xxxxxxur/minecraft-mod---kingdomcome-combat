@@ -18,6 +18,7 @@ public final class ClientServerConfigState {
     private static boolean clientProjectileHurtboxEnabled;
     private static boolean reachAttributeHitboxScalingEnabled = true;
     private static boolean blockingMovementSlowdownEnabled = true;
+    private static boolean customUnarmedAttacksDisabled;
     private static boolean mountedKccCombatEnabled;
     private static double reachAttributeHitboxScalePerBlock = 0.20;
     private static int hitStopTicks = 2;
@@ -157,6 +158,11 @@ public final class ClientServerConfigState {
     public static boolean blockingMovementSlowdownEnabled() { return blockingMovementSlowdownEnabled; }
     public static void setBlockingMovementSlowdownEnabled(boolean enabled) {
         blockingMovementSlowdownEnabled = enabled;
+    }
+    public static boolean customUnarmedAttacksDisabled() { return customUnarmedAttacksDisabled; }
+    public static void setCustomUnarmedAttacksDisabled(boolean disabled) {
+        customUnarmedAttacksDisabled = disabled;
+        com.kingdomcomecombat.config.CombatServerConfig.setCustomUnarmedAttacksDisabled(disabled);
     }
     public static boolean mountedKccCombatEnabled() { return mountedKccCombatEnabled; }
     public static void setMountedKccCombatEnabled(boolean enabled) {

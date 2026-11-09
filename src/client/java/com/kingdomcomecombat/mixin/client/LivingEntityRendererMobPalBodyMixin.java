@@ -29,4 +29,30 @@ public abstract class LivingEntityRendererMobPalBodyMixin {
     ) {
         MobPalBodyTransformApplier.apply(state, matrices);
     }
+
+    /**
+     * Middle-earth's NPC renderer owns a complete copy of LivingEntityRenderer#render
+     * and therefore never reaches the invocation hook above. Its renderer still calls
+     * setupTransforms, so apply the renderer-level PAL body bone there for that render
+     * state only. Keeping the class-name check here avoids a hard optional dependency
+     * and prevents vanilla renderers from receiving the transform twice.
+     */
+    @Inject(
+            method = "setupTransforms(Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;Lnet/minecraft/client/util/math/MatrixStack;FF)V",
+            at = @At("RETURN")
+    )
+    private void kingdomcomecombat$applyMiddleEarthNpcBodyTransform(
+            LivingEntityRenderState state,
+            MatrixStack matrices,
+            float bodyYaw,
+            float baseHeight,
+            CallbackInfo ci
+    ) {
+        if (com.kingdomcomecombat.config.CombatClientConfig.mobRendererCompatibilityMode()) {
+            MobPalBodyTransformApplier.applyCompatibility(state, matrices);
+        } else if (state.getClass().getName().equals(
+                "net.sevenstars.middleearth.entity.npcs.renderer.NpcEntityRenderState")) {
+            MobPalBodyTransformApplier.applyForced(state, matrices);
+        }
+    }
 }

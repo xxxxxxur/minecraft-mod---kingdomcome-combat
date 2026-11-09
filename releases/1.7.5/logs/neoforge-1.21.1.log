@@ -1,0 +1,80 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Architectury Loom: 1.13.469
+This version of Architectury Loom is in beta! Please report any issues you encounter: https://github.com/architectury/architectury-loom/issues
+
+> Task :prepareShared1211Sources
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :generateVersionCompatSources UP-TO-DATE
+
+BUILD SUCCESSFUL in 1s
+1 actionable task: 1 up-to-date
+
+> Task :migrateSharedMainToMojmap
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :migrateMappings
+
+BUILD SUCCESSFUL in 5s
+1 actionable task: 1 executed
+
+> Task :migrateSharedClientToMojmap
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :migrateMappings
+
+BUILD SUCCESSFUL in 5s
+1 actionable task: 1 executed
+
+> Task :migrateLegacyClientToMojmap
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :migrateMappings
+
+BUILD SUCCESSFUL in 3s
+1 actionable task: 1 executed
+
+> Task :patchMigratedNeoSources
+
+> Task :compileJava
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+
+> Task :processResources
+> Task :classes
+> Task :jar
+> Task :processIncludeJars UP-TO-DATE
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :validateAccessWidener NO-SOURCE
+> Task :check UP-TO-DATE
+Cannot remap method_2828 because it does not exists in any of the targets [software/bernie/geckolib/renderer/GeoArmorRenderer]
+Cannot remap randomizeReinforcementsChance because it does not exists in any of the targets [net/minecraft/world/entity/animal/horse/AbstractHorse]
+> Task :remapJar
+> Task :remapSourcesJar SKIPPED
+> Task :assemble
+> Task :build
+
+[Incubating] Problems report is available at: file:///Users/bradxu/Downloads/kingdom-come-combat-template-1.21.7/neoforge/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 11s
+10 actionable tasks: 9 executed, 1 up-to-date

@@ -31,4 +31,18 @@ public abstract class LivingEntityRendererMobPalBodyMixin {
     ) {
         MobPalBodyTransformApplier.apply(state, matrices);
     }
+
+    @Inject(
+            method = "setupTransforms(Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;Lnet/minecraft/client/util/math/MatrixStack;FF)V",
+            at = @At("RETURN")
+    )
+    private void kingdomcomecombat$applyCompatiblePalBodyTransform(
+            LivingEntityRenderState state,
+            MatrixStack matrices,
+            float bodyYaw,
+            float baseHeight,
+            CallbackInfo ci
+    ) {
+        MobPalBodyTransformApplier.applyCompatibility(state, matrices);
+    }
 }

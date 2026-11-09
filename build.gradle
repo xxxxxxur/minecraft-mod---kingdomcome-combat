@@ -5,6 +5,7 @@ plugins {
 }
 
 def compatibilityMatrix = [
+		"1.20.1" : [yarn: "1.20.1+build.10", api: "0.92.6+1.20.1"],
 		"1.21"   : [yarn: "1.21+build.9",    api: "0.102.0+1.21"],
 		"1.21.1" : [yarn: "1.21.1+build.3",  api: "0.116.12+1.21.1"],
 		"1.21.2" : [yarn: "1.21.2+build.1",  api: "0.106.1+1.21.2"],
@@ -29,12 +30,14 @@ def targetYarnMappings = providers.gradleProperty("target_mc").isPresent()
 def targetFabricApi = providers.gradleProperty("target_mc").isPresent()
 		? targetVersions.api
 		: fabric_api_version
-def targetClothConfig = targetMinecraft == "1.21.1"
+def targetClothConfig = targetMinecraft == "1.20.1"
+		? "11.1.136"
+		: targetMinecraft == "1.21.1"
 		? "15.0.140"
 		: (targetMinecraft == "1.21.11" ? "21.11.153" : "19.0.147")
 def minecraftDependency = providers.gradleProperty("target_mc").isPresent()
 		? "=${targetMinecraft}"
-		: ">=1.21.7 <=1.21.8"
+		: ">=1.21.6 <=1.21.8"
 
 version = project.mod_version
 group = project.maven_group
@@ -53,6 +56,10 @@ repositories {
 	maven {
 		name = "CurseMaven"
 		url = "https://cursemaven.com"
+	}
+	maven {
+		name = "Redlance"
+		url = "https://repo.redlance.org/public"
 	}
 }
 loom {
@@ -97,6 +104,88 @@ def needsLegacyRenderStates = targetVersionIndex < renderStateIntroductionIndex
 def needsNewEntityAccessors = targetVersionIndex >= entityAccessorRenameIndex
 def needs12111Apis = targetMinecraft == "1.21.11"
 def needsCommandRendererApis = targetVersionIndex >= minecraftVersionOrder.indexOf("1.21.10")
+def needs1201Apis = targetMinecraft == "1.20.1"
+
+configurations {
+	palCore1201Sources
+	palFabric1201Sources
+	pal1201Mappings
+}
+
+dependencies {
+	palCore1201Sources "com.zigythebird.playeranim:PlayerAnimationLibCore:1.1.4+mc.1.21.1:sources"
+	palFabric1201Sources "com.zigythebird.playeranim:PlayerAnimationLibFabric:1.1.4+mc.1.21.1:sources"
+	pal1201Mappings "net.fabricmc:yarn:1.20.1+build.10:v2"
+}
+
+def generatedPal1201 = layout.buildDirectory.dir("generated/pal1201/java")
+def generatedPal1201Resources = layout.buildDirectory.dir("generated/pal1201/resources")
+
+if (needs1201Apis) {
+	tasks.register("generatePal1201Backport") {
+		inputs.files(configurations.palCore1201Sources, configurations.palFabric1201Sources, configurations.pal1201Mappings)
+		outputs.dirs(generatedPal1201, generatedPal1201Resources)
+		doLast {
+			File javaOutput = generatedPal1201.get().asFile
+			File resourceOutput = generatedPal1201Resources.get().asFile
+			delete javaOutput, resourceOutput
+			copy {
+				from zipTree(configurations.palCore1201Sources.singleFile)
+				include "com/**/*.java"
+				into javaOutput
+			}
+			copy {
+				from zipTree(configurations.palFabric1201Sources.singleFile)
+				include "com/**/*.java"
+				exclude "com/zigythebird/playeranim/commands/**"
+				exclude "com/zigythebird/playeranim/fabric/PlayerAnimLibModFabric.java"
+				into javaOutput
+			}
+			copy {
+				from zipTree(configurations.palFabric1201Sources.singleFile)
+				include "player_animation_library.mixins.json"
+				into resourceOutput
+				filter { String line -> line.replace('"compatibilityLevel": "JAVA_21"', '"compatibilityLevel": "JAVA_17"') }
+			}
+
+			Map<String, String> names = [:]
+			def mappingZip = new java.util.zip.ZipFile(configurations.pal1201Mappings.singleFile)
+			try {
+				mappingZip.getInputStream(mappingZip.getEntry("mappings/mappings.tiny")).withReader("UTF-8") { reader ->
+					reader.eachLine { line ->
+						String[] columns = line.split("\\t")
+						if (columns.length >= 3 && columns[0] == "c") {
+							names[columns[1].substring(columns[1].lastIndexOf('/') + 1)] = columns[2].substring(columns[2].lastIndexOf('/') + 1)
+						} else if (columns.length >= 4 && (columns[1] == "m" || columns[1] == "f")) {
+							names[columns[3]] = columns[4]
+						}
+					}
+				}
+			} finally {
+				mappingZip.close()
+			}
+
+			fileTree(javaOutput).matching { include "**/*.java" }.each { File source ->
+				String text = source.getText("UTF-8")
+				text = text.replaceAll(/\b(class_\d+|method_\d+|field_\d+)\b/) { match -> names[match[0]] ?: match[0] }
+				text = text.replaceAll(/([A-Za-z_][A-Za-z0-9_.]*(?:\(\))?)\.getFirst\(\)/, '$1.get(0)')
+				text = text.replaceAll(/([A-Za-z_][A-Za-z0-9_.]*(?:\(\))?)\.getLast\(\)/) { match, receiver ->
+					"${receiver}.get(${receiver}.size() - 1)"
+				}
+				text = text.replace('''        return switch (obj) {
+            case null -> Collections.emptyList();
+            case JsonArray json -> json.asList();
+            case List<?> list -> list;
+            default -> throw new ClassCastException(obj.getClass().getName());
+        };''', '''        if (obj == null) return Collections.emptyList();
+        if (obj instanceof JsonArray json) return json.asList();
+        if (obj instanceof List<?> list) return list;
+        throw new ClassCastException(obj.getClass().getName());''')
+				source.setText(text, "UTF-8")
+			}
+		}
+	}
+}
 
 if (providers.gradleProperty("target_mc").isPresent() && (needsLegacyNbt || needsNewEntityAccessors)) {
 	def generatedMain = layout.buildDirectory.dir("generated/versionCompat/main")
@@ -114,6 +203,7 @@ if (providers.gradleProperty("target_mc").isPresent() && (needsLegacyNbt || need
 		inputs.property("needsNewEntityAccessors", needsNewEntityAccessors)
 		inputs.property("needs12111Apis", needs12111Apis)
 		inputs.property("needsCommandRendererApis", needsCommandRendererApis)
+		inputs.property("needs1201Apis", needs1201Apis)
 		outputs.dirs(generatedMain, generatedClient)
 			doLast {
 			delete generatedMain, generatedClient
@@ -149,6 +239,12 @@ if (providers.gradleProperty("target_mc").isPresent() && (needsLegacyNbt || need
 			if (needsPre1215Apis) {
 				copy {
 					from "src/compat/legacy/main"
+					if (!needs1201Apis) {
+						exclude "com/kingdomcomecombat/network/legacy/**"
+					}
+					if (needs1201Apis) {
+						exclude "com/kingdomcomecombat/mixin/LegacyLootableInventorySkillBookMixin.java"
+					}
 					into generatedMain
 				}
 			}
@@ -212,13 +308,29 @@ if (providers.gradleProperty("target_mc").isPresent() && (needsLegacyNbt || need
 				patchLegacy1211Sources(generatedMain.get().asFile)
 				patchLegacy1211ClientSources(generatedClient.get().asFile)
 			}
+			if (needs1201Apis) {
+				copy {
+					from "src/compat/legacy/java"
+					into generatedClient
+				}
+				copy {
+					from "src/compat/1201/main"
+					into generatedMain
+				}
+				copy {
+					from "src/compat/1201/client"
+					into generatedClient
+				}
+				patch1201Sources(generatedMain.get().asFile)
+				patch1201ClientSources(generatedClient.get().asFile)
+			}
 			if (targetMinecraft == "1.21") {
 				File hardshipEffects = new File(generatedMain.get().asFile,
 						"com/kingdomcomecombat/hardship/HardshipEffects.java")
 				if (hardshipEffects.exists()) {
 					hardshipEffects.setText(hardshipEffects.getText("UTF-8").replace(
-							"        ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamage, damage, blocked) -> {\n            onPlayerDamaged(entity, damage);\n        });",
-							"        ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, damage) -> {\n            onPlayerDamaged(entity, damage);\n            return true;\n        });"
+							"        ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamage, damage, blocked) -> {\n            onPlayerDamaged(entity, source, damage);\n        });",
+							"        ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, damage) -> {\n            onPlayerDamaged(entity, source, damage);\n            return true;\n        });"
 					), "UTF-8")
 				}
 			}
@@ -248,13 +360,23 @@ if (providers.gradleProperty("target_mc").isPresent() && (needsLegacyNbt || need
 	sourceSets.main.java.setSrcDirs(needs12111Apis
 			? [generatedMain, file("src/compat/12111/java")]
 			: [generatedMain])
-	sourceSets.client.java.setSrcDirs(needsLegacyNbt
+	sourceSets.client.java.setSrcDirs(needs1201Apis
+			? [generatedClient, generatedPal1201]
+			: (needsLegacyNbt
 			? [generatedClient, file("src/compat/legacy/java")]
 			: (needs12111Apis
 				? [generatedClient, file("src/compat/12111/client")]
-				: [generatedClient]))
+				: [generatedClient])))
+	if (!needs1201Apis) {
+		sourceSets.client.java.exclude "com/kingdomcomecombat/network/legacy/**"
+	}
 	tasks.named("compileJava").configure { dependsOn "generateVersionCompatSources" }
 	tasks.named("compileClientJava").configure { dependsOn "generateVersionCompatSources" }
+	if (needs1201Apis) {
+		tasks.named("compileClientJava").configure { dependsOn "generatePal1201Backport" }
+		sourceSets.client.resources.srcDir generatedPal1201Resources
+		tasks.named("processClientResources").configure { dependsOn "generatePal1201Backport" }
+	}
 	tasks.matching { it.name == "sourcesJar" }.configureEach {
 		dependsOn "generateVersionCompatSources"
 	}
@@ -594,6 +716,7 @@ void patchLegacy1211Sources(File generatedMain) {
 				"living.damage(\n"
 		), "UTF-8")
 	}
+
 }
 
 void patchLegacy1211ClientSources(File generatedClient) {
@@ -691,6 +814,587 @@ void patchLegacy1211ClientSources(File generatedClient) {
 		}
 	}
 
+}
+
+/** Additional source adapters for the pre-data-component Minecraft 1.20.1 API. */
+void patch1201Sources(File generatedMain) {
+	fileTree(generatedMain).matching { include "**/*.java" }.files.each { file ->
+		if (file.path.replace('\\', '/').contains('/network/legacy/')) return
+		file.setText(file.getText("UTF-8")
+				.replace("import net.minecraft.component.DataComponentTypes;\n", "")
+				.replace("import net.minecraft.component.type.NbtComponent;", "import net.minecraft.nbt.NbtCompound;\nimport com.kingdomcomecombat.compat.LegacyItemNbt;")
+				.replace("import net.minecraft.component.type.ItemEnchantmentsComponent;", "import com.kingdomcomecombat.compat.LegacyItemEnchantments;")
+				.replace("import net.minecraft.component.type.AttributeModifiersComponent;", "import com.kingdomcomecombat.compat.LegacyAttributeModifiers;")
+				.replace("ItemEnchantmentsComponent enchantments = stack.get(DataComponentTypes.ENCHANTMENTS);", "LegacyItemEnchantments enchantments = LegacyItemEnchantments.from(stack);")
+				.replace("ItemEnchantmentsComponent enchantments = weaponStack.get(DataComponentTypes.ENCHANTMENTS);", "LegacyItemEnchantments enchantments = LegacyItemEnchantments.from(weaponStack);")
+				.replace("var enchantments = stack.get(DataComponentTypes.ENCHANTMENTS);", "LegacyItemEnchantments enchantments = LegacyItemEnchantments.from(stack);")
+				.replace("AttributeModifiersComponent modifiers = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);", "LegacyAttributeModifiers modifiers = LegacyAttributeModifiers.from(stack);")
+				.replace("NbtComponent customData = stack.get(DataComponentTypes.CUSTOM_DATA);", "NbtCompound customData = LegacyItemNbt.get(stack);")
+				.replace("NbtComponent data = stack.get(DataComponentTypes.CUSTOM_DATA);", "NbtCompound data = LegacyItemNbt.get(stack);")
+				.replace("NbtComponent.set(DataComponentTypes.CUSTOM_DATA, stack,", "LegacyItemNbt.edit(stack,")
+				.replace("customData.copyNbt()", "customData")
+				.replace("data.copyNbt()", "data")
+				.replace("import net.minecraft.advancement.AdvancementEntry;", "import net.minecraft.advancement.Advancement;")
+				.replace("AdvancementEntry advancement", "Advancement advancement")
+				.replace("import net.minecraft.network.RegistryByteBuf;", "import net.minecraft.network.PacketByteBuf;")
+				.replace("import net.minecraft.network.codec.PacketCodec;", "import com.kingdomcomecombat.network.legacy.LegacyPacketCodec;")
+				.replace("import net.minecraft.network.packet.CustomPayload;", "import com.kingdomcomecombat.network.legacy.LegacyCustomPayload;")
+				.replace("RegistryByteBuf", "PacketByteBuf")
+				.replace("PacketCodec<", "LegacyPacketCodec<")
+				.replace("PacketCodec.of(", "LegacyPacketCodec.of(")
+				.replace("CustomPayload", "LegacyCustomPayload")
+				.replace("import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;", "import com.kingdomcomecombat.network.legacy.LegacyPayloadTypeRegistry;")
+				.replace("import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;", "import com.kingdomcomecombat.network.legacy.LegacyServerPlayNetworking;")
+				.replace("PayloadTypeRegistry", "LegacyPayloadTypeRegistry")
+				.replace("ServerPlayNetworking", "LegacyServerPlayNetworking")
+				.replace("Identifier.ofVanilla(", "new Identifier(\"minecraft\", ")
+				.replace("Identifier.of(", "new Identifier(")
+				.replace("net.minecraft.network.packet.LegacyCustomPayload", "com.kingdomcomecombat.network.legacy.LegacyCustomPayload")
+				.replace("net.minecraft.util.new Identifier", "new net.minecraft.util.Identifier")
+				.replace(".getFirst()", ".get(0)")
+				.replace(".getLast()", ".get(" + "PLACEHOLDER" + ")")
+				.replace(".removeFirst()", ".remove(0)")
+				.replace("keyframes.get(PLACEHOLDER)", "keyframes.get(keyframes.size() - 1)")
+				.replace("matched.get(PLACEHOLDER)", "matched.get(matched.size() - 1)")
+				.replace("EntityType.BOGGED", "EntityType.SKELETON")
+				.replace("stack.isOf(Items.MACE)\n                || ", "")
+				.replace("import net.minecraft.particle.SimpleParticleType;", "import net.minecraft.particle.DefaultParticleType;")
+				.replace("SimpleParticleType", "DefaultParticleType")
+				.replace(".dimensions(", ".setDimensions(")
+				.replace("setOnFireFor(5.0F)", "setOnFireFor(5)")
+				.replace("EntityAttributeModifier.Operation.ADD_VALUE", "EntityAttributeModifier.Operation.ADDITION")
+				.replace("EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE", "EntityAttributeModifier.Operation.MULTIPLY_BASE")
+				.replace("EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL", "EntityAttributeModifier.Operation.MULTIPLY_TOTAL")
+				.replace("modifier.value()", "modifier.getValue()")
+				.replace("modifier.operation()", "modifier.getOperation()")
+				.replace("DataTracker.Builder builder, CallbackInfo ci", "CallbackInfo ci")
+				.replace("builder.add(", "((net.minecraft.entity.Entity) (Object) this).getDataTracker().startTracking(")
+				.replace("protected void initDataTracker(net.minecraft.entity.data.DataTracker.Builder builder)", "protected void initDataTracker()")
+				.replace("LegacyLegacy", "Legacy"), "UTF-8")
+	}
+
+	File dataReload = new File(generatedMain, "com/kingdomcomecombat/data/CombatDataReloadListener.java")
+	if (dataReload.exists()) {
+		dataReload.setText(dataReload.getText("UTF-8")
+				.replace("pack.getId()", "pack.getName()")
+				.replace("getPackId()", "getResourcePackName()")
+				.replace("                    putSlotParts(slotParts, protectedParts, EquipmentSlot.BODY, \"body\");\n", ""), "UTF-8")
+	}
+
+	File aiTicker = new File(generatedMain, "com/kingdomcomecombat/ai/HumanoidCombatAiTicker.java")
+	if (aiTicker.exists()) {
+		String text = aiTicker.getText("UTF-8")
+		int scaleStart = text.indexOf("        var scaleAttribute = mob.getAttributeInstance(EntityAttributes.GENERIC_SCALE);")
+		int stateStart = text.indexOf("        HumanoidCombatAiState state =", scaleStart)
+		if (scaleStart >= 0 && stateStart > scaleStart) {
+			text = text.substring(0, scaleStart) + text.substring(stateStart)
+		}
+		aiTicker.setText(text, "UTF-8")
+	}
+
+	[
+			"com/kingdomcomecombat/mixin/InstantHealthClearsInjuryMixin.java",
+			"com/kingdomcomecombat/mixin/LivingEntityHardshipStatusEffectMixin.java"
+	].each { path ->
+		File file = new File(generatedMain, path)
+		if (file.exists()) {
+			file.setText(file.getText("UTF-8")
+					.replace("StatusEffects.INSTANT_HEALTH.value()", "StatusEffects.INSTANT_HEALTH")
+					.replace("effect.getEffectType().value()", "effect.getEffectType()"), "UTF-8")
+		}
+	}
+
+	File statusEffects = new File(generatedMain, "com/kingdomcomecombat/injury/ModStatusEffects.java")
+	if (statusEffects.exists()) {
+		String text = statusEffects.getText("UTF-8")
+				.replace("import net.minecraft.registry.entry.RegistryEntry;\n", "")
+				.replace("RegistryEntry<StatusEffect>", "StatusEffect")
+				.replace("Registry.registerReference(", "Registry.register(")
+				.replace("TORSO_HEALTH_PENALTY_ID,\n                        -torsoLevel,", "TORSO_HEALTH_PENALTY_ID, \"KCC torso injury\",\n                        -torsoLevel,")
+				.replace("LEG_SPEED_PENALTY_ID,\n                        -0.04 * legLevel,", "LEG_SPEED_PENALTY_ID, \"KCC leg injury\",\n                        -0.04 * legLevel,")
+				.replace("private static final Identifier TORSO_HEALTH_PENALTY_ID =\n            new Identifier(KingdomComeCombat.MOD_ID, \"torso_injury_max_health\");",
+						"private static final java.util.UUID TORSO_HEALTH_PENALTY_ID = legacyModifierId(\"torso_injury_max_health\");")
+				.replace("private static final Identifier LEG_SPEED_PENALTY_ID =\n            new Identifier(KingdomComeCombat.MOD_ID, \"leg_injury_speed\");",
+						"private static final java.util.UUID LEG_SPEED_PENALTY_ID = legacyModifierId(\"leg_injury_speed\");")
+				.replace("private static final Identifier LEG_JUMP_PENALTY_ID =\n            new Identifier(KingdomComeCombat.MOD_ID, \"leg_injury_jump\");",
+						"private static final java.util.UUID LEG_JUMP_PENALTY_ID = legacyModifierId(\"leg_injury_jump\");")
+		int jumpStart = text.indexOf("        EntityAttributeInstance jumpStrength =")
+		int jumpEnd = text.indexOf("\n\n        if (entity instanceof PlayerEntity", jumpStart)
+		if (jumpStart >= 0 && jumpEnd > jumpStart) {
+			text = text.substring(0, jumpStart) + text.substring(jumpEnd + 2)
+		}
+		int classEnd = text.lastIndexOf("}")
+		text = text.substring(0, classEnd) + '''    private static java.util.UUID legacyModifierId(String path) {
+        return java.util.UUID.nameUUIDFromBytes((KingdomComeCombat.MOD_ID + ":" + path)
+                .getBytes(java.nio.charset.StandardCharsets.UTF_8));
+    }
+''' + text.substring(classEnd)
+		statusEffects.setText(text, "UTF-8")
+	}
+
+	File hardship = new File(generatedMain, "com/kingdomcomecombat/hardship/HardshipEffects.java")
+	if (hardship.exists()) {
+		String text = hardship.getText("UTF-8")
+				.replace("ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamage, damage, blocked) -> {\n            onPlayerDamaged(entity, source, damage);\n        });",
+						"ServerLivingEntityEvents.ALLOW_DAMAGE.register((entity, source, damage) -> {\n            onPlayerDamaged(entity, source, damage);\n            return true;\n        });")
+				.replace("private static final Identifier BAREFOOT_SPEED = id(\"barefoot_speed\");", "private static final UUID BAREFOOT_SPEED = id(\"barefoot_speed\");")
+				.replace("private static final Identifier CAVE_SPEED = id(\"cave_speed\");", "private static final UUID CAVE_SPEED = id(\"cave_speed\");")
+				.replace("private static final Identifier CROUCH_SPEED = id(\"crouch_speed\");", "private static final UUID CROUCH_SPEED = id(\"crouch_speed\");")
+				.replace("private static final Identifier BLOCK_REACH = id(\"block_reach\");", "private static final UUID BLOCK_REACH = id(\"block_reach\");")
+				.replace("private static final Identifier MINING_SPEED = id(\"mining_speed\");", "private static final UUID MINING_SPEED = id(\"mining_speed\");")
+				.replace("net.minecraft.registry.entry.RegistryEntry<net.minecraft.entity.attribute.EntityAttribute> attribute,\n                                      Identifier id", "net.minecraft.entity.attribute.EntityAttribute attribute,\n                                      UUID id")
+				.replace("net.minecraft.registry.entry.RegistryEntry<net.minecraft.entity.attribute.EntityAttribute> attribute,\n                                    Identifier id", "net.minecraft.entity.attribute.EntityAttribute attribute,\n                                    UUID id")
+				.replace("private static Identifier id(String path) { return new Identifier(KingdomComeCombat.MOD_ID, \"hardship_\" + path); }",
+						"private static UUID id(String path) { return UUID.nameUUIDFromBytes((KingdomComeCombat.MOD_ID + \":hardship_\" + path).getBytes(java.nio.charset.StandardCharsets.UTF_8)); }")
+				.replace("boots.damage(1, player, EquipmentSlot.FEET);", "boots.damage(1, player, broken -> player.sendEquipmentBreakStatus(EquipmentSlot.FEET));")
+				.replace("id, multiplier - 1.0, EntityAttributeModifier.Operation.MULTIPLY_TOTAL", "id, \"KCC hardship modifier\", multiplier - 1.0, EntityAttributeModifier.Operation.MULTIPLY_TOTAL")
+				.replace("id, value, EntityAttributeModifier.Operation.ADDITION", "id, \"KCC hardship modifier\", value, EntityAttributeModifier.Operation.ADDITION")
+		int reachStart = text.indexOf("    private static void tickReachAndMining(ServerPlayerEntity player) {")
+		int reachEnd = text.indexOf("\n    private static void tickAchingBack", reachStart)
+		if (reachStart >= 0 && reachEnd > reachStart) {
+			text = text.substring(0, reachStart) + "    private static void tickReachAndMining(ServerPlayerEntity player) {\n    }\n" + text.substring(reachEnd)
+		}
+		hardship.setText(text, "UTF-8")
+	}
+
+	File equipmentRegistry = new File(generatedMain, "com/kingdomcomecombat/equipment/EquipmentCombatAttributesRegistry.java")
+	if (equipmentRegistry.exists()) {
+		String text = equipmentRegistry.getText("UTF-8")
+				.replace("import com.kingdomcomecombat.compat.StoneyCoreCombatCompat;", "import com.kingdomcomecombat.compat.StoneyCoreCombatCompat;\nimport com.kingdomcomecombat.compat.LegacyItemEnchantments;")
+		int reachStart = text.indexOf("    private static double weaponEntityAttackRangeModifier(ItemStack stack) {")
+		int safeStack = text.indexOf("    private static ItemStack safeDefaultStack(Item item) {", reachStart)
+		if (reachStart >= 0 && safeStack > reachStart) {
+			text = text.substring(0, reachStart) + "    private static double weaponEntityAttackRangeModifier(ItemStack stack) { return 0.0; }\n\n" + text.substring(safeStack)
+		}
+		int safeAttribute = text.indexOf("    private static double safeAttributeDefaultValue(")
+		int realHitbox = text.indexOf("    public static Vec3d realHitboxOffsetUnits", safeAttribute)
+		if (safeAttribute >= 0 && realHitbox > safeAttribute) {
+			text = text.substring(0, safeAttribute) + text.substring(realHitbox)
+		}
+		int armorSlot = text.indexOf("    private static EquipmentSlot armorSlot(ItemStack stack) {")
+		int vanillaArmor = text.indexOf("    public static double vanillaArmorValue", armorSlot)
+		if (armorSlot >= 0 && vanillaArmor > armorSlot) {
+			text = text.substring(0, armorSlot) + '''    private static EquipmentSlot armorSlot(ItemStack stack) {
+        return stack.getItem() instanceof net.minecraft.item.ArmorItem armor
+                ? armor.getSlotType() : null;
+    }
+
+''' + text.substring(vanillaArmor)
+		}
+		text = text.replace("            EquipmentSlot.BODY\n", "")
+				.replace("            EquipmentSlot.FEET,\n    );", "            EquipmentSlot.FEET\n    );")
+				.replace("stack.applyAttributeModifiers(\n                slot,", "stack.getAttributeModifiers(slot).forEach(")
+		equipmentRegistry.setText(text, "UTF-8")
+	}
+
+	File modItems = new File(generatedMain, "com/kingdomcomecombat/item/ModItems.java")
+	if (modItems.exists()) {
+		String text = modItems.getText("UTF-8")
+				.replace("import net.minecraft.component.type.AttributeModifierSlot;\n", "")
+		int longswordItem = text.indexOf("        Item item = new Item(", text.indexOf("private static Item registerLongsword"))
+		int longswordReturn = text.indexOf("\n\n        return Registry.register(", longswordItem)
+		if (longswordItem >= 0 && longswordReturn > longswordItem) {
+			text = text.substring(0, longswordItem) + "        Item item = new LegacyCombatWeaponItem(new Item.Settings().maxDamage(durability).rarity(Rarity.COMMON), name, attackDamage, attackSpeed, enchantability);" + text.substring(longswordReturn)
+		}
+		int maceItem = text.indexOf("        Item item = new Item(", text.indexOf("private static Item registerFightingMace"))
+		int maceReturn = text.indexOf("\n\n        return Registry.register(", maceItem)
+		if (maceItem >= 0 && maceReturn > maceItem) {
+			text = text.substring(0, maceItem) + "        Item item = new LegacyCombatWeaponItem(new Item.Settings().maxDamage(durability).rarity(Rarity.COMMON), name, attackDamage, -2.8, enchantability);" + text.substring(maceReturn)
+		}
+		text = text.replace("stack.set(DataComponentTypes.ITEM_NAME, Text.literal(entry.title(language)).formatted(net.minecraft.util.Formatting.WHITE));",
+				"stack.setCustomName(Text.literal(entry.title(language)).formatted(net.minecraft.util.Formatting.WHITE));")
+		modItems.setText(text, "UTF-8")
+	}
+
+	File fallback = new File(generatedMain, "com/kingdomcomecombat/equipment/EquipmentFallbackConfig.java")
+	if (fallback.exists()) {
+		fallback.setText(fallback.getText("UTF-8")
+				.replace("case CHEST, LEGS, BODY ->", "case CHEST, LEGS ->")
+				.replace("                EquipmentSlot.BODY,\n", "")
+				.replace("                List.of(\"shoulder\", \"chest\", \"abdomen\", \"thigh\")\n", "")
+				.replace("                List.of(\"calf\", \"foot\"),\n        );", "                List.of(\"calf\", \"foot\")\n        );"), "UTF-8")
+	}
+
+	File bloodied = new File(generatedMain, "com/kingdomcomecombat/equipment/BloodiedEquipment.java")
+	if (bloodied.exists()) {
+		String text = bloodied.getText("UTF-8")
+				.replace("                || stack.isIn(ItemTags.HEAD_ARMOR)\n                || stack.isIn(ItemTags.CHEST_ARMOR)\n                || stack.isIn(ItemTags.LEG_ARMOR)\n                || stack.isIn(ItemTags.FOOT_ARMOR);",
+						"                || stack.getItem() instanceof net.minecraft.item.ArmorItem;")
+		bloodied.setText(text, "UTF-8")
+	}
+
+	File injuryTicker = new File(generatedMain, "com/kingdomcomecombat/injury/InjuryTicker.java")
+	if (injuryTicker.exists()) {
+		injuryTicker.setText(injuryTicker.getText("UTF-8")
+				.replace("RegistryEntry<StatusEffect>", "StatusEffect")
+				.replace("bandage.damage(bandageDamage, player, hand == net.minecraft.util.Hand.MAIN_HAND\n                    ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);",
+						"EquipmentSlot bandageSlot = hand == net.minecraft.util.Hand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;\n            bandage.damage(bandageDamage, player, broken -> player.sendEquipmentBreakStatus(bandageSlot));")
+				.replace("stack.damage(amount, entity, slot);", "stack.damage(amount, entity, broken -> entity.sendEquipmentBreakStatus(slot));")
+				.replace("entity.sendEquipmentBreakStatus(stack.getItem(), slot);", "entity.sendEquipmentBreakStatus(slot);"), "UTF-8")
+	}
+
+	File skillBook = new File(generatedMain, "com/kingdomcomecombat/item/SkillBookItem.java")
+	if (skillBook.exists()) {
+		String text = skillBook.getText("UTF-8")
+				.replace("import net.minecraft.component.type.WrittenBookContentComponent;\n", "")
+				.replace("import net.minecraft.text.RawFilteredPair;\n", "")
+				.replace("String language = player.getClientOptions().language();", "String language = \"\";")
+				.replace("String language = normalizeLanguage(player.getClientOptions().language());", "String language = \"\";")
+				.replace("stack.set(DataComponentTypes.WRITTEN_BOOK_CONTENT, bookContent(text));", "writeBookContent(stack, text, \"\");")
+				.replace("stack.set(DataComponentTypes.WRITTEN_BOOK_CONTENT, bookContent(text, language));", "writeBookContent(stack, text, language);")
+				.replace("stack.set(DataComponentTypes.ITEM_NAME, Text.literal(text.title(language)).formatted(net.minecraft.util.Formatting.WHITE));", "stack.setCustomName(Text.literal(text.title(language)).formatted(net.minecraft.util.Formatting.WHITE));")
+		int bookMethods = text.indexOf("    private static WrittenBookContentComponent bookContent(")
+		int refresh = text.indexOf("    private static void refreshHeldBook", bookMethods)
+		if (bookMethods >= 0 && refresh > bookMethods) {
+			String writer = '''    private static void writeBookContent(ItemStack stack, SkillBookTexts.Entry text, String language) {
+        String title = text.title(language);
+        String illustration = text.illustration(language);
+        boolean chinese = normalizeLanguage(language).equals("zh_cn");
+        String illustrationLabel = chinese ? "插图" : "Illustration";
+        String firstPage = title + "\\n\\n"
+                + (illustration.isBlank() ? "" : "[" + illustrationLabel + ": " + illustration + "]\\n\\n")
+                + text.firstPage(language);
+        NbtCompound nbt = stack.getOrCreateNbt();
+        nbt.putString("title", title);
+        nbt.putString("author", text.author());
+        nbt.putInt("generation", 0);
+        nbt.putBoolean("resolved", true);
+        net.minecraft.nbt.NbtList pages = new net.minecraft.nbt.NbtList();
+        pages.add(net.minecraft.nbt.NbtString.of(net.minecraft.text.Text.Serializer.toJson(Text.literal(firstPage))));
+        pages.add(net.minecraft.nbt.NbtString.of(net.minecraft.text.Text.Serializer.toJson(Text.literal(text.secondPage(language)))));
+        nbt.put("pages", pages);
+    }
+
+'''
+			text = text.substring(0, bookMethods) + writer + text.substring(refresh)
+		}
+		skillBook.setText(text, "UTF-8")
+	}
+
+	File acquisition = new File(generatedMain, "com/kingdomcomecombat/item/SkillBookAcquisition.java")
+	if (acquisition.exists()) {
+		acquisition.setText(acquisition.getText("UTF-8")
+				.replace("import net.fabricmc.fabric.api.loot.v3.LootTableEvents;\n", "")
+				.replace("import net.minecraft.village.TradedItem;\n", "")
+				.replace("new TradedItem(Items.EMERALD, cost)", "new ItemStack(Items.EMERALD, cost)")
+				.replace("stack.set(DataComponentTypes.ITEM_NAME, Text.literal(name).formatted(net.minecraft.util.Formatting.WHITE));", "stack.setCustomName(Text.literal(name).formatted(net.minecraft.util.Formatting.WHITE));"), "UTF-8")
+	}
+
+	File recipe = new File(generatedMain, "com/kingdomcomecombat/recipe/CombatManualRecipe.java")
+	if (recipe.exists()) {
+		String text = recipe.getText("UTF-8")
+				.replace("import net.minecraft.component.ComponentType;\n", "")
+				.replace("import net.minecraft.recipe.input.CraftingRecipeInput;", "import net.minecraft.inventory.RecipeInputInventory;")
+				.replace("import net.minecraft.registry.RegistryWrapper;", "import net.minecraft.registry.DynamicRegistryManager;")
+				.replace("public CombatManualRecipe(CraftingRecipeCategory category) {\n        super(category);", "public CombatManualRecipe(Identifier id, CraftingRecipeCategory category) {\n        super(id, category);")
+				.replace("matches(CraftingRecipeInput input, World world)", "matches(RecipeInputInventory input, World world)")
+				.replace("for (ItemStack stack : input.getStacks()) {", "for (int slot = 0; slot < input.size(); slot++) {\n            ItemStack stack = input.getStack(slot);")
+				.replace("craft(CraftingRecipeInput input, RegistryWrapper.WrapperLookup registries)", "craft(RecipeInputInventory input, DynamicRegistryManager registries)")
+		int createStart = text.indexOf("    private static ItemStack createManualStack() {")
+		int classEnd = text.lastIndexOf("}")
+		if (createStart >= 0 && classEnd > createStart) {
+			text = text.substring(0, createStart) + '''    private static ItemStack createManualStack() {
+        Item item = Registries.ITEM.get(MODONOMICON_RED_ID);
+        ItemStack stack = new ItemStack(item);
+        stack.getOrCreateNbt().putString("modonomicon:book_id", COMBAT_MANUAL_ID.toString());
+        return stack;
+    }
+''' + text.substring(classEnd)
+		}
+		recipe.setText(text, "UTF-8")
+	}
+
+	File potion = new File(generatedMain, "com/kingdomcomecombat/potion/PotionCoatingHandler.java")
+	if (potion.exists()) {
+		String text = potion.getText("UTF-8")
+				.replace("import net.minecraft.component.type.PotionContentsComponent;", "import com.kingdomcomecombat.compat.LegacyPotionContents;")
+				.replace("PotionContentsComponent", "LegacyPotionContents")
+				.replace("weapon.get(DataComponentTypes.POTION_CONTENTS)", "LegacyPotionContents.from(weapon)")
+				.replace("persistent.getItemStack().get(DataComponentTypes.POTION_CONTENTS)", "null")
+				.replace("new LegacyPotionContents(\n                Optional.empty(), Optional.of(DRAGON_BREATH_ARROW_COLOR), List.of(),\n                Optional.of(DRAGON_BREATH_ARROW_NAME))", "LegacyPotionContents.dragonBreath(DRAGON_BREATH_ARROW_COLOR)")
+				.replace("new LegacyPotionContents(\n                    Optional.empty(),\n                    Optional.of(DRAGON_BREATH_ARROW_COLOR),\n                    List.of(),\n                    Optional.of(DRAGON_BREATH_ARROW_NAME)\n            )", "LegacyPotionContents.dragonBreath(DRAGON_BREATH_ARROW_COLOR)")
+				.replace("stack.set(DataComponentTypes.POTION_CONTENTS, LegacyPotionContents.dragonBreath(DRAGON_BREATH_ARROW_COLOR));", "LegacyPotionContents.dragonBreath(DRAGON_BREATH_ARROW_COLOR).applyTo(stack);")
+				.replace("tippedArrows.set(DataComponentTypes.POTION_CONTENTS, potionContents);", "potionContents.applyTo(tippedArrows);")
+				.replace("weapon.set(DataComponentTypes.POTION_CONTENTS, potionContents);", "potionContents.applyTo(weapon);")
+				.replace("stack.set(DataComponentTypes.CUSTOM_NAME,", "stack.setCustomName(")
+				.replace("tippedArrows.set(DataComponentTypes.CUSTOM_NAME,", "tippedArrows.setCustomName(")
+				.replace("LegacyPotionContents potionContents = stack.get(DataComponentTypes.POTION_CONTENTS);", "LegacyPotionContents potionContents = LegacyPotionContents.from(stack);")
+				.replace("stack.remove(DataComponentTypes.POTION_CONTENTS);", "stack.getOrCreateNbt().remove(\"Potion\");\n            stack.getOrCreateNbt().remove(\"CustomPotionEffects\");")
+		int dragonMethod = text.indexOf("    public static boolean isDragonBreathArrow(Entity projectile) {")
+		int createDragon = text.indexOf("    public static ItemStack createDragonBreathArrowStack", dragonMethod)
+		if (dragonMethod >= 0 && createDragon > dragonMethod) {
+			text = text.substring(0, dragonMethod) + '''    public static boolean isDragonBreathArrow(Entity projectile) {
+        return projectile instanceof net.minecraft.entity.projectile.ArrowEntity arrow
+                && arrow.getColor() == DRAGON_BREATH_ARROW_COLOR;
+    }
+
+''' + text.substring(createDragon)
+		}
+		int createDragonStart = text.indexOf("    public static ItemStack createDragonBreathArrowStack(int count) {")
+		int tickStart = text.indexOf("    private static void tick(MinecraftServer server) {", createDragonStart)
+		if (createDragonStart >= 0 && tickStart > createDragonStart) {
+			text = text.substring(0, createDragonStart) + '''    public static ItemStack createDragonBreathArrowStack(int count) {
+        ItemStack stack = new ItemStack(Items.TIPPED_ARROW, Math.max(1, count));
+        LegacyPotionContents.dragonBreath(DRAGON_BREATH_ARROW_COLOR).applyTo(stack);
+        stack.setCustomName(Text.translatable("item.minecraft.tipped_arrow.effect." + DRAGON_BREATH_ARROW_NAME)
+                .formatted(Formatting.LIGHT_PURPLE));
+        return stack;
+    }
+
+''' + text.substring(tickStart)
+		}
+		int usableStart = text.indexOf("    private static LegacyPotionContents getUsablePotionContents(ItemStack stack) {")
+		int dragonContentsStart = text.indexOf("    private static boolean isDragonBreathContents", usableStart)
+		if (usableStart >= 0 && dragonContentsStart > usableStart) {
+			text = text.substring(0, usableStart) + '''    private static LegacyPotionContents getUsablePotionContents(ItemStack stack) {
+        if (stack.isOf(Items.DRAGON_BREATH)) {
+            return LegacyPotionContents.dragonBreath(DRAGON_BREATH_ARROW_COLOR);
+        }
+        if (!stack.isOf(Items.POTION)) return null;
+        LegacyPotionContents contents = LegacyPotionContents.from(stack);
+        return contents != null && contents.hasEffects() ? contents : null;
+    }
+
+''' + text.substring(dragonContentsStart)
+		}
+		potion.setText(text, "UTF-8")
+	}
+
+	File handCannon = new File(generatedMain, "com/kingdomcomecombat/item/HandCannonItem.java")
+	if (handCannon.exists()) {
+		handCannon.setText(handCannon.getText("UTF-8")
+				.replace("public int getMaxUseTime(ItemStack stack, LivingEntity user)", "public int getMaxUseTime(ItemStack stack)")
+				.replace("getMaxUseTime(stack, user)", "getMaxUseTime(stack)")
+				.replace("ammo.decrementUnlessCreative(1, player);", "if (!player.getAbilities().creativeMode) ammo.decrement(1);")
+				.replace("SoundEvents.ENTITY_GENERIC_EXPLODE.value()", "SoundEvents.ENTITY_GENERIC_EXPLODE")
+				.replace("stack.damage(3, player, net.minecraft.entity.EquipmentSlot.MAINHAND);", "stack.damage(3, player, broken -> player.sendEquipmentBreakStatus(net.minecraft.entity.EquipmentSlot.MAINHAND));"), "UTF-8")
+	}
+
+	File equipmentInit = new File(generatedMain, "com/kingdomcomecombat/ai/HumanoidMobEquipmentInitializer.java")
+	if (equipmentInit.exists()) {
+		equipmentInit.setText(equipmentInit.getText("UTF-8")
+				.replace("EnchantmentHelper.canHaveEnchantments(stack)", "stack.isEnchantable()")
+				.replace("EnchantmentHelper.enchant(mob.getRandom(), stack, level, world.getRegistryManager(), java.util.Optional.empty())", "EnchantmentHelper.enchant(mob.getRandom(), stack, level, false)"), "UTF-8")
+	}
+
+	File zombieLeader = new File(generatedMain, "com/kingdomcomecombat/ai/ZombieLeaderUtil.java")
+	if (zombieLeader.exists()) {
+		zombieLeader.setText(zombieLeader.getText("UTF-8")
+				.replace("reinforcementAttribute.hasModifier(LEADER_ZOMBIE_BONUS_MODIFIER_ID)", "reinforcementAttribute.getModifiers().stream().anyMatch(modifier -> modifier.getName().contains(\"Leader zombie bonus\"))"), "UTF-8")
+	}
+
+	File witherSkull = new File(generatedMain, "com/kingdomcomecombat/mixin/WitherSkullDefenseMixin.java")
+	if (witherSkull.exists()) {
+		witherSkull.setText(witherSkull.getText("UTF-8")
+				.replace("((WitherSkullEntity) (Object) this).accelerationPower *= 1.12;", "WitherSkullEntity skull = (WitherSkullEntity) (Object) this;\n            skull.setVelocity(skull.getVelocity().multiply(1.12));"), "UTF-8")
+	}
+
+	File stableProjectile = new File(generatedMain, "com/kingdomcomecombat/mixin/PersistentProjectileStableGravityMixin.java")
+	if (stableProjectile.exists()) {
+		stableProjectile.setText(stableProjectile.getText("UTF-8")
+				.replace("ItemStack weaponStack = projectile.getWeaponStack();", "ItemStack weaponStack = projectile.getOwner() instanceof net.minecraft.entity.LivingEntity owner ? owner.getMainHandStack() : ItemStack.EMPTY;"), "UTF-8")
+	}
+
+	File bowRapid = new File(generatedMain, "com/kingdomcomecombat/mixin/BowRapidFireMixin.java")
+	if (bowRapid.exists()) {
+		bowRapid.setText(bowRapid.getText("UTF-8")
+				.replace("ItemStack weapon = projectile instanceof net.minecraft.entity.projectile.PersistentProjectileEntity persistent\n                ? persistent.getWeaponStack()\n                : shooter.getActiveItem();", "ItemStack weapon = shooter.getMainHandStack();")
+				.replace("stack.getMaxUseTime(user)", "stack.getMaxUseTime()"), "UTF-8")
+	}
+
+	File crossbow = new File(generatedMain, "com/kingdomcomecombat/mixin/CrossbowStableProjectileMixin.java")
+	if (crossbow.exists()) {
+		crossbow.setText(crossbow.getText("UTF-8")
+				.replace("persistentProjectile.getWeaponStack()", "shooter.getMainHandStack()"), "UTF-8")
+	}
+
+	File critTrail = new File(generatedMain, "com/kingdomcomecombat/mixin/PersistentProjectileCritTrailMixin.java")
+	if (critTrail.exists()) {
+		critTrail.setText(critTrail.getText("UTF-8")
+				.replace("net.minecraft.item.ItemStack weapon = projectile.getWeaponStack();", "net.minecraft.item.ItemStack weapon = projectile.getOwner() instanceof net.minecraft.entity.LivingEntity owner ? owner.getMainHandStack() : net.minecraft.item.ItemStack.EMPTY;"), "UTF-8")
+	}
+
+	File projectileImpact = new File(generatedMain, "com/kingdomcomecombat/projectile/ProjectileImpactHandler.java")
+	if (projectileImpact.exists()) {
+		String text = projectileImpact.getText("UTF-8")
+		int methodStart = text.indexOf("    public static boolean hasImpactKnockback(")
+		int removeStart = text.indexOf("    public static void removeProjectileKnockback", methodStart)
+		if (methodStart >= 0 && removeStart > methodStart) {
+			text = text.substring(0, methodStart) + '''    public static boolean hasImpactKnockback(ServerWorld world, ProjectileEntity projectile, LivingEntity target) {
+        return projectile instanceof PersistentProjectileEntity persistentProjectile
+                && persistentProjectile.getPunch() > 0;
+    }
+
+''' + text.substring(removeStart)
+		}
+		projectileImpact.setText(text, "UTF-8")
+	}
+
+	File projectileArmor = new File(generatedMain, "com/kingdomcomecombat/mixin/LivingEntityProjectileArmorMixin.java")
+	if (projectileArmor.exists()) {
+		projectileArmor.setText(projectileArmor.getText("UTF-8")
+				.replace("RegistryEntry<EntityAttribute>", "EntityAttribute")
+				.replace("DamageUtil.getDamageLeft(target, amount, source, armor, toughness)", "DamageUtil.getDamageLeft(amount, armor, toughness)"), "UTF-8")
+	}
+
+	File hits = new File(generatedMain, "com/kingdomcomecombat/collision/ServerHitDetectionSystem.java")
+	if (hits.exists()) {
+		String text = hits.getText("UTF-8")
+				.replace("boolean shouldPostDamage = attacker instanceof net.minecraft.entity.player.PlayerEntity player && stack.postHit(target, player);",
+						"boolean shouldPostDamage = false;\n        if (attacker instanceof net.minecraft.entity.player.PlayerEntity player) stack.postHit(target, player);")
+				.replace("boolean shouldPostDamage = !stack.isEmpty() && attacker instanceof net.minecraft.entity.player.PlayerEntity player && stack.postHit(target, player);",
+						"boolean shouldPostDamage = false;\n        if (!stack.isEmpty() && attacker instanceof net.minecraft.entity.player.PlayerEntity player) stack.postHit(target, player);")
+				.replace("EnchantmentHelper.onTargetDamaged(world, target, vanillaHeavyHammerEnchantmentSource(world, attacker), stack);", "EnchantmentHelper.onTargetDamaged(attacker, target);")
+				.replace("EnchantmentHelper.onTargetDamaged(world, target, createDamageSource(world, attacker), stack);", "EnchantmentHelper.onTargetDamaged(attacker, target);")
+				.replace("            if (attacker instanceof net.minecraft.entity.player.PlayerEntity player) stack.postDamageEntity(target, player);\n", "")
+				.replace("target.getType().isIn(EntityTypeTags.SENSITIVE_TO_SMITE)", "target.getGroup() == net.minecraft.entity.EntityGroup.UNDEAD")
+				.replace("target.getType().isIn(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)", "target.getGroup() == net.minecraft.entity.EntityGroup.ARTHROPOD")
+				.replace("stack.damage(amount, blocker, EquipmentSlot.MAINHAND);", "stack.damage(amount, blocker, broken -> blocker.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));")
+				.replace("stack.damage(amount, attacker, EquipmentSlot.MAINHAND);", "stack.damage(amount, attacker, broken -> attacker.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));")
+		hits.setText(text, "UTF-8")
+	}
+
+	File bandage = new File(generatedMain, "com/kingdomcomecombat/item/BandageItem.java")
+	if (bandage.exists()) {
+		bandage.setText(bandage.getText("UTF-8")
+				.replace("stack.damage(damage, player, hand == Hand.MAIN_HAND\n                    ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);",
+						"EquipmentSlot slot = hand == Hand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;\n            stack.damage(damage, player, broken -> player.sendEquipmentBreakStatus(slot));"), "UTF-8")
+	}
+}
+
+void patch1201ClientSources(File generatedClient) {
+	fileTree(generatedClient).matching { include "**/*.java" }.files.each { file ->
+		file.setText(file.getText("UTF-8")
+				.replace("import net.minecraft.component.DataComponentTypes;\n", "")
+				.replace("import net.minecraft.component.type.AttributeModifiersComponent;", "import com.kingdomcomecombat.compat.LegacyAttributeModifiers;")
+				.replace("import net.minecraft.component.type.ItemEnchantmentsComponent;", "import com.kingdomcomecombat.compat.LegacyItemEnchantments;")
+				.replace("ItemEnchantmentsComponent enchantments = stack.get(DataComponentTypes.ENCHANTMENTS);", "LegacyItemEnchantments enchantments = LegacyItemEnchantments.from(stack);")
+				.replace("AttributeModifiersComponent modifiers = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);", "LegacyAttributeModifiers modifiers = LegacyAttributeModifiers.from(stack);")
+				.replace("import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;", "import com.kingdomcomecombat.network.legacy.LegacyClientPlayNetworking;")
+				.replace("ClientPlayNetworking", "LegacyClientPlayNetworking")
+				.replace("net.fabricmc.fabric.api.client.networking.v1.LegacyClientPlayNetworking", "net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking")
+				.replace("import net.minecraft.particle.SimpleParticleType;", "import net.minecraft.particle.DefaultParticleType;")
+				.replace("SimpleParticleType", "DefaultParticleType")
+				.replace("Identifier.ofVanilla(", "new Identifier(\"minecraft\", ")
+				.replace("Identifier.of(", "new Identifier(")
+				.replace(".getRenderTickCounter().getTickDelta(true)", ".getTickDelta()")
+				.replace(".getRenderTickCounter().getTickDelta(false)", ".getTickDelta()")
+				.replace("recentComboDirections.removeFirst()", "recentComboDirections.remove(0)")
+				.replace("preview.removeFirst()", "preview.remove(0)")
+				.replace("keyframes.getFirst()", "keyframes.get(0)")
+				.replace("keyframes.getLast()", "keyframes.get(keyframes.size() - 1)")
+				.replace("resources.getFirst()", "resources.get(0)")
+				.replace("trace.boxes().getFirst()", "trace.boxes().get(0)")
+				.replace("trace.boxes().getLast()", "trace.boxes().get(trace.boxes().size() - 1)")
+				.replace("consumer.vertex(entry,", "consumer.vertex(entry.getPositionMatrix(),")
+				.replace(".normal(entry,", ".normal(entry.getNormalMatrix(),")
+				.replace("LegacyLegacy", "Legacy"), "UTF-8")
+	}
+
+	File tooltip = new File(generatedClient, "com/kingdomcomecombat/client/ui/CombatAttributeTooltipClient.java")
+	if (tooltip.exists()) {
+		tooltip.setText(tooltip.getText("UTF-8")
+				.replace("(stack, context, type, lines) ->", "(stack, context, lines) ->")
+				.replace("modifier.operation()", "modifier.getOperation()")
+				.replace("modifier.value()", "modifier.getValue()")
+				.replace("EntityAttributeModifier.Operation.ADD_VALUE", "EntityAttributeModifier.Operation.ADDITION")
+				.replace("EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE", "EntityAttributeModifier.Operation.MULTIPLY_BASE")
+				.replace("EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL", "EntityAttributeModifier.Operation.MULTIPLY_TOTAL"), "UTF-8")
+	}
+
+	File comboScreen = new File(generatedClient, "com/kingdomcomecombat/client/ui/ComboKnowledgeScreen.java")
+	if (comboScreen.exists()) {
+		comboScreen.setText(comboScreen.getText("UTF-8")
+				.replace("public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount)",
+						"public boolean mouseScrolled(double mouseX, double mouseY, double verticalAmount)"), "UTF-8")
+	}
+
+	[
+			"com/kingdomcomecombat/client/hud/CombatScreenStatusOverlay.java",
+			"com/kingdomcomecombat/client/hud/LockOnCrosshairOverlay.java"
+	].each { path ->
+		File hud = new File(generatedClient, path)
+		if (hud.exists()) {
+			hud.setText(hud.getText("UTF-8")
+					.replace("import net.minecraft.client.render.RenderTickCounter;\n", "")
+					.replace("DrawContext context, RenderTickCounter tickCounter", "DrawContext context, float tickDelta")
+					.replace("            RenderTickCounter tickCounter", "            float tickDelta")
+					.replace("        float tickDelta = tickCounter.getTickDelta(true);\n", ""), "UTF-8")
+		}
+	}
+
+	File animationClient = new File(generatedClient, "com/kingdomcomecombat/client/animation/CombatAnimationClient.java")
+	if (animationClient.exists()) {
+		animationClient.setText(animationClient.getText("UTF-8").replace(
+				"return client.player instanceof AbstractClientPlayerEntity player\n                && shouldUseSpecialFirstPerson(player);",
+				"return client.player != null && shouldUseSpecialFirstPerson(client.player);")
+				.replace('''        if (!(client.player instanceof AbstractClientPlayerEntity player)
+                || (CombatClientConfig.firstPersonModelMode()''', '''        AbstractClientPlayerEntity player = client.player;
+        if (player == null
+                || (CombatClientConfig.firstPersonModelMode()''')
+				.replace('''        if (!(client.player instanceof AbstractClientPlayerEntity player)) {
+            return null;
+        }
+
+        return getController(player);''', '''        AbstractClientPlayerEntity player = client.player;
+		return player == null ? null : getController(player);''')
+				.replace('''        if (!(client.player instanceof AbstractClientPlayerEntity player)) {
+            return null;
+        }
+
+        return getController(player, BLOCK_LAYER_ID);''', '''        AbstractClientPlayerEntity player = client.player;
+        return player == null ? null : getController(player, BLOCK_LAYER_ID);'''), "UTF-8")
+	}
+
+	File itemRenderer = new File(generatedClient, "com/kingdomcomecombat/mixin/client/LegacyItemRendererBloodiedTextureMixin.java")
+	if (itemRenderer.exists()) {
+		itemRenderer.setText(itemRenderer.getText("UTF-8")
+				.replace("consumer.quad(entry, quad, red, green, blue, 1.0F, light, overlay);", "consumer.quad(entry, quad, red, green, blue, light, overlay);")
+				.replace("public VertexConsumer vertex(float x, float y, float z)", "public VertexConsumer vertex(double x, double y, double z)")
+				.replace("    }\n}", '''        @Override
+        public void next() {
+            delegate.next();
+        }
+
+        @Override
+        public void fixedColor(int red, int green, int blue, int alpha) {
+            delegate.fixedColor(red, green, blue, alpha);
+        }
+
+        @Override
+        public void unfixColor() {
+            delegate.unfixColor();
+        }
+    }
+}'''), "UTF-8")
+	}
+
+	File illagerArmor = new File(generatedClient, "com/kingdomcomecombat/client/render/LegacyIllagerArmorFeatureRenderer.java")
+	if (illagerArmor.exists()) {
+		String text = illagerArmor.getText("UTF-8")
+				.replace("import net.minecraft.component.type.DyedColorComponent;", "import net.minecraft.item.DyeableItem;")
+				.replace("import net.minecraft.registry.tag.ItemTags;\n", "")
+				.replace("import net.minecraft.util.math.ColorHelper;\n", "")
+				.replace("ArmorMaterial material = armor.getMaterial().value();", "ArmorMaterial material = armor.getMaterial();")
+				.replace('''        int dyedColor = stack.isIn(ItemTags.DYEABLE)
+                ? ColorHelper.Argb.fullAlpha(DyedColorComponent.getColor(stack, 0xA06540))
+                : 0xFFFFFFFF;
+        for (ArmorMaterial.Layer layer : material.layers()) {
+            int color = layer.isDyeable() ? dyedColor : 0xFFFFFFFF;
+            Identifier texture = layer.getTexture(inner);''', '''        int color = armor instanceof DyeableItem dyeable ? dyeable.getColor(stack) : 0xFFFFFF;
+        {
+            String materialName = material.getName();
+            Identifier texture = new Identifier(materialName.contains(":") ? materialName.split(":", 2)[0] : "minecraft",
+                    "textures/models/armor/" + (materialName.contains(":") ? materialName.split(":", 2)[1] : materialName)
+                            + "_layer_" + (inner ? 2 : 1) + ".png");''')
+				.replace("                    RenderLayer.getArmorCutoutNoCull(texture),\n                    stack.hasGlint()", "                    RenderLayer.getArmorCutoutNoCull(texture),\n                    false,\n                    stack.hasGlint()")
+				.replace("armorPart.render(matrices, vertices, light, OverlayTexture.DEFAULT_UV, color);", '''armorPart.render(matrices, vertices, light, OverlayTexture.DEFAULT_UV,
+                    ((color >> 16) & 255) / 255.0F,
+                    ((color >> 8) & 255) / 255.0F,
+                    (color & 255) / 255.0F,
+                    1.0F);''')
+		illagerArmor.setText(text, "UTF-8")
+	}
 }
 
 void patch12111ClientSources(File generatedClient) {
@@ -1403,20 +2107,29 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${targetFabricApi}"
-	def modMenuVersion = targetMinecraft == "1.21.1"
+	def modMenuVersion = targetMinecraft == "1.20.1"
+			? "7.2.2"
+			: targetMinecraft == "1.21.1"
 			? "11.0.3"
 			: (needsCommandRendererApis ? "17.0.0" : "15.0.1")
 	modCompileOnly "com.terraformersmc:modmenu:${modMenuVersion}"
 	modImplementation "me.shedaniel.cloth:cloth-config-fabric:${targetClothConfig}"
 
-	modImplementation files(targetMinecraft == "1.21.1"
+	if (targetMinecraft != "1.20.1") {
+		modImplementation files(targetMinecraft == "1.21.1"
 			? "libs/PlayerAnimationLibFabric-1.1.4+mc.1.21.1.jar"
 			: (targetMinecraft == "1.21.11"
 				? "libs/PlayerAnimationLibFabric-1.1.7+mc.1.21.11.jar"
 				: (targetMinecraft == "1.21.10"
 					? "libs/PlayerAnimationLibFabric-1.1.3+mc.1.21.9.jar"
 					: "libs/PlayerAnimationLibFabric-1.1.2+mc.1.21.8.jar")))
-	modRuntimeOnly files("libs/mochafloats-4.0.1.jar")
+		modRuntimeOnly files("libs/mochafloats-4.0.1.jar")
+	} else {
+		def mocha1201 = implementation("com.zigythebird:mochafloats:4.1.0")
+		def javassist1201 = implementation("org.javassist:javassist:3.30.2-GA")
+		include mocha1201
+		include javassist1201
+	}
 	// First-person Model 前置
 	if (targetMinecraft == "1.21.7" || targetMinecraft == "1.21.8") {
 		modRuntimeOnly files("libs/TRansition-1.0.18-1.21.8-fabric-SNAPSHOT.jar")
@@ -1424,7 +2137,7 @@ dependencies {
 	}
 	// The compile-only jar supplies the stable API. The launcher provides the
 	// Minecraft-specific runtime build (2.7.1 on 1.21.8).
-	if (targetMinecraft == "1.21.1") {
+	if (targetMinecraft == "1.20.1" || targetMinecraft == "1.21.1") {
 		modCompileOnly files("libs/geckolib-fabric-1.21.7-5.2.1.jar")
 	} else {
 		modImplementation files(targetMinecraft == "1.21.11"
@@ -1447,6 +2160,18 @@ processResources {
 
 	filesMatching("fabric.mod.json") {
 		expand "version": version, "minecraft_dependency": minecraftDependency, "cloth_dependency": targetClothConfig
+		if (needs1201Apis) {
+			filter { String line -> line
+					.replace('"fabricloader": ">=0.19.2"', '"fabricloader": ">=0.14.22"')
+					.replace('"java": ">=21"', '"java": ">=17"')
+					.replace(',\n\t\t"player_animation_library": "*"', '')
+					.replace('"kingdom_come_combat.mixins.json",', '"kingdom_come_combat.mixins.json",\n\t\t"player_animation_library.mixins.json",') }
+		}
+	}
+	if (needs1201Apis) {
+		filesMatching(["kingdom_come_combat.mixins.json", "kingdom_come_combat.client.mixins.json"]) {
+			filter { String line -> line.replace('"compatibilityLevel": "JAVA_21"', '"compatibilityLevel": "JAVA_17"') }
+		}
 	}
 	if (needs12111Apis) {
 		filesMatching("kingdom_come_combat.mixins.json") {
@@ -1478,9 +2203,18 @@ processResources {
 			filter { String line -> line.replace("minecraft:armor_toughness", "minecraft:generic.armor_toughness") }
 		}
 		filesMatching("kingdom_come_combat.mixins.json") {
-			filter { String line -> line.contains('"MilkBucketInjuryMixin"')
-					? line.replace('"MilkBucketInjuryMixin"', '"LegacyMilkBucketInjuryMixin"')
-					: line }
+			filter { String line ->
+				if (line.contains('"MilkBucketInjuryMixin"')) {
+					return line.replace('"MilkBucketInjuryMixin"', '"LegacyMilkBucketInjuryMixin"')
+				}
+				if (needsPre1215Apis && !needs1201Apis && line.contains('"LecternScreenHandlerSkillBookMixin"')) {
+					return line + '\n\t\t"LegacyLootableInventorySkillBookMixin",'
+				}
+				if (needs1201Apis && line.contains('"LecternScreenHandlerSkillBookMixin"')) {
+					return line + '\n\t\t"Legacy1201LootableContainerSkillBookMixin",'
+				}
+				return line
+			}
 		}
 		filesMatching("kingdom_come_combat.client.mixins.json") {
 			filter { String line -> legacyClientMixinJsonLine(line) }
@@ -1713,7 +2447,8 @@ tasks.register("printCompatibilityTarget") {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
+	it.options.release = needs1201Apis ? 17 : 21
+	it.options.compilerArgs.addAll(["-Xmaxerrs", "1000"])
 }
 
 java {
@@ -1722,8 +2457,8 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = needs1201Apis ? JavaVersion.VERSION_17 : JavaVersion.VERSION_21
+	targetCompatibility = needs1201Apis ? JavaVersion.VERSION_17 : JavaVersion.VERSION_21
 }
 
 jar {

@@ -1,5 +1,8 @@
 package com.kingdomcomecombat.client.animation;
 
+import com.kingdomcomecombat.client.compat.BipedModelAiCompatReporter;
+import com.kingdomcomecombat.collision.HumanoidHurtboxLibrary;
+import com.kingdomcomecombat.config.CombatClientConfig;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
@@ -19,25 +22,43 @@ public final class LegacyMobPalBodyTransformApplier {
     }
 
     public static void apply(LivingEntity entity, MatrixStack matrices) {
+        if (CombatClientConfig.mobRendererCompatibilityMode()) return;
+        applyForced(entity, matrices);
+    }
+
+    public static void applyCompatibility(LivingEntity entity, MatrixStack matrices) {
+        if (!CombatClientConfig.mobRendererCompatibilityMode()) return;
+        applyForced(entity, matrices);
+    }
+
+    private static void applyForced(LivingEntity entity, MatrixStack matrices) {
         if (entity instanceof AbstractClientPlayerEntity
+                || BipedModelAiCompatReporter.isRenderDisabled(entity)
+                || !HumanoidHurtboxLibrary.isHumanoidTarget(entity)
                 || !ClientEntityGeckoAnimationState.shouldRenderCombatAnimation(entity.getId())) {
             return;
         }
 
-        BodyPose pose = sample(entity);
-        if (!pose.transformed()) return;
+        try {
+            BodyPose pose = sample(entity);
+            if (!pose.transformed()) return;
 
-        GeckoLikeAnimationLibrary.BonePose rotation = pose.rotation();
-        GeckoLikeAnimationLibrary.BonePose position = pose.position();
-        matrices.translate(
-                -position.x() * PIXEL_TO_BLOCK,
-                position.y() * PIXEL_TO_BLOCK + BODY_PIVOT_Y,
-                position.z() * PIXEL_TO_BLOCK
-        );
-        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(rotation.z()));
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-rotation.y()));
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-rotation.x()));
-        matrices.translate(0.0F, -BODY_PIVOT_Y, 0.0F);
+            GeckoLikeAnimationLibrary.BonePose rotation = pose.rotation();
+            GeckoLikeAnimationLibrary.BonePose position = pose.position();
+            matrices.translate(
+                    -position.x() * PIXEL_TO_BLOCK,
+                    position.y() * PIXEL_TO_BLOCK + BODY_PIVOT_Y,
+                    position.z() * PIXEL_TO_BLOCK
+            );
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(rotation.z()));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-rotation.y()));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-rotation.x()));
+            matrices.translate(0.0F, -BODY_PIVOT_Y, 0.0F);
+        } catch (RuntimeException | LinkageError exception) {
+            if (!BipedModelAiCompatReporter.disableAfterFailure(entity)) {
+                throw exception;
+            }
+        }
     }
 
     public static BodyPose sample(LivingEntity entity) {
@@ -80,5 +101,10 @@ public final class LegacyMobPalBodyTransformApplier {
             GeckoLikeAnimationLibrary.BonePose position,
             boolean transformed
     ) {
+        private static final BodyPose IDENTITY = new BodyPose(
+                GeckoLikeAnimationLibrary.BonePose.ZERO,
+                GeckoLikeAnimationLibrary.BonePose.ZERO,
+                false
+        );
     }
 }
